@@ -32,6 +32,38 @@ nav { background:#ffffff; border-bottom:1px solid #e0e5eb; position:sticky; top:
 .nav-plus { background:var(--navy); color:#fff; font-family:var(--D); font-size:13px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; border:none; padding:8px 20px; cursor:pointer; border-radius:4px; transition:background 0.15s; margin-left:8px; }
 .nav-plus .plus-gold { color:var(--gold); }
 .nav-plus:hover { background:#1a2e44; }
+.nav-account-btn { background:transparent; color:#0d1b2a; font-family:var(--D); font-size:13px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; border:1px solid rgba(13,27,42,0.28); padding:7px 16px; cursor:pointer; border-radius:4px; margin-left:8px; transition:all 0.15s; white-space:nowrap; max-width:170px; overflow:hidden; text-overflow:ellipsis; }
+.nav-account-btn:hover { background:rgba(13,27,42,0.06); }
+@media (max-width:900px) { .nav-account-btn { display:none; } }
+
+.login-panel-overlay { display:none; position:fixed; inset:0; background:rgba(8,14,20,0.6); z-index:300; align-items:flex-start; justify-content:flex-end; padding:78px 24px; }
+.login-panel-overlay.open { display:flex; }
+.login-panel { background:#0d1b2a; border:1px solid var(--border); border-radius:8px; padding:24px; width:100%; max-width:320px; box-shadow:0 12px 32px rgba(0,0,0,0.45); position:relative; }
+.login-panel-close { position:absolute; top:10px; right:12px; background:none; border:none; color:var(--gray); font-size:18px; cursor:pointer; line-height:1; }
+.form-input { width:100%; box-sizing:border-box; padding:11px 14px; margin-bottom:10px; border-radius:5px; border:1px solid var(--border2); background:var(--navy); color:#fff; font-family:var(--B); font-size:14px; transition:border-color 0.15s; }
+.form-input:focus { outline:none; border-color:var(--gold); }
+.form-input::placeholder { color:#6b7d92; }
+
+.password-field-wrap { position:relative; }
+.password-field-wrap .form-input { padding-right:44px; margin-bottom:10px; }
+.password-toggle-btn { position:absolute; right:8px; top:0; bottom:10px; height:calc(100% - 10px); display:flex; align-items:center; background:none; border:none; cursor:pointer; font-size:15px; color:var(--gray2); padding:0 6px; line-height:1; }
+.password-toggle-btn:hover { color:#fff; }
+
+.team-dropdown { position:relative; margin-bottom:20px; }
+.team-dropdown-btn { width:100%; box-sizing:border-box; text-align:left; padding:11px 14px; border-radius:5px; border:1px solid var(--border2); background:var(--navy); color:#fff; font-family:var(--B); font-size:14px; cursor:pointer; display:flex; align-items:center; justify-content:space-between; transition:border-color 0.15s; }
+.team-dropdown-btn:hover, .team-dropdown-btn.open { border-color:var(--gold); }
+.team-dropdown-panel { display:none; position:absolute; top:calc(100% + 4px); left:0; right:0; background:#0d1b2a; border:1px solid var(--border2); border-radius:6px; max-height:240px; overflow-y:auto; z-index:20; box-shadow:0 8px 24px rgba(0,0,0,0.45); }
+.team-dropdown-panel.open { display:block; }
+.team-dropdown-item { display:flex; align-items:center; gap:10px; padding:10px 14px; cursor:pointer; font-size:13px; color:#fff; }
+.team-dropdown-item:hover { background:rgba(255,255,255,0.06); }
+.team-dropdown-item input { width:auto; margin:0; }
+@media (max-width:600px) { .login-panel-overlay { align-items:center; justify-content:center; padding:20px; } }
+
+.device-picker-overlay { display:none; position:fixed; inset:0; background:rgba(8,14,20,0.75); z-index:400; align-items:center; justify-content:center; padding:20px; }
+.device-picker-overlay.open { display:flex; }
+.device-picker-panel { background:#0d1b2a; border:1px solid var(--border); border-left:3px solid var(--gold); border-radius:8px; padding:24px; width:100%; max-width:380px; }
+.device-row { display:flex; align-items:center; justify-content:space-between; gap:10px; padding:12px; border:1px solid var(--border2); border-radius:6px; margin-bottom:8px; cursor:pointer; transition:border-color 0.15s; }
+.device-row:hover { border-color:var(--gold); }
 
 /* PAGES */
 .page { display:none; } .page.active { display:block; }
@@ -387,6 +419,7 @@ footer { background:var(--navy); border-top:1px solid var(--border); padding:28p
 
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://js.stripe.com/v3/"></script>
 </head>
 <body>
 <img id="abbeville-logo-data" src="data:image/png;base64,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" style="display:none;" alt="">
@@ -418,6 +451,7 @@ footer { background:var(--navy); border-top:1px solid var(--border); padding:28p
       <button class="nav-link" id="nl-stats" onclick="goPage('stats')">Stats</button>
     </div>
     <button class="nav-plus" onclick="goPage('plus')">LSN<span class="plus-gold">+</span></button>
+    <button class="nav-account-btn" id="navAccountBtn" onclick="toggleLoginPanel()">Log In</button>
     <!-- Mobile hamburger -->
     <button class="mob-hamburger" id="mobHamburger" onclick="toggleMobMenu()" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -429,10 +463,29 @@ footer { background:var(--navy); border-top:1px solid var(--border); padding:28p
       <button class="mob-dd-btn" id="mob-standings" onclick="goPage('standings')">Standings</button>
       <button class="mob-dd-btn" id="mob-teams" onclick="goPage('teams')">Teams</button>
       <button class="mob-dd-btn" id="mob-stats" onclick="goPage('stats')">Stats</button>
+      <button class="mob-dd-btn" id="mob-account" onclick="closeMobMenu();toggleLoginPanel();">Log In</button>
       <button class="mob-dd-btn gold-item" id="mob-plus" onclick="goPage('plus')">LSN+</button>
     </div>
   </div>
 </nav>
+
+<!-- ══ LOG IN PANEL ══ -->
+<div class="login-panel-overlay" id="loginPanelOverlay" onclick="if(event.target===this) toggleLoginPanel(false)">
+  <div class="login-panel">
+    <button class="login-panel-close" onclick="toggleLoginPanel(false)">✕</button>
+    <div id="loginPanelContent"><div class="loading">Loading</div></div>
+  </div>
+</div>
+
+<!-- ══ DEVICE PICKER ══ -->
+<div class="device-picker-overlay" id="devicePickerOverlay">
+  <div class="device-picker-panel">
+    <div style="font-family:var(--D);font-weight:800;font-size:16px;color:#fff;margin-bottom:6px;">You're signed in on 3 devices</div>
+    <p style="font-size:12px;color:var(--gray);margin-bottom:16px;">LSN+ accounts are limited to 3 devices at a time. Pick one to sign out to continue logging in here.</p>
+    <div id="devicePickerList"></div>
+    <button class="btn-outline" style="width:100%;margin-top:6px;" onclick="closeDevicePicker()">Cancel</button>
+  </div>
+</div>
 
 <!-- ══ HOME ══ -->
 <div class="page active" id="page-home">
@@ -442,7 +495,7 @@ footer { background:var(--navy); border-top:1px solid var(--border); padding:28p
     <div class="hero-btns">
       <button class="btn-main" onclick="goPage('scores')">📊 Scores</button>
       <button class="btn-outline" onclick="goPage('listen')">📻 Listen Live</button>
-      <button class="btn-outline" onclick="goPage('plus')">⭐ Join LSN+</button>
+      <button class="btn-outline" onclick="goPage('signup')">⭐ Join LSN+</button>
     </div>
   </div>
 
@@ -546,7 +599,7 @@ footer { background:var(--navy); border-top:1px solid var(--border); padding:28p
           </ul>
           <div class="plus-price">$9.99</div>
           <div class="plus-mo">per month · cancel anytime</div>
-          <button class="btn-gold" onclick="goPage('plus')">Join LSN+</button>
+          <button class="btn-gold" onclick="goPage('signup')">Join LSN+</button>
         </div>
       </div>
     </div>
@@ -577,6 +630,17 @@ footer { background:var(--navy); border-top:1px solid var(--border); padding:28p
       </div>
     </div>
     <p style="text-align:center;font-size:11px;color:var(--gray);margin-top:16px;"><a href="https://mixlr.com/" target="_blank" style="color:var(--gray);text-decoration:none;">Streaming live via Mixlr</a></p>
+  </div>
+</div>
+
+<!-- ══ SIGN UP (LSN+) ══ -->
+<div class="page" id="page-signup">
+  <div class="page-header">
+    <h2>Join <span>LSN+</span></h2>
+    <p>$9.99/month · 7-day free trial · cancel anytime</p>
+  </div>
+  <div class="wrap" style="max-width:480px;padding-top:24px;padding-bottom:64px;">
+    <div id="signupContainer"></div>
   </div>
 </div>
 
@@ -2340,41 +2404,205 @@ function openEmeraldPage() {
 // ⚠️ Fill these in before deploying — see README for where to find them.
 const SUPABASE_URL = 'https://qipobfdgbtfrpokkmubx.supabase.co';       // e.g. https://xxxxxxxx.supabase.co
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFpcG9iZmRnYnRmcnBva2ttdWJ4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODU4MzI5MjgsImV4cCI6MjEwMTQwODkyOH0.uouKin79wEMTfxkXSpce4Dca77FHSa6ucRT0okJOfRo';     // Settings → API → anon public key
+const STRIPE_PUBLISHABLE_KEY = 'YOUR_STRIPE_PUBLISHABLE_KEY';          // Stripe → Developers → API keys → Publishable key (starts pk_)
 
 const sbClient = (window.supabase && SUPABASE_URL.startsWith('http'))
   ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
   : null;
 
+const stripeClient = (window.Stripe && STRIPE_PUBLISHABLE_KEY.startsWith('pk_'))
+  ? window.Stripe(STRIPE_PUBLISHABLE_KEY)
+  : null;
+
 let currentUser = null;
 let currentSubStatus = 'inactive';
+let currentFavoriteTeams = [];
+let stripeElements = null;
+let cardElement = null;
+let _devicePickerResolve = null;
+const signupState = { email: '', teams: [] };
 
 function isPlusMember() {
   return currentSubStatus === 'active' || currentSubStatus === 'trialing';
 }
 
+// ── Device fingerprinting (simple, browser-local — good enough for a soft 3-device cap) ──
+function getOrCreateDeviceId() {
+  try {
+    let id = localStorage.getItem('lsn_device_id');
+    if (!id) {
+      id = (crypto.randomUUID ? crypto.randomUUID() : 'dev-' + Math.random().toString(36).slice(2) + Date.now());
+      localStorage.setItem('lsn_device_id', id);
+    }
+    return id;
+  } catch (e) {
+    return 'dev-' + Math.random().toString(36).slice(2);
+  }
+}
+
+function guessDeviceLabel() {
+  const ua = navigator.userAgent || '';
+  let os = 'Unknown OS';
+  if (/iPhone|iPad/.test(ua)) os = 'iOS';
+  else if (/Android/.test(ua)) os = 'Android';
+  else if (/Mac OS X/.test(ua)) os = 'Mac';
+  else if (/Windows/.test(ua)) os = 'Windows';
+  else if (/Linux/.test(ua)) os = 'Linux';
+  let browser = 'Browser';
+  if (/Edg\//.test(ua)) browser = 'Edge';
+  else if (/Chrome\//.test(ua)) browser = 'Chrome';
+  else if (/Safari\//.test(ua) && !/Chrome\//.test(ua)) browser = 'Safari';
+  else if (/Firefox\//.test(ua)) browser = 'Firefox';
+  return browser + ' on ' + os;
+}
+
+// Call right after a successful sign-in/sign-up. Resolves true if this device is
+// registered (or already was); resolves false if the user is at their 3-device
+// limit and cancels the picker instead of freeing one up.
+function registerDeviceForSession() {
+  return new Promise(async (resolve) => {
+    if (!sbClient) { resolve(true); return; }
+    const { data: { session } } = await sbClient.auth.getSession();
+    if (!session) { resolve(false); return; }
+    const deviceId = getOrCreateDeviceId();
+    const deviceLabel = guessDeviceLabel();
+    try {
+      const res = await fetch('/api/register-device', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + session.access_token },
+        body: JSON.stringify({ device_id: deviceId, device_label: deviceLabel }),
+      });
+      const data = await res.json();
+      if (data.ok) { resolve(true); return; }
+      if (data.needsDeviceChoice) {
+        openDevicePicker(data.devices, deviceId, deviceLabel, resolve);
+        return;
+      }
+      resolve(false);
+    } catch (e) {
+      resolve(false);
+    }
+  });
+}
+
+function openDevicePicker(devices, newDeviceId, newDeviceLabel, resolve) {
+  _devicePickerResolve = resolve;
+  const list = document.getElementById('devicePickerList');
+  list.innerHTML = (devices || []).map(d => `
+    <div class="device-row" onclick="chooseDeviceToRemove('${d.id}', '${newDeviceId}', '${newDeviceLabel.replace(/'/g, "\\'")}')">
+      <div>
+        <div style="font-family:var(--D);font-weight:700;font-size:13px;color:#fff;">${d.device_label}</div>
+        <div style="font-size:11px;color:var(--gray);">Last used ${new Date(d.last_seen).toLocaleDateString()}</div>
+      </div>
+      <span style="color:var(--gold);font-size:12px;">Sign out →</span>
+    </div>`).join('');
+  document.getElementById('devicePickerOverlay').classList.add('open');
+}
+
+async function chooseDeviceToRemove(removeRowId, newDeviceId, newDeviceLabel) {
+  const { data: { session } } = await sbClient.auth.getSession();
+  if (!session) { closeDevicePicker(); return; }
+  try {
+    const res = await fetch('/api/remove-device', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + session.access_token },
+      body: JSON.stringify({ remove_device_row_id: removeRowId, new_device_id: newDeviceId, new_device_label: newDeviceLabel }),
+    });
+    const data = await res.json();
+    document.getElementById('devicePickerOverlay').classList.remove('open');
+    if (data.ok && _devicePickerResolve) { _devicePickerResolve(true); _devicePickerResolve = null; }
+    else if (_devicePickerResolve) { alert(data.error || 'Could not switch devices.'); _devicePickerResolve(false); _devicePickerResolve = null; }
+  } catch (e) {
+    document.getElementById('devicePickerOverlay').classList.remove('open');
+    if (_devicePickerResolve) { _devicePickerResolve(false); _devicePickerResolve = null; }
+  }
+}
+
+async function closeDevicePicker() {
+  document.getElementById('devicePickerOverlay').classList.remove('open');
+  if (_devicePickerResolve) {
+    // They backed out rather than freeing up a device — don't leave a half-registered session
+    _devicePickerResolve(false);
+    _devicePickerResolve = null;
+    if (sbClient) await sbClient.auth.signOut();
+    await refreshAuthState();
+  }
+}
+
 async function refreshAuthState() {
-  if (!sbClient) { renderPlusAuthBlock(); return; }
+  if (!sbClient) { renderPlusAuthBlock(); renderLoginPanel(); return; }
   const { data: { session } } = await sbClient.auth.getSession();
   currentUser = session ? session.user : null;
   currentSubStatus = 'inactive';
+  currentFavoriteTeams = [];
   if (currentUser) {
     const { data: profile } = await sbClient
       .from('profiles')
-      .select('subscription_status')
+      .select('subscription_status, favorite_teams')
       .eq('id', currentUser.id)
       .maybeSingle();
-    if (profile && profile.subscription_status) currentSubStatus = profile.subscription_status;
+    if (profile) {
+      if (profile.subscription_status) currentSubStatus = profile.subscription_status;
+      if (Array.isArray(profile.favorite_teams)) currentFavoriteTeams = profile.favorite_teams;
+    }
   }
   renderPlusAuthBlock();
+  renderLoginPanel();
+  renderAccountNavButton();
+  if (currentPage === 'signup') renderSignupPage();
 }
 
-async function handleSignup(email, password) {
-  if (!sbClient) return;
-  if (!email || !password) { alert('Enter an email and password.'); return; }
-  const { error } = await sbClient.auth.signUp({ email, password });
-  if (error) { alert(error.message); return; }
-  alert('Check your email to confirm your account, then log in.');
-  await refreshAuthState();
+function renderAccountNavButton() {
+  const btn = document.getElementById('navAccountBtn');
+  if (!btn) return;
+  btn.textContent = currentUser ? currentUser.email : 'Log In';
+}
+
+// ── Top-right quick login panel ──
+function toggleLoginPanel(show) {
+  const overlay = document.getElementById('loginPanelOverlay');
+  const shouldOpen = show === undefined ? !overlay.classList.contains('open') : show;
+  overlay.classList.toggle('open', shouldOpen);
+  if (shouldOpen) renderLoginPanel();
+}
+
+function renderLoginPanel() {
+  const el = document.getElementById('loginPanelContent');
+  if (!el) return;
+
+  if (!sbClient) {
+    el.innerHTML = '<div style="font-size:12px;color:var(--gray);">Account system not configured yet.</div>';
+    return;
+  }
+
+  if (currentUser) {
+    el.innerHTML = `
+      <div style="font-family:var(--D);font-weight:800;font-size:14px;color:#fff;margin-bottom:6px;">${currentUser.email}</div>
+      <div style="font-size:12px;color:${isPlusMember() ? 'var(--gold)' : 'var(--gray)'};margin-bottom:16px;">${isPlusMember() ? '✓ LSN+ member' : 'Free account'}</div>
+      ${!isPlusMember() ? `<button class="plus-cta-btn" style="width:100%;margin-bottom:10px;" onclick="toggleLoginPanel(false);goPage('signup');">Join LSN+</button>` : ''}
+      <button class="btn-outline" style="width:100%;" onclick="handleLogout()">Log Out</button>`;
+    return;
+  }
+
+  el.innerHTML = `
+    <div style="font-family:var(--D);font-weight:800;font-size:14px;color:#fff;margin-bottom:14px;">Log In</div>
+    <input type="email" id="login-email" class="form-input" placeholder="Email">
+    <div class="password-field-wrap">
+      <input type="password" id="login-password" class="form-input" placeholder="Password">
+      <button type="button" class="password-toggle-btn" onclick="togglePasswordVisibility('login-password', this)">👁</button>
+    </div>
+    <button class="plus-cta-btn" style="width:100%;margin-top:4px;" onclick="handleLogin(document.getElementById('login-email').value, document.getElementById('login-password').value)">Log In</button>
+    <div style="text-align:center;margin-top:14px;font-size:12px;color:var(--gray);">
+      New here? <a href="#" onclick="toggleLoginPanel(false);goPage('signup');return false;" style="color:var(--gold);text-decoration:none;">Join LSN+</a>
+    </div>`;
+}
+
+function togglePasswordVisibility(inputId, btn) {
+  const input = document.getElementById(inputId);
+  if (!input) return;
+  const showing = input.type === 'text';
+  input.type = showing ? 'password' : 'text';
+  btn.textContent = showing ? '👁' : '🙈';
 }
 
 async function handleLogin(email, password) {
@@ -2382,7 +2610,10 @@ async function handleLogin(email, password) {
   if (!email || !password) { alert('Enter an email and password.'); return; }
   const { error } = await sbClient.auth.signInWithPassword({ email, password });
   if (error) { alert(error.message); return; }
+  const deviceOk = await registerDeviceForSession();
+  if (!deviceOk) return; // signed back out already, refreshAuthState ran inside closeDevicePicker
   await refreshAuthState();
+  toggleLoginPanel(false);
 }
 
 async function handleLogout() {
@@ -2391,38 +2622,11 @@ async function handleLogout() {
   await refreshAuthState();
 }
 
-async function handleSubscribe() {
-  if (!sbClient) return;
-  const { data: { session } } = await sbClient.auth.getSession();
-  if (!session) { alert('Please sign in first.'); return; }
-  const btn = document.getElementById('plus-subscribe-btn');
-  if (btn) { btn.disabled = true; btn.textContent = 'Loading…'; }
-  try {
-    const res = await fetch('/api/create-checkout-session', {
-      method: 'POST',
-      headers: { 'Authorization': 'Bearer ' + session.access_token },
-    });
-    const data = await res.json();
-    if (data.url) {
-      window.location.href = data.url;
-    } else {
-      alert(data.error || 'Something went wrong starting checkout.');
-      if (btn) { btn.disabled = false; btn.textContent = 'Join LSN+ — $9.99/month'; }
-    }
-  } catch (e) {
-    alert('Could not reach checkout. Try again in a moment.');
-    if (btn) { btn.disabled = false; btn.textContent = 'Join LSN+ — $9.99/month'; }
-  }
-}
-
 function focusPlusAuth() {
-  goPage('plus');
-  setTimeout(() => {
-    const el = document.getElementById('plus-auth-block');
-    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  }, 100);
+  goPage('signup');
 }
 
+// ── LSN+ page status block (just reflects state now — actual signup lives on its own page) ──
 function renderPlusAuthBlock() {
   const el = document.getElementById('plus-auth-block');
   if (!el) return;
@@ -2434,12 +2638,10 @@ function renderPlusAuthBlock() {
 
   if (!currentUser) {
     el.innerHTML = `
-      <div style="font-family:var(--D);font-weight:800;font-size:14px;color:var(--white);margin-bottom:14px;text-align:center;">Sign up or log in to join LSN+</div>
-      <input type="email" id="plus-email" placeholder="Email" style="width:100%;box-sizing:border-box;padding:10px 12px;margin-bottom:8px;border-radius:4px;border:1px solid var(--border2);background:var(--navy);color:#fff;font-size:14px;">
-      <input type="password" id="plus-password" placeholder="Password" style="width:100%;box-sizing:border-box;padding:10px 12px;margin-bottom:12px;border-radius:4px;border:1px solid var(--border2);background:var(--navy);color:#fff;font-size:14px;">
-      <div style="display:flex;gap:8px;">
-        <button class="plus-cta-btn" style="flex:1;" onclick="handleLogin(document.getElementById('plus-email').value, document.getElementById('plus-password').value)">Log In</button>
-        <button class="btn-outline" style="flex:1;" onclick="handleSignup(document.getElementById('plus-email').value, document.getElementById('plus-password').value)">Sign Up</button>
+      <div style="text-align:center;">
+        <div style="font-family:var(--D);font-weight:800;font-size:14px;color:var(--white);margin-bottom:14px;">Ready to join?</div>
+        <button class="plus-cta-btn" style="width:100%;" onclick="goPage('signup')">Join LSN+ — $9.99/month</button>
+        <div style="font-size:12px;color:var(--gray);margin-top:10px;">Already a member? Use the Log In button at the top of the page.</div>
       </div>`;
     return;
   }
@@ -2456,10 +2658,194 @@ function renderPlusAuthBlock() {
 
   el.innerHTML = `
     <div style="text-align:center;">
-      <div style="font-size:12px;color:var(--gray);margin-bottom:14px;">Signed in as ${currentUser.email}</div>
-      <button class="plus-cta-btn" id="plus-subscribe-btn" style="width:100%;" onclick="handleSubscribe()">Join LSN+ — $9.99/month</button>
+      <div style="font-size:12px;color:var(--gray);margin-bottom:14px;">Signed in as ${currentUser.email} — not subscribed yet</div>
+      <button class="plus-cta-btn" style="width:100%;" onclick="goPage('signup')">Finish Joining LSN+</button>
       <div style="margin-top:12px;"><button class="btn-outline" style="font-size:11px;padding:6px 12px;" onclick="handleLogout()">Log Out</button></div>
     </div>`;
+}
+
+// ══════════════════════════════════════════
+// SIGN UP PAGE
+// ══════════════════════════════════════════
+function renderSignupPage() {
+  const el = document.getElementById('signupContainer');
+  if (!el) return;
+
+  if (!sbClient) {
+    el.innerHTML = '<p style="color:var(--gray);text-align:center;">Account system not configured yet.</p>';
+    return;
+  }
+
+  if (currentUser && isPlusMember()) {
+    el.innerHTML = `
+      <div style="text-align:center;padding:32px 0;">
+        <div style="font-size:32px;margin-bottom:12px;">🎉</div>
+        <div style="font-family:var(--D);font-weight:800;font-size:18px;color:var(--gold);margin-bottom:10px;">You're already an LSN+ member!</div>
+        <button class="btn-outline" onclick="goPage('home')">Back to Home</button>
+      </div>`;
+    return;
+  }
+
+  if (currentUser && !isPlusMember()) {
+    // Already have an account (maybe abandoned before entering card info) — skip straight to payment
+    renderSignupCardStep(el);
+    return;
+  }
+
+  // Not signed in yet — step 1: account details + favorite teams
+  const teamItems = ALL_TEAMS_LIST.map(t => `
+    <label class="team-dropdown-item">
+      <input type="checkbox" value="${t.id}" class="signup-team-cb" onchange="updateTeamDropdownLabel()">
+      ${t.name}
+    </label>`).join('');
+
+  el.innerHTML = `
+    <div style="background:var(--navy2);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:8px;padding:28px 24px;">
+      <div style="font-family:var(--D);font-weight:800;font-size:15px;color:#fff;margin-bottom:16px;">Step 1 of 2 — Create your account</div>
+      <input type="email" id="su-email" class="form-input" placeholder="Email">
+      <div class="password-field-wrap">
+        <input type="password" id="su-password" class="form-input" placeholder="Password">
+        <button type="button" class="password-toggle-btn" onclick="togglePasswordVisibility('su-password', this)">👁</button>
+      </div>
+      <div class="password-field-wrap">
+        <input type="password" id="su-password2" class="form-input" placeholder="Confirm password">
+        <button type="button" class="password-toggle-btn" onclick="togglePasswordVisibility('su-password2', this)">👁</button>
+      </div>
+      <div style="font-family:var(--D);font-weight:700;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--gray2);margin:16px 0 10px;">Favorite team(s)</div>
+      <div class="team-dropdown" id="teamDropdown">
+        <button type="button" class="team-dropdown-btn" id="teamDropdownBtn" onclick="toggleTeamDropdown()">
+          <span id="teamDropdownLabel">Select team(s)</span>
+          <span>▾</span>
+        </button>
+        <div class="team-dropdown-panel" id="teamDropdownPanel">${teamItems}</div>
+      </div>
+      <div id="signupError" style="color:var(--red);font-size:12px;margin-bottom:10px;display:none;"></div>
+      <button class="plus-cta-btn" id="su-continue-btn" style="width:100%;" onclick="handleSignupStep1()">Continue to Payment →</button>
+      <div style="text-align:center;margin-top:14px;font-size:12px;color:var(--gray);">
+        Already a member? <a href="#" onclick="toggleLoginPanel(true);return false;" style="color:var(--gold);text-decoration:none;">Log in</a>
+      </div>
+    </div>`;
+}
+
+function showSignupError(msg) {
+  const errEl = document.getElementById('signupError');
+  if (errEl) { errEl.textContent = msg; errEl.style.display = 'block'; }
+}
+
+async function handleSignupStep1() {
+  const email = document.getElementById('su-email').value.trim();
+  const password = document.getElementById('su-password').value;
+  const password2 = document.getElementById('su-password2').value;
+  const teams = Array.from(document.querySelectorAll('.signup-team-cb:checked')).map(cb => cb.value);
+
+  if (!email || !password) { showSignupError('Enter an email and password.'); return; }
+  if (password.length < 6) { showSignupError('Password must be at least 6 characters.'); return; }
+  if (password !== password2) { showSignupError('Passwords don’t match.'); return; }
+
+  const btn = document.getElementById('su-continue-btn');
+  if (btn) { btn.disabled = true; btn.textContent = 'Creating account…'; }
+
+  const { data, error } = await sbClient.auth.signUp({ email, password });
+  if (error) {
+    showSignupError(error.message);
+    if (btn) { btn.disabled = false; btn.textContent = 'Continue to Payment →'; }
+    return;
+  }
+
+  signupState.email = email;
+  signupState.teams = teams;
+
+  if (!data.session) {
+    // Email confirmation is still turned on in Supabase — can't proceed to a logged-in
+    // card step until they've confirmed. See README step 5.
+    showSignupError('Account created — check your email to confirm it, then log in to finish joining.');
+    if (btn) { btn.disabled = false; btn.textContent = 'Continue to Payment →'; }
+    return;
+  }
+
+  const deviceOk = await registerDeviceForSession();
+  if (!deviceOk) { showSignupError('Could not register this device.'); return; }
+
+  await fetch('/api/save-profile', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + data.session.access_token },
+    body: JSON.stringify({ favorite_teams: teams }),
+  }).catch(() => {});
+
+  await refreshAuthState();
+  renderSignupPage(); // now currentUser is set → falls into the card step
+}
+
+function renderSignupCardStep(el) {
+  el.innerHTML = `
+    <div style="background:var(--navy2);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:8px;padding:28px 24px;">
+      <div style="font-family:var(--D);font-weight:800;font-size:15px;color:#fff;margin-bottom:6px;">Step 2 of 2 — Payment</div>
+      <div style="font-size:12px;color:var(--gray);margin-bottom:18px;">Signed in as ${currentUser.email} · 7-day free trial, then $9.99/month</div>
+      <div id="cardElementContainer" style="padding:12px;border:1px solid var(--border2);border-radius:4px;background:var(--navy);margin-bottom:14px;"></div>
+      <div id="cardError" style="color:var(--red);font-size:12px;margin-bottom:10px;display:none;"></div>
+      <button class="plus-cta-btn" id="su-pay-btn" style="width:100%;" onclick="handleSignupCardSubmit()">Start Free Trial</button>
+      <div style="font-size:11px;color:var(--gray);text-align:center;margin-top:10px;">Card is saved now but not charged until your trial ends. Cancel anytime.</div>
+    </div>`;
+
+  if (!stripeClient) {
+    document.getElementById('cardElementContainer').innerHTML = '<div style="font-size:12px;color:var(--gray);">Payments not configured yet.</div>';
+    return;
+  }
+  stripeElements = stripeClient.elements();
+  cardElement = stripeElements.create('card', {
+    style: { base: { color: '#fff', fontSize: '14px', '::placeholder': { color: '#8a9bb0' } } },
+  });
+  cardElement.mount('#cardElementContainer');
+}
+
+function showCardError(msg) {
+  const el = document.getElementById('cardError');
+  if (el) { el.textContent = msg; el.style.display = 'block'; }
+}
+
+async function handleSignupCardSubmit() {
+  if (!sbClient || !stripeClient) return;
+  const btn = document.getElementById('su-pay-btn');
+  if (btn) { btn.disabled = true; btn.textContent = 'Processing…'; }
+
+  try {
+    const { data: { session } } = await sbClient.auth.getSession();
+    if (!session) { showCardError('Session expired — please log in again.'); return; }
+
+    const intentRes = await fetch('/api/create-setup-intent', {
+      method: 'POST',
+      headers: { 'Authorization': 'Bearer ' + session.access_token },
+    });
+    const intentData = await intentRes.json();
+    if (!intentData.clientSecret) { showCardError(intentData.error || 'Could not start card setup.'); return; }
+
+    const { setupIntent, error: stripeErr } = await stripeClient.confirmCardSetup(intentData.clientSecret, {
+      payment_method: { card: cardElement },
+    });
+    if (stripeErr) { showCardError(stripeErr.message); return; }
+
+    const subRes = await fetch('/api/create-subscription', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + session.access_token },
+      body: JSON.stringify({ payment_method_id: setupIntent.payment_method }),
+    });
+    const subData = await subRes.json();
+    if (!subData.status) { showCardError(subData.error || 'Could not start your subscription.'); return; }
+
+    await refreshAuthState();
+    const el = document.getElementById('signupContainer');
+    el.innerHTML = `
+      <div style="text-align:center;padding:32px 0;">
+        <div style="font-size:32px;margin-bottom:12px;">🎉</div>
+        <div style="font-family:var(--D);font-weight:800;font-size:18px;color:var(--gold);margin-bottom:10px;">Welcome to LSN+!</div>
+        <p style="font-size:13px;color:var(--gray);margin-bottom:20px;">Your 7-day free trial has started.</p>
+        <button class="plus-cta-btn" onclick="goPage('home')">Go to the Site</button>
+      </div>`;
+  } catch (e) {
+    showCardError('Something went wrong. Please try again.');
+  } finally {
+    if (btn) { btn.disabled = false; btn.textContent = 'Start Free Trial'; }
+  }
 }
 
 // ══════════════════════════════════════════
@@ -2642,6 +3028,7 @@ function goPage(id) {
   currentPage = id;
   if (id === 'teams') renderTeams();
   if (id === 'scores' && weeklyData) showWeek(currentWeek);
+  if (id === 'signup') renderSignupPage();
 }
 
 function toggleMobMenu() {
@@ -2658,6 +3045,35 @@ document.addEventListener('click', function(e) {
   if (!hamburger || !dropdown) return;
   if (!hamburger.contains(e.target) && !dropdown.contains(e.target)) {
     dropdown.classList.remove('open');
+  }
+});
+
+function toggleTeamDropdown(show) {
+  const panel = document.getElementById('teamDropdownPanel');
+  const btn = document.getElementById('teamDropdownBtn');
+  if (!panel || !btn) return;
+  const shouldOpen = show === undefined ? !panel.classList.contains('open') : show;
+  panel.classList.toggle('open', shouldOpen);
+  btn.classList.toggle('open', shouldOpen);
+}
+
+function updateTeamDropdownLabel() {
+  const label = document.getElementById('teamDropdownLabel');
+  if (!label) return;
+  const checked = Array.from(document.querySelectorAll('.signup-team-cb:checked'));
+  if (!checked.length) { label.textContent = 'Select team(s)'; return; }
+  const names = checked.map(cb => {
+    const t = ALL_TEAMS_LIST.find(t => t.id === cb.value);
+    return t ? t.name : cb.value;
+  });
+  label.textContent = names.length <= 2 ? names.join(', ') : names.length + ' teams selected';
+}
+
+document.addEventListener('click', function(e) {
+  const dropdown = document.getElementById('teamDropdown');
+  if (!dropdown) return;
+  if (!dropdown.contains(e.target)) {
+    toggleTeamDropdown(false);
   }
 });
 
