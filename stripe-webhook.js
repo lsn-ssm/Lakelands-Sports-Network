@@ -60,6 +60,23 @@ export default async function handler(req, res) {
         break;
       }
 
+      // Fires when a subscription is created directly (the embedded sign-up-page flow —
+      // create-setup-intent + create-subscription — doesn't go through Stripe Checkout,
+      // so this is the event that confirms it for that path). The create-subscription
+      // function already writes this status synchronously, so this is mostly a backup
+      // in case that write didn't go through for some reason.
+      case 'customer.subscription.created': {
+        const sub = event.data.object;
+        await supabaseAdmin
+          .from('profiles')
+          .update({
+            subscription_status: sub.status,
+            updated_at: new Date().toISOString(),
+          })
+          .eq('stripe_customer_id', sub.customer);
+        break;
+      }
+
       // Fires on renewals, trial ending, payment failures, plan changes, etc.
       case 'customer.subscription.updated': {
         const sub = event.data.object;
