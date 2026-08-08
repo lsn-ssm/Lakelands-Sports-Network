@@ -1221,9 +1221,26 @@ textarea.form-input { resize:vertical; min-height:80px; font-family:var(--B); }
         <div class="st-row lsn-bold" onclick="openTeam('dixie')" style="cursor:pointer"><div class="st-team">Dixie</div><div class="st-rec">0-0</div><div class="st-rec">0-0</div></div>
         <div class="st-row lsn-bold" onclick="openTeam('mccormick')" style="cursor:pointer"><div class="st-team">McCormick</div><div class="st-rec">0-0</div><div class="st-rec">0-0</div></div>
         <div class="st-row lsn-bold" onclick="openTeam('ninetysix')" style="cursor:pointer"><div class="st-team">Ninety Six</div><div class="st-rec">0-0</div><div class="st-rec">0-0</div></div>
-        <div class="st-row lsn-bold" onclick="openTeam('saluda')" style="cursor:pointer"><div class="st-team">Saluda</div><div class="st-rec">0-0</div><div class="st-rec">0-0</div></div>
         <div class="st-row"><div class="st-team">Thornwell</div><div class="st-rec">0-0</div><div class="st-rec">0-0</div></div>
         <div class="st-row lsn-bold" onclick="openTeam('wareshoals')" style="cursor:pointer"><div class="st-team">Ware Shoals</div><div class="st-rec">0-0</div><div class="st-rec">0-0</div></div>
+      </div>
+    </div>
+
+    <!-- Class AA · Region 4 -->
+    <div class="standings-section">
+      <div class="standings-region-label">Class AA · Region 4</div>
+      <div class="standings-table">
+        <div class="st-head">
+          <div class="st-team">Team</div>
+          <div class="st-rec">Overall</div>
+          <div class="st-rec">Region</div>
+        </div>
+        <div class="st-row"><div class="st-team">American Leadership Academy</div><div class="st-rec">0-0</div><div class="st-rec">0-0</div></div>
+        <div class="st-row"><div class="st-team">Orangeburg-Wilkinson</div><div class="st-rec">0-0</div><div class="st-rec">0-0</div></div>
+        <div class="st-row"><div class="st-team">Pelion</div><div class="st-rec">0-0</div><div class="st-rec">0-0</div></div>
+        <div class="st-row lsn-bold" onclick="openTeam('saluda')" style="cursor:pointer"><div class="st-team">Saluda</div><div class="st-rec">0-0</div><div class="st-rec">0-0</div></div>
+        <div class="st-row"><div class="st-team">Silver Bluff</div><div class="st-rec">0-0</div><div class="st-rec">0-0</div></div>
+        <div class="st-row"><div class="st-team">Strom Thurmond</div><div class="st-rec">0-0</div><div class="st-rec">0-0</div></div>
       </div>
     </div>
 
@@ -1606,7 +1623,8 @@ async function testSheetConnection() {
 // different groups (e.g. a Class A team playing a SCISA team).
 // ══════════════════════════════════════════
 const REGION_GROUPS = {
-  'class-a-region-1':   ['Abbeville','Calhoun Falls','Dixie','McCormick','Ninety Six','Saluda','Thornwell','Ware Shoals'],
+  'class-a-region-1':   ['Abbeville','Calhoun Falls','Dixie','McCormick','Ninety Six','Thornwell','Ware Shoals'],
+  'class-aa-region-4':  ['American Leadership Academy','Orangeburg-Wilkinson','Pelion','Saluda','Silver Bluff','Strom Thurmond'],
   'class-aaa-region-2': ['Belton-Honea Path','Emerald','Palmetto','Powdersville','Wren'],
   'class-aaaa-region-1':['Easley','Fountain Inn','Greenwood','Laurens','T.L. Hanna','Westside'],
   'scisa-2a':           ['Calhoun Academy','Colleton Prep','Cross Schools','Greenwood Christian','Orangeburg Prep','Patrick Henry Academy','Pee Dee Academy','Spartanburg Day',"St. John's Christian",'Williamsburg Academy'],
@@ -1624,6 +1642,8 @@ function normalizeTeamName(name) {
     'BHP': 'Belton-Honea Path',
     'Belton Honea Path': 'Belton-Honea Path',
     'Williamsburg': 'Williamsburg Academy',
+    'Amer. Leadership Academy': 'American Leadership Academy',
+    'ALA': 'American Leadership Academy',
   };
   return aliases[n] || n;
 }
