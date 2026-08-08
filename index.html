@@ -3858,6 +3858,11 @@ function goPage(id) {
   if (id === 'scores' && weeklyData) showWeek(currentWeek);
   if (id === 'signup') renderSignupPage();
   if (id === 'board') renderBoardPage();
+  // Re-render every time the Stats tab is opened (not just once at page load) so it
+  // always reflects current membership — same reasoning as the Board and Signup pages
+  // above. Without this, logging in/redeeming a code on a different page left Stats
+  // showing stale, pre-login content until a full page refresh.
+  if (id === 'stats') renderStatsPage();
 }
 
 function toggleMobMenu() {
