@@ -1598,6 +1598,59 @@ async function testSheetConnection() {
 }
 
 // ══════════════════════════════════════════
+// REGION GROUPS — single source of truth, mirrors the groupings shown on
+// the Standings tab exactly. A game only counts as a "Region Game" when
+// BOTH teams appear in the SAME group below. Any opponent we don't track
+// in Standings at all (most true non-conference opponents) is automatically
+// Non-Region, and so is a matchup between two tracked teams that sit in
+// different groups (e.g. a Class A team playing a SCISA team).
+// ══════════════════════════════════════════
+const REGION_GROUPS = {
+  'class-a-region-1':   ['Abbeville','Calhoun Falls','Dixie','McCormick','Ninety Six','Saluda','Thornwell','Ware Shoals'],
+  'class-aaa-region-2': ['Belton-Honea Path','Emerald','Palmetto','Powdersville','Wren'],
+  'class-aaaa-region-1':['Easley','Fountain Inn','Greenwood','Laurens','T.L. Hanna','Westside'],
+  'scisa-2a':           ['Calhoun Academy','Colleton Prep','Cross Schools','Greenwood Christian','Orangeburg Prep','Patrick Henry Academy','Pee Dee Academy','Spartanburg Day',"St. John's Christian",'Williamsburg Academy'],
+};
+
+// Normalizes spelling/abbreviation differences between data sources (hand-entered
+// schedules, MaxPreps, Google Sheets) so they match the Standings-tab team name.
+function normalizeTeamName(name) {
+  if (!name) return '';
+  let n = String(name).replace(/^@\s*/, '').trim();
+  const aliases = {
+    'Calhoun Falls Charter': 'Calhoun Falls',
+    'TL Hanna': 'T.L. Hanna',
+    'T L Hanna': 'T.L. Hanna',
+    'BHP': 'Belton-Honea Path',
+    'Belton Honea Path': 'Belton-Honea Path',
+    'Williamsburg': 'Williamsburg Academy',
+  };
+  return aliases[n] || n;
+}
+
+// Which Standings-tab region group a team belongs to, or null if we don't
+// track that team in Standings at all.
+function getRegionGroup(name) {
+  const n = normalizeTeamName(name).toLowerCase();
+  for (const key in REGION_GROUPS) {
+    if (REGION_GROUPS[key].some(t => t.toLowerCase() === n)) return key;
+  }
+  return null;
+}
+
+// Central game-type classifier used by every score/schedule card site-wide.
+// teamName     — the Lakelands team whose card this is (e.g. 'Greenwood')
+// opponentName — the opponent as it appears in that game's data
+// isPlayoff    — true if this specific game is a playoff game
+// Returns 'Playoff', 'Region Game', or 'Non-Region Game' — never 'Pre-Season'.
+function gameTypeLabel(teamName, opponentName, isPlayoff) {
+  if (isPlayoff) return 'Playoff';
+  const myGroup = getRegionGroup(teamName);
+  const oppGroup = getRegionGroup(opponentName);
+  return (myGroup && oppGroup && myGroup === oppGroup) ? 'Region Game' : 'Non-Region Game';
+}
+
+// ══════════════════════════════════════════
 // RENDER FUNCTIONS
 // ══════════════════════════════════════════
 
@@ -1623,8 +1676,7 @@ function renderScoreCard(game) {
   const played = gwsRaw !== '' && oppsRaw !== '';
 
   const isPlayoff = type.includes('***') || type.toLowerCase().includes('playoff');
-  const isRegion  = type.includes('*') || type.toLowerCase().includes('region');
-  const gameLabel = isPlayoff ? 'Playoff' : isRegion ? 'Region' : 'Non-Region';
+  const gameLabel = gameTypeLabel('Greenwood', oppName, isPlayoff);
 
   // Away team = TOP, Home team = BOTTOM (standard scorecard convention)
   // When Greenwood is Away: Greenwood on top, opponent on bottom
@@ -1687,6 +1739,7 @@ function renderScheduleItem(game, is2026) {
 
   const played = result === 'W' || result === 'L';
   const isLSN  = opp.toLowerCase().includes('lsn') || notes.toLowerCase().includes('lsn') || (!is2026);
+  const oppName = opp.replace(/^@ /, '');
 
   // Parse date for display
   let mo = '', dy = '', dow = '';
@@ -1709,7 +1762,7 @@ function renderScheduleItem(game, is2026) {
 
   const scoreText = played ? `${result} ${gws}–${opps}` : (is2026 ? 'TBD' : '');
   const badgeClass = isLSN && !is2026 ? 'on-lsn' : '';
-  const badgeText  = isLSN && !is2026 ? '📻 LSN Radio' : (notes || 'Region Game');
+  const badgeText  = isLSN && !is2026 ? '📻 LSN Radio' : gameTypeLabel('Greenwood', oppName, false);
 
   return `
     <div class="week-item">
@@ -1722,7 +1775,7 @@ function renderScheduleItem(game, is2026) {
         <div class="wi-teams">${opp}</div>
         <div class="wi-meta">${loc}${ha ? ' · ' + ha : ''}${scoreText ? ' · ' + scoreText : ''}</div>
       </div>
-      <div class="wi-badge ${badgeClass}">${is2026 ? (notes || 'TBD') : badgeText}</div>
+      <div class="wi-badge ${badgeClass}">${is2026 ? gameTypeLabel('Greenwood', oppName, false) : badgeText}</div>
     </div>`;
 }
 
@@ -1985,8 +2038,7 @@ function renderWSScoreCard(game) {
   const isWin = result === 'W', isLoss = result === 'L';
   const played = wsRaw !== '' && oppsRaw !== '';
   const isPlayoff = type.toLowerCase().includes('playoff');
-  const isRegion  = type.toLowerCase().includes('region');
-  const gameLabel = isPlayoff ? 'Playoff' : isRegion ? 'Region' : 'Non-Region';
+  const gameLabel = gameTypeLabel('Ware Shoals', oppRaw, isPlayoff);
   const wsIsAway = ha === 'Away';
   const topName  = wsIsAway ? 'Ware Shoals' : oppRaw;
   const botName  = wsIsAway ? oppRaw : 'Ware Shoals';
@@ -2056,8 +2108,7 @@ function renderGenericScoreCard(game, teamName, scoreKey, primaryColor) {
   const isWin = result === 'W', isLoss = result === 'L';
   const played = teamRaw !== '' && oppsRaw !== '';
   const isPlayoff = type.toLowerCase().includes('playoff');
-  const isRegion  = type.toLowerCase().includes('region');
-  const gameLabel = isPlayoff ? 'Playoff' : isRegion ? 'Region' : 'Non-Region';
+  const gameLabel = gameTypeLabel(teamName, oppRaw, isPlayoff);
   const isAway = ha === 'Away';
   const topName  = isAway ? teamName : teamLink(oppRaw);
   const botName  = isAway ? teamLink(oppRaw) : teamName;
@@ -2098,8 +2149,9 @@ function renderGenericScheduleCard(g, teamName, scoreKey, primaryColor) {
   const botWon = played && (isAway ? isLoss : isWin);
   function ns(w){ return !played?'color:#fff;':w?'color:#fff;font-weight:900;':'color:rgba(255,255,255,0.45);font-weight:600;'; }
   function ps(w){ return !played?'':w?'color:#fff;font-weight:900;font-size:28px;':'color:rgba(255,255,255,0.45);font-weight:700;font-size:26px;'; }
+  const gameLabel = gameTypeLabel(teamName, g.opp, false);
   return '<div class="score-card" style="border-top:2px solid '+primaryColor+';">' +
-    '<div class="sc-top"><span class="sc-label">Football · Week '+g.wk+'</span>' +
+    '<div class="sc-top"><span class="sc-label">Football · ' + gameLabel + '</span>' +
     (played?'<span class="sc-final">Final</span>':'<span class="sc-upcoming-tag">'+g.date+' · '+(g.time||'7:30 PM')+'</span>') +
     '</div><div class="sc-teams">' +
     '<div class="sc-team"><span class="sc-name" style="'+ns(topWon)+'">'+topName+'</span>' +
@@ -2260,8 +2312,7 @@ function renderGCSScoreCard(game) {
   const isWin = result === 'W', isLoss = result === 'L';
   const played = gcsRaw !== '' && oppsRaw !== '';
   const isPlayoff = type.toLowerCase().includes('playoff');
-  const isRegion  = type.toLowerCase().includes('region');
-  const gameLabel = isPlayoff ? 'Playoff' : isRegion ? 'Region' : 'Non-Region';
+  const gameLabel = gameTypeLabel('Greenwood Christian', oppRaw, isPlayoff);
   const gcsIsAway = ha === 'Away';
   const topName  = gcsIsAway ? 'Greenwood Christian' : oppRaw;
   const botName  = gcsIsAway ? oppRaw : 'Greenwood Christian';
@@ -2307,9 +2358,9 @@ function initGCSPage() {
     const botWon = played && (isAway ? isLoss : isWin);
     function ns(w){ return played?(w?'color:#fff;font-weight:900;':'color:rgba(255,255,255,0.45);font-weight:600;'):'color:#fff;'; }
     function ps(w){ return played?(w?'color:#fff;font-weight:900;font-size:28px;':'color:rgba(255,255,255,0.45);font-weight:700;font-size:26px;'):''; }
-    const wkLabel = typeof g.wk === 'number' ? 'Week ' + g.wk : 'Pre-Season';
+    const gameLabel = gameTypeLabel('Greenwood Christian', g.opp, false);
     return '<div class="score-card" style="border-top:2px solid #1B2A4A;">' +
-      '<div class="sc-top"><span class="sc-label">Football · ' + wkLabel + '</span>' +
+      '<div class="sc-top"><span class="sc-label">Football · ' + gameLabel + '</span>' +
       (played?'<span class="sc-final">Final</span>':'<span class="sc-upcoming-tag">'+g.date+' · '+g.time+'</span>') +
       '</div><div class="sc-teams">' +
       '<div class="sc-team"><span class="sc-name" style="'+ns(topWon)+'">'+topName+'</span><span class="sc-pts" style="'+ps(topWon)+'">'+(played?topScore:'–')+'</span></div>' +
@@ -2354,8 +2405,7 @@ function renderEmeraldScoreCard(game) {
   const isLoss = result === 'L';
   const played = ehsRaw !== '' && oppsRaw !== '';
   const isPlayoff = type.toLowerCase().includes('playoff');
-  const isRegion  = type.toLowerCase().includes('region');
-  const gameLabel = isPlayoff ? 'Playoff' : isRegion ? 'Region' : 'Non-Region';
+  const gameLabel = gameTypeLabel('Emerald', oppRaw, isPlayoff);
 
   // Away on top, home on bottom
   const ehsIsAway = ha === 'Away';
@@ -2410,8 +2460,9 @@ function initEmeraldPage() {
     const botWon   = played && (ehsIsAway ? isLoss : isWin);
     function ns(w){ return played?(w?'color:#fff;font-weight:900;':'color:rgba(255,255,255,0.45);font-weight:600;'):'color:#fff;'; }
     function ps(w){ return played?(w?'color:#fff;font-weight:900;font-size:28px;':'color:rgba(255,255,255,0.45);font-weight:700;font-size:26px;'):''; }
+    const gameLabel = gameTypeLabel('Emerald', g.opp, false);
     return '<div class="score-card" style="border-top:2px solid #5B2D8E;">' +
-      '<div class="sc-top"><span class="sc-label">Football · Week ' + g.wk + '</span>' +
+      '<div class="sc-top"><span class="sc-label">Football · ' + gameLabel + '</span>' +
       (played?'<span class="sc-final">Final</span>':'<span class="sc-upcoming-tag">'+g.date+' · '+g.time+'</span>') +
       '</div><div class="sc-teams">' +
       '<div class="sc-team"><span class="sc-name" style="'+ns(topWon)+'">'+topName+'</span>' +
@@ -4974,7 +5025,7 @@ function renderWeekScores(week) {
     const topPts   = m.lsn ? ps(topWon) : '';
     const botPts   = m.lsn ? ps(botWon) : '';
     const cardClass = 'score-card' + (m.lsn ? ' lsn-game' : '') + (isFavGame ? ' fav-game' : '');
-    const label = m.lsn ? '📻 LSN Radio' : 'Region Game';
+    const label = m.lsn ? '📻 LSN Radio' : gameTypeLabel(m.top, m.bot, false);
 
     return '<div class="' + cardClass + '">' +
       '<div class="sc-top"><span class="sc-label">Football · ' + label + '</span>' +
@@ -5062,8 +5113,9 @@ async function loadAllData() {
       const played = gws !== '' && ops !== '';
       const gwClass = played ? (res==='W'?'win':'lose') : 'upcoming';
       const oppClass = played ? (res==='W'?'lose':'win') : 'upcoming';
+      const gameLabel = gameTypeLabel('Greenwood', opp, false);
       return '<div class="score-card lsn-game">' +
-        '<div class="sc-top"><span class="sc-label">Football · ' + (g.wk===0?'Kickoff Week':'Week '+g.wk) + '</span>' +
+        '<div class="sc-top"><span class="sc-label">Football · ' + gameLabel + '</span>' +
         (played ? '<span class="sc-final">Final</span>' : '<span class="sc-upcoming-tag">'+dt+'</span>') +
         '</div><div class="sc-teams">' +
         '<div class="sc-team"><div><span class="sc-name">' + (ha==='Away'?opp:'Greenwood') + '</span></div>' +
@@ -5135,11 +5187,11 @@ window.addEventListener('DOMContentLoaded', () => {
     const botWon   = played && (gwIsAway ? isLoss : isWin);
     function ns(w){ return !played?'color:#fff;':w?'color:#fff;font-weight:900;':'color:rgba(255,255,255,0.45);font-weight:600;'; }
     function ps(w){ return !played?'':w?'color:#fff;font-weight:900;font-size:28px;':'color:rgba(255,255,255,0.45);font-weight:700;font-size:26px;'; }
-    const wkLabel = 'Week ' + g.wk;
+    const gameLabel = gameTypeLabel('Greenwood', g.opp, false);
     const resultText = played ? ((isWin?'W':'L') + ' ' + g.gwScore + '–' + g.oppScore) : '📻 LSN Radio';
     const resultColor = played ? (isWin?'color:var(--live);font-weight:700':'color:var(--red);font-weight:700') : '';
     return '<div class="score-card lsn-game">' +
-      '<div class="sc-top"><span class="sc-label">Football · ' + wkLabel + '</span>' +
+      '<div class="sc-top"><span class="sc-label">Football · ' + gameLabel + '</span>' +
       (played ? '<span class="sc-final">Final</span>' : '<span class="sc-upcoming-tag">' + g.date + ' · ' + g.time + '</span>') +
       '</div><div class="sc-teams">' +
       '<div class="sc-team"><span class="sc-name" style="' + ns(topWon) + '">' + topName + '</span>' +
