@@ -417,6 +417,47 @@ footer { background:var(--navy); border-top:1px solid var(--border); padding:28p
 .fav-tag { display:none; position:absolute; top:10px; left:10px; font-family:var(--D); font-size:9px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; background:var(--gold); color:#1a0e00; padding:2px 7px; border-radius:3px; }
 .fav-tag.show { display:block; }
 
+/* BOARD */
+textarea.form-input { resize:vertical; min-height:80px; font-family:var(--B); }
+.board-toolbar { display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; gap:12px; flex-wrap:wrap; }
+.board-username-pill { font-family:var(--D); font-weight:700; font-size:12px; letter-spacing:0.04em; color:var(--gold); background:rgba(232,184,75,0.1); border:1px solid rgba(232,184,75,0.3); padding:5px 12px; border-radius:20px; }
+.board-composer { background:var(--navy2); border:1px solid var(--border); border-radius:8px; padding:18px; margin-bottom:24px; }
+.board-composer-row { display:flex; gap:8px; align-items:center; margin-top:8px; flex-wrap:wrap; }
+.board-attach-btn { background:none; border:1px solid var(--border2); color:var(--gray2); font-family:var(--B); font-size:12px; padding:6px 12px; border-radius:5px; cursor:pointer; transition:border-color 0.15s,color 0.15s; }
+.board-attach-btn:hover { border-color:var(--gold); color:var(--gold); }
+.board-attach-btn.active { border-color:var(--gold); color:var(--gold); background:rgba(232,184,75,0.08); }
+.board-poll-builder { margin-top:12px; padding:12px; background:var(--navy); border:1px solid var(--border); border-radius:6px; }
+.board-poll-option-row { display:flex; gap:8px; margin-bottom:8px; align-items:center; }
+.board-poll-option-row .form-input { margin-bottom:0; }
+.board-poll-remove-btn { background:none; border:none; color:var(--gray); cursor:pointer; font-size:16px; padding:4px 8px; flex-shrink:0; }
+.board-poll-remove-btn:hover { color:var(--red); }
+.board-image-preview { max-width:100%; max-height:180px; border-radius:6px; margin-top:10px; display:block; }
+.board-card { background:var(--navy2); border:1px solid var(--border); border-radius:8px; padding:18px; margin-bottom:14px; }
+.board-card-head { display:flex; align-items:baseline; gap:10px; margin-bottom:8px; flex-wrap:wrap; }
+.board-card-user { font-family:var(--D); font-weight:800; font-size:14px; color:var(--white); }
+.board-card-time { font-size:11px; color:var(--gray); }
+.board-card-body { font-size:14px; color:var(--gray2); line-height:1.6; white-space:pre-wrap; word-break:break-word; }
+.board-card-body a { color:var(--gold); }
+.board-card-img { max-width:100%; max-height:400px; border-radius:6px; margin-top:12px; display:block; cursor:pointer; }
+.board-card-actions { display:flex; gap:16px; margin-top:14px; padding-top:12px; border-top:1px solid var(--border); }
+.board-action-btn { background:none; border:none; color:var(--gray); font-family:var(--B); font-size:12px; cursor:pointer; padding:0; transition:color 0.15s; }
+.board-action-btn:hover { color:var(--gold); }
+.board-poll-block { margin-top:12px; }
+.board-poll-question { font-family:var(--D); font-weight:700; font-size:14px; color:var(--white); margin-bottom:10px; }
+.board-poll-option { position:relative; border:1px solid var(--border2); border-radius:5px; padding:9px 12px; margin-bottom:6px; cursor:pointer; overflow:hidden; font-size:13px; color:var(--white); transition:border-color 0.15s; }
+.board-poll-option:hover { border-color:var(--gold); }
+.board-poll-option.voted { border-color:var(--gold); }
+.board-poll-bar-fill { position:absolute; top:0; left:0; bottom:0; background:rgba(232,184,75,0.16); z-index:0; transition:width 0.3s; }
+.board-poll-option-label { position:relative; z-index:1; display:flex; justify-content:space-between; gap:10px; }
+.board-poll-meta { font-size:11px; color:var(--gray); margin-top:6px; }
+.board-thread-back { background:none; border:none; color:var(--gold); font-family:var(--D); font-weight:700; font-size:13px; letter-spacing:0.04em; cursor:pointer; margin-bottom:16px; padding:0; }
+.board-thread-back:hover { text-decoration:underline; }
+.board-reply { border-top:1px solid var(--border); padding:14px 0; }
+.board-reply:first-child { border-top:none; }
+.board-empty-state { text-align:center; color:var(--gray); font-size:13px; padding:40px 0; }
+.board-error-msg { font-size:12px; color:var(--red); margin-top:8px; }
+.board-username-setup { text-align:center; background:var(--navy2); border:1px solid var(--border); border-left:3px solid var(--gold); border-radius:8px; padding:32px 24px; max-width:440px; margin:16px auto; }
+
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="https://js.stripe.com/v3/"></script>
@@ -449,6 +490,7 @@ footer { background:var(--navy); border-top:1px solid var(--border); padding:28p
       <button class="nav-link" id="nl-standings" onclick="goPage('standings')">Standings</button>
       <button class="nav-link" id="nl-teams" onclick="goPage('teams')">Teams</button>
       <button class="nav-link" id="nl-stats" onclick="goPage('stats')">Stats</button>
+      <button class="nav-link" id="nl-board" onclick="goPage('board')">Board</button>
     </div>
     <button class="nav-plus" onclick="goPage('plus')">LSN<span class="plus-gold">+</span></button>
     <button class="nav-account-btn" id="navAccountBtn" onclick="toggleLoginPanel()">Log In</button>
@@ -463,6 +505,7 @@ footer { background:var(--navy); border-top:1px solid var(--border); padding:28p
       <button class="mob-dd-btn" id="mob-standings" onclick="goPage('standings')">Standings</button>
       <button class="mob-dd-btn" id="mob-teams" onclick="goPage('teams')">Teams</button>
       <button class="mob-dd-btn" id="mob-stats" onclick="goPage('stats')">Stats</button>
+      <button class="mob-dd-btn" id="mob-board" onclick="goPage('board')">Board</button>
       <button class="mob-dd-btn" id="mob-account" onclick="closeMobMenu();toggleLoginPanel();">Log In</button>
       <button class="mob-dd-btn gold-item" id="mob-plus" onclick="goPage('plus')">LSN+</button>
     </div>
@@ -1014,6 +1057,17 @@ footer { background:var(--navy); border-top:1px solid var(--border); padding:28p
   </div>
 </div>
 
+<!-- ══ BOARD ══ -->
+<div class="page" id="page-board">
+  <div class="page-header">
+    <h2>LSN<span>+</span> Board</h2>
+    <p>Members-only discussion · Polls, pictures &amp; links · Lakelands football, all in one place</p>
+  </div>
+  <div class="wrap" style="padding-top:8px;padding-bottom:48px;max-width:720px;">
+    <div id="boardContainer"><div class="loading">Loading</div></div>
+  </div>
+</div>
+
 <!-- ══ SCHEDULE ══ -->
 <div class="page" id="page-schedule">
   <div class="page-header">
@@ -1261,13 +1315,14 @@ footer { background:var(--navy); border-top:1px solid var(--border); padding:28p
           <li><span class="fi" style="color:var(--live)">✓</span> Full 2025 &amp; 2026 schedules</li>
           <li><span class="fi" style="color:var(--live)">✓</span> All 10 Lakelands team pages</li>
           <li><span class="fi" style="color:var(--live)">✓</span> Season history &amp; records</li>
-          <li><span class="fi" style="color:var(--live)">✓</span> Full 2025 season stats — all categories</li>
           <li><span class="fi" style="color:var(--live)">✓</span> LSN YouTube streams</li>
           <li><span class="fi" style="color:var(--live)">✓</span> Broadcast schedule</li>
           <hr class="plus-divider"/>
-          <li class="locked"><span class="fi">○</span> Weekly stat leaderboards</li>
-          <li class="locked"><span class="fi">○</span> LSN Insider newsletter</li>
-          <li class="locked"><span class="fi">○</span> Subscriber stories &amp; previews</li>
+          <li class="locked"><span class="fi">○</span> Coach-submitted player stats</li>
+          <li class="locked"><span class="fi">○</span> Weekly stat leaders</li>
+          <li class="locked"><span class="fi">○</span> Subscriber-only newsletters &amp; podcasts</li>
+          <li class="locked"><span class="fi">○</span> Bonus content</li>
+          <li class="locked"><span class="fi">○</span> Early access to game notes</li>
         </ul>
       </div>
 
@@ -1280,12 +1335,10 @@ footer { background:var(--navy); border-top:1px solid var(--border); padding:28p
         <div class="plus-section-head">Everything in Free, plus:</div>
         <ul class="plus-feature-list">
           <li><span class="fi" style="color:var(--gold)">★</span> Coach-submitted player stats — all teams</li>
-          <li><span class="fi" style="color:var(--gold)">★</span> Weekly passing, rushing &amp; receiving leaderboards</li>
-          <li><span class="fi" style="color:var(--gold)">★</span> Select premium audio broadcasts</li>
-          <li><span class="fi" style="color:var(--gold)">★</span> Subscriber-only game previews</li>
-          <li><span class="fi" style="color:var(--gold)">★</span> Bonus interviews &amp; sideline audio</li>
-          <li><span class="fi" style="color:var(--gold)">★</span> LSN Insider newsletter — weekly</li>
-          <li><span class="fi" style="color:var(--gold)">★</span> Early access to new LSN features</li>
+          <li><span class="fi" style="color:var(--gold)">★</span> Weekly stat leaders — passing, rushing &amp; receiving</li>
+          <li><span class="fi" style="color:var(--gold)">★</span> Subscriber-only newsletters &amp; podcasts</li>
+          <li><span class="fi" style="color:var(--gold)">★</span> Bonus content</li>
+          <li><span class="fi" style="color:var(--gold)">★</span> Early access to game notes</li>
         </ul>
         <button class="plus-cta-btn" style="width:100%" onclick="focusPlusAuth()">Join LSN+ Now</button>
         <div style="font-size:11px;color:var(--gray);text-align:center;margin-top:10px;">Founding member rate — lock it in before season starts</div>
@@ -1306,33 +1359,28 @@ footer { background:var(--navy); border-top:1px solid var(--border); padding:28p
       <div class="plus-perks-grid">
         <div class="plus-perk">
           <div class="plus-perk-icon">📊</div>
-          <div class="plus-perk-name">Real Stats, Every Week</div>
-          <div class="plus-perk-desc">Coach-submitted numbers across all Lakelands teams — passing yards, rushing leaders, receiving totals, and more updated after every game.</div>
-        </div>
-        <div class="plus-perk">
-          <div class="plus-perk-icon">📋</div>
-          <div class="plus-perk-name">Full Box Scores</div>
-          <div class="plus-perk-desc">Complete drive-by-drive breakdowns for every Friday night game. Know exactly what happened — not just the final score.</div>
-        </div>
-        <div class="plus-perk">
-          <div class="plus-perk-icon">📻</div>
-          <div class="plus-perk-name">Premium Audio Access</div>
-          <div class="plus-perk-desc">Select LSN broadcasts available on demand after the final whistle. Relive the big plays, the calls, the moments — whenever you want.</div>
-        </div>
-        <div class="plus-perk">
-          <div class="plus-perk-icon">📬</div>
-          <div class="plus-perk-name">LSN Insider Newsletter</div>
-          <div class="plus-perk-desc">Weekly previews, under-the-radar players to watch, schedule breakdowns, and region title race analysis — delivered every Thursday.</div>
+          <div class="plus-perk-name">Coach-Submitted Player Stats</div>
+          <div class="plus-perk-desc">Real numbers straight from the coaches — passing yards, rushing totals, receiving totals, and more across every Lakelands team.</div>
         </div>
         <div class="plus-perk">
           <div class="plus-perk-icon">🏆</div>
-          <div class="plus-perk-name">Stat Leaderboards</div>
-          <div class="plus-perk-desc">Who leads the Lakelands in rushing? Who's the top receiver in the region? Updated rankings across all 10 teams every week of the season.</div>
+          <div class="plus-perk-name">Weekly Stat Leaders</div>
+          <div class="plus-perk-desc">Who leads the Lakelands in rushing? Who's the top receiver in the region? Updated leaderboards across all 10 teams every week of the season.</div>
         </div>
         <div class="plus-perk">
-          <div class="plus-perk-icon">🎙️</div>
-          <div class="plus-perk-name">Exclusive Coverage</div>
+          <div class="plus-perk-icon">📬</div>
+          <div class="plus-perk-name">Subscriber Newsletters &amp; Podcasts</div>
+          <div class="plus-perk-desc">Weekly previews, under-the-radar players to watch, and region title race analysis — plus subscriber-only podcast episodes, delivered all season.</div>
+        </div>
+        <div class="plus-perk">
+          <div class="plus-perk-icon">🎁</div>
+          <div class="plus-perk-name">Bonus Content</div>
           <div class="plus-perk-desc">Subscriber-only stories, player spotlights, and coach interviews you won't find anywhere else in the Lakelands.</div>
+        </div>
+        <div class="plus-perk">
+          <div class="plus-perk-icon">📋</div>
+          <div class="plus-perk-name">Early Access to Game Notes</div>
+          <div class="plus-perk-desc">See the game notes and matchup breakdowns before they hit the free site — get ahead of every Friday night.</div>
         </div>
       </div>
     </div>
@@ -1359,7 +1407,7 @@ footer { background:var(--navy); border-top:1px solid var(--border); padding:28p
     </div>
     <div class="faq-item">
       <div class="faq-q">How is this different from the free site?</div>
-      <div class="faq-a">The free site covers scores, schedules, and basic team info — everything a casual fan needs. LSN+ is for the diehards who want every stat, every box score, and inside access to Lakelands football.</div>
+      <div class="faq-a">The free site covers scores, schedules, and basic team info — everything a casual fan needs. LSN+ is for the diehards who want every stat, weekly leaders, subscriber-only newsletters and podcasts, and early access to game notes.</div>
     </div>
   </div>
 
@@ -1863,6 +1911,7 @@ const EMERALD_STATS_2025 = {
 function renderCombinedStats() {
   let out = '<h3 style="font-family:var(--D);font-weight:800;font-size:20px;margin-bottom:28px;color:var(--white);">' +
     '2025 Player Stats — Greenwood Eagles</h3>';
+  if (!isPlusMember()) { return out + statsPaywallHTML(); }
   out += renderStatTable('Passing',   STATS_2025.passing,
     ['#','Player','Year','Comp','Att','Yards','TD','INT','Comp%'], 'var(--green3)');
   out += renderStatTable('Rushing',   STATS_2025.rushing,
@@ -1874,6 +1923,7 @@ function renderCombinedStats() {
 
 function renderAHSCombinedStats() {
   let out = '<h3 style="font-family:var(--D);font-weight:800;font-size:20px;margin-bottom:28px;color:var(--white);">2025 Player Stats — Abbeville Panthers</h3>';
+  if (!isPlusMember()) { return out + statsPaywallHTML(); }
   out += renderStatTable('Passing',   AHS_STATS_2025.passing,
     ['#','Player','Year','Comp','Att','Yards','TD','INT','Comp%'], '#C9A84C');
   out += renderStatTable('Rushing',   AHS_STATS_2025.rushing,
@@ -1885,6 +1935,7 @@ function renderAHSCombinedStats() {
 
 function renderGCSCombinedStats() {
   let out = '<h3 style="font-family:var(--D);font-weight:800;font-size:20px;margin-bottom:28px;color:var(--white);">2025 Player Stats — Greenwood Christian Hawks</h3>';
+  if (!isPlusMember()) { return out + statsPaywallHTML(); }
   out += renderStatTable('Passing',   GCS_STATS_2025.passing,
     ['#','Player','Year','Comp','Att','Yards','TD','INT','Comp%'], '#A0A8B0');
   out += renderStatTable('Rushing',   GCS_STATS_2025.rushing,
@@ -1897,6 +1948,7 @@ function renderGCSCombinedStats() {
 function renderEmeraldCombinedStats() {
   let out = '<h3 style="font-family:var(--D);font-weight:800;font-size:20px;margin-bottom:28px;color:var(--white);">' +
     '2025 Player Stats — Emerald Vikings</h3>';
+  if (!isPlusMember()) { return out + statsPaywallHTML(); }
   out += renderStatTable('Passing',   EMERALD_STATS_2025.passing,
     ['#','Player','Year','Comp','Att','Yards','TD','INT','Comp%'], '#C8971F');
   out += renderStatTable('Rushing',   EMERALD_STATS_2025.rushing,
@@ -1909,6 +1961,7 @@ function renderEmeraldCombinedStats() {
 function renderDHSCombinedStats() {
   let out = '<h3 style="font-family:var(--D);font-weight:800;font-size:20px;margin-bottom:28px;color:var(--white);">' +
     '2025 Player Stats — Dixie Hornets</h3>';
+  if (!isPlusMember()) { return out + statsPaywallHTML(); }
   out += renderStatTable('Passing',   DIXIE_STATS_2025.passing,
     ['#','Player','Year','Comp','Att','Yards','TD','INT','Comp%'], '#FFD100');
   out += renderStatTable('Rushing',   DIXIE_STATS_2025.rushing,
@@ -2417,6 +2470,7 @@ const stripeClient = (window.Stripe && STRIPE_PUBLISHABLE_KEY.startsWith('pk_'))
 let currentUser = null;
 let currentSubStatus = 'inactive';
 let currentFavoriteTeams = [];
+let currentUsername = null;
 let stripeElements = null;
 let cardElement = null;
 let _devicePickerResolve = null;
@@ -2424,6 +2478,600 @@ const signupState = { email: '', teams: [] };
 
 function isPlusMember() {
   return currentSubStatus === 'active' || currentSubStatus === 'trialing';
+}
+
+// Shared upsell block dropped in wherever stat tables used to be, for free/logged-out visitors.
+function statsPaywallHTML() {
+  return '<div style="text-align:center;background:var(--navy2);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:8px;padding:40px 24px;max-width:480px;margin:8px auto 32px;">' +
+    '<div style="font-size:30px;margin-bottom:10px;">🔒</div>' +
+    '<div style="font-family:var(--D);font-weight:800;font-size:17px;color:var(--white);margin-bottom:10px;">Stats are an LSN+ benefit</div>' +
+    '<div style="font-size:13px;color:var(--gray);margin-bottom:20px;line-height:1.6;">Coach-submitted player stats and weekly leaders for every Lakelands team are available to LSN+ members.</div>' +
+    '<button class="plus-cta-btn" onclick="goPage(\'signup\')">Join LSN+ — $9.99/month</button>' +
+    '<div style="font-size:11px;color:var(--gray);margin-top:14px;">Already a member? <a href="#" onclick="event.preventDefault();toggleLoginPanel();" style="color:var(--gold);">Log in</a></div>' +
+    '</div>';
+}
+
+// Re-renders whatever stat view is currently on screen right after login/logout,
+// so the paywall lifts (or drops back) instantly without a page reload.
+function refreshGatedStatsIfVisible() {
+  if (currentPage === 'stats') { renderStatsPage(); return; }
+  if (currentPage === 'team') {
+    const el = document.getElementById('pane-stats-combined');
+    if (el) el.innerHTML = renderCombinedStats();
+    return;
+  }
+  if (currentPage === 'team-abbeville') {
+    const el = document.getElementById('ab-stats-2025');
+    if (el) el.innerHTML = renderAHSCombinedStats();
+    return;
+  }
+  if (currentPage === 'team-dixie') {
+    const el = document.getElementById('dx-stats-2025');
+    if (el) el.innerHTML = renderDHSCombinedStats();
+    return;
+  }
+  if (currentPage === 'team-gwchristian') {
+    const el = document.getElementById('gcs-stats-2025');
+    if (el) el.innerHTML = renderGCSCombinedStats();
+    return;
+  }
+  if (currentPage === 'team-emerald') {
+    const el = document.getElementById('em-stats-2025');
+    if (el) el.innerHTML = renderEmeraldCombinedStats();
+    return;
+  }
+}
+
+// ══════════════════════════════════════════
+// LSN+ MEMBERS BOARD
+// ══════════════════════════════════════════
+const BOARD_IMAGE_BUCKET = 'board-images';
+const boardState = {
+  view: 'list',            // 'list' | 'thread'
+  posts: [],
+  currentPostId: null,
+  replies: [],
+  votesByPost: {},          // { [postId]: { counts:[...], userVotes:Set, total:n } }
+  showLinkField: false,
+  showPollBuilder: false,
+  pollOptions: ['', ''],
+  pendingImageFile: null,
+};
+
+function escapeHtml(str) {
+  return String(str == null ? '' : str)
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+}
+
+function isSafeUrl(url) {
+  try {
+    const u = new URL(url);
+    return u.protocol === 'http:' || u.protocol === 'https:';
+  } catch (e) { return false; }
+}
+
+function boardTimeAgo(iso) {
+  const then = new Date(iso).getTime();
+  if (isNaN(then)) return '';
+  const diffMs = Date.now() - then;
+  const mins = Math.floor(diffMs / 60000);
+  if (mins < 1) return 'just now';
+  if (mins < 60) return mins + 'm ago';
+  const hrs = Math.floor(mins / 60);
+  if (hrs < 24) return hrs + 'h ago';
+  const days = Math.floor(hrs / 24);
+  if (days < 7) return days + 'd ago';
+  return new Date(iso).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+}
+
+function boardPaywallHTML() {
+  if (!currentUser) {
+    return '<div class="board-username-setup">' +
+      '<div style="font-size:30px;margin-bottom:10px;">🔒</div>' +
+      '<div style="font-family:var(--D);font-weight:800;font-size:17px;color:var(--white);margin-bottom:10px;">The Board is for LSN+ members</div>' +
+      '<div style="font-size:13px;color:var(--gray);margin-bottom:20px;line-height:1.6;">Log in or join LSN+ to read and post in the members-only discussion board.</div>' +
+      '<button class="plus-cta-btn" onclick="goPage(\'signup\')">Join LSN+ — $9.99/month</button>' +
+      '<div style="font-size:11px;color:var(--gray);margin-top:14px;">Already a member? <a href="#" onclick="event.preventDefault();toggleLoginPanel();" style="color:var(--gold);">Log in</a></div>' +
+      '</div>';
+  }
+  return '<div class="board-username-setup">' +
+    '<div style="font-size:30px;margin-bottom:10px;">🔒</div>' +
+    '<div style="font-family:var(--D);font-weight:800;font-size:17px;color:var(--white);margin-bottom:10px;">The Board is an LSN+ benefit</div>' +
+    '<div style="font-size:13px;color:var(--gray);margin-bottom:20px;line-height:1.6;">Finish joining LSN+ to unlock the members-only discussion board.</div>' +
+    '<button class="plus-cta-btn" onclick="goPage(\'signup\')">Finish Joining LSN+</button>' +
+    '</div>';
+}
+
+function boardUsernameSetupHTML() {
+  return '<div class="board-username-setup">' +
+    '<div style="font-family:var(--D);font-weight:800;font-size:17px;color:var(--white);margin-bottom:8px;">Pick a Board username</div>' +
+    '<div style="font-size:13px;color:var(--gray);margin-bottom:18px;line-height:1.6;">This is the name other LSN+ members will see on your posts. 3-20 characters — letters, numbers, and underscores only.</div>' +
+    '<input class="form-input" id="boardUsernameInput" placeholder="e.g. EaglesFan24" maxlength="20" style="text-align:center;">' +
+    '<button class="plus-cta-btn" style="width:100%;margin-top:6px;" onclick="submitUsernameSetup()">Save Username</button>' +
+    '<div class="board-error-msg" id="boardUsernameError"></div>' +
+    '</div>';
+}
+
+async function submitUsernameSetup() {
+  const input = document.getElementById('boardUsernameInput');
+  const errEl = document.getElementById('boardUsernameError');
+  if (!input) return;
+  const value = input.value.trim();
+  if (!/^[a-zA-Z0-9_]{3,20}$/.test(value)) {
+    if (errEl) errEl.textContent = 'Usernames must be 3-20 characters — letters, numbers, and underscores only.';
+    return;
+  }
+  if (errEl) errEl.textContent = '';
+  try {
+    const { data: { session } } = await sbClient.auth.getSession();
+    const res = await fetch('/api/save-username', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + (session ? session.access_token : '') },
+      body: JSON.stringify({ username: value }),
+    });
+    const json = await res.json();
+    if (!res.ok) throw new Error(json.error || 'Could not save username');
+    currentUsername = json.username;
+    renderBoardPage();
+  } catch (err) {
+    if (errEl) errEl.textContent = err.message || 'Could not save username. Try again.';
+  }
+}
+
+function renderBoardPage() {
+  const container = document.getElementById('boardContainer');
+  if (!container) return;
+
+  if (!sbClient) {
+    container.innerHTML = '<div class="board-empty-state">Account system not configured yet.</div>';
+    return;
+  }
+  if (!currentUser || !isPlusMember()) {
+    container.innerHTML = boardPaywallHTML();
+    return;
+  }
+  if (!currentUsername) {
+    container.innerHTML = boardUsernameSetupHTML();
+    return;
+  }
+
+  boardState.view = 'list';
+  boardState.currentPostId = null;
+  container.innerHTML = '<div class="loading">Loading board</div>';
+  loadBoardPosts();
+}
+
+async function loadBoardPosts() {
+  try {
+    const { data: posts, error } = await sbClient
+      .from('board_posts')
+      .select('*')
+      .order('created_at', { ascending: false })
+      .limit(100);
+    if (error) throw error;
+    boardState.posts = posts || [];
+
+    const pollPostIds = boardState.posts.filter(p => p.poll_options).map(p => p.id);
+    boardState.votesByPost = {};
+    if (pollPostIds.length) {
+      const { data: votes } = await sbClient
+        .from('board_poll_votes')
+        .select('post_id, option_index, user_id')
+        .in('post_id', pollPostIds);
+      (votes || []).forEach(v => {
+        if (!boardState.votesByPost[v.post_id]) boardState.votesByPost[v.post_id] = { counts: {}, userVotes: new Set() };
+        const bucket = boardState.votesByPost[v.post_id];
+        bucket.counts[v.option_index] = (bucket.counts[v.option_index] || 0) + 1;
+        if (v.user_id === currentUser.id) bucket.userVotes.add(v.option_index);
+      });
+    }
+
+    renderBoardList();
+  } catch (err) {
+    console.error('loadBoardPosts error:', err);
+    const container = document.getElementById('boardContainer');
+    if (container) container.innerHTML = '<div class="board-empty-state">Couldn\'t load the board. Try refreshing the page.</div>';
+  }
+}
+
+function renderBoardComposerHTML() {
+  let linkField = boardState.showLinkField
+    ? '<input class="form-input" id="boardComposerLink" placeholder="https://..." style="margin-top:10px;">'
+    : '';
+  let pollBuilder = '';
+  if (boardState.showPollBuilder) {
+    const optionRows = boardState.pollOptions.map((opt, i) => `
+      <div class="board-poll-option-row">
+        <input class="form-input" placeholder="Option ${i + 1}" value="${escapeHtml(opt)}" oninput="updateBoardPollOption(${i}, this.value)">
+        ${boardState.pollOptions.length > 2 ? `<button type="button" class="board-poll-remove-btn" onclick="removeBoardPollOption(${i})">✕</button>` : ''}
+      </div>`).join('');
+    pollBuilder = `
+      <div class="board-poll-builder">
+        <input class="form-input" id="boardComposerPollQuestion" placeholder="Poll question">
+        ${optionRows}
+        ${boardState.pollOptions.length < 6 ? '<button type="button" class="board-attach-btn" onclick="addBoardPollOption()">+ Add option</button>' : ''}
+      </div>`;
+  }
+  const imagePreview = boardState.pendingImageFile
+    ? `<img class="board-image-preview" id="boardComposerImagePreview">`
+    : '';
+
+  return `
+    <div class="board-composer">
+      <textarea class="form-input" id="boardComposerBody" placeholder="Share something with LSN+ members..." maxlength="2000"></textarea>
+      ${linkField}
+      ${pollBuilder}
+      ${imagePreview}
+      <div class="board-composer-row">
+        <input type="file" id="boardComposerImageInput" accept="image/*" style="display:none" onchange="handleBoardComposerImageChange(event)">
+        <button type="button" class="board-attach-btn" onclick="document.getElementById('boardComposerImageInput').click()">📷 Photo</button>
+        <button type="button" class="board-attach-btn ${boardState.showLinkField ? 'active' : ''}" onclick="toggleBoardLinkField()">🔗 Link</button>
+        <button type="button" class="board-attach-btn ${boardState.showPollBuilder ? 'active' : ''}" onclick="toggleBoardPollBuilder()">📊 Poll</button>
+        <span style="flex:1"></span>
+        <button type="button" class="plus-cta-btn" style="padding:9px 20px;" onclick="submitBoardPost()">Post</button>
+      </div>
+      <div class="board-error-msg" id="boardComposerError"></div>
+    </div>`;
+}
+
+function toggleBoardLinkField() {
+  boardState.showLinkField = !boardState.showLinkField;
+  renderBoardList();
+}
+function toggleBoardPollBuilder() {
+  boardState.showPollBuilder = !boardState.showPollBuilder;
+  renderBoardList();
+}
+function addBoardPollOption() {
+  if (boardState.pollOptions.length < 6) boardState.pollOptions.push('');
+  renderBoardList();
+}
+function removeBoardPollOption(i) {
+  boardState.pollOptions.splice(i, 1);
+  renderBoardList();
+}
+function updateBoardPollOption(i, value) {
+  boardState.pollOptions[i] = value; // no re-render needed — just keep state in sync while typing
+}
+
+function handleBoardComposerImageChange(event) {
+  const file = event.target.files && event.target.files[0];
+  if (!file) return;
+  boardState.pendingImageFile = file;
+  renderBoardList();
+  setTimeout(() => {
+    const img = document.getElementById('boardComposerImagePreview');
+    if (img) img.src = URL.createObjectURL(file);
+  }, 0);
+}
+
+async function uploadBoardImage(file) {
+  const cleanName = file.name.replace(/[^a-zA-Z0-9.\-_]/g, '_');
+  const path = currentUser.id + '/' + Date.now() + '-' + cleanName;
+  const { error } = await sbClient.storage.from(BOARD_IMAGE_BUCKET).upload(path, file);
+  if (error) throw error;
+  return path;
+}
+
+async function submitBoardPost() {
+  const bodyEl = document.getElementById('boardComposerBody');
+  const errEl = document.getElementById('boardComposerError');
+  const body = bodyEl ? bodyEl.value.trim() : '';
+  const linkInput = document.getElementById('boardComposerLink');
+  const linkUrl = linkInput ? linkInput.value.trim() : '';
+
+  if (errEl) errEl.textContent = '';
+
+  if (linkUrl && !isSafeUrl(linkUrl)) {
+    if (errEl) errEl.textContent = 'That link doesn\'t look like a valid http(s) URL.';
+    return;
+  }
+
+  let pollQuestion = null, pollOptions = null;
+  if (boardState.showPollBuilder) {
+    const qEl = document.getElementById('boardComposerPollQuestion');
+    pollQuestion = qEl ? qEl.value.trim() : '';
+    pollOptions = boardState.pollOptions.map(o => o.trim()).filter(Boolean);
+    if (!pollQuestion || pollOptions.length < 2) {
+      if (errEl) errEl.textContent = 'Polls need a question and at least 2 options.';
+      return;
+    }
+  }
+
+  if (!body && !boardState.pendingImageFile && !pollQuestion) {
+    if (errEl) errEl.textContent = 'Write something, attach a photo, or add a poll before posting.';
+    return;
+  }
+
+  try {
+    let imagePath = null;
+    if (boardState.pendingImageFile) imagePath = await uploadBoardImage(boardState.pendingImageFile);
+
+    const { error } = await sbClient.from('board_posts').insert({
+      user_id: currentUser.id,
+      username: currentUsername,
+      body: body,
+      image_path: imagePath,
+      link_url: linkUrl || null,
+      poll_question: pollQuestion,
+      poll_options: pollOptions,
+    });
+    if (error) throw error;
+
+    boardState.showLinkField = false;
+    boardState.showPollBuilder = false;
+    boardState.pollOptions = ['', ''];
+    boardState.pendingImageFile = null;
+    await loadBoardPosts();
+  } catch (err) {
+    console.error('submitBoardPost error:', err);
+    if (errEl) errEl.textContent = 'Could not post. Try again.';
+  }
+}
+
+function renderBoardPollBlockHTML(post) {
+  const options = post.poll_options || [];
+  const bucket = boardState.votesByPost[post.id] || { counts: {}, userVotes: new Set() };
+  const total = Object.values(bucket.counts).reduce((a, b) => a + b, 0);
+  const rows = options.map((opt, i) => {
+    const count = bucket.counts[i] || 0;
+    const pct = total ? Math.round((count / total) * 100) : 0;
+    const voted = bucket.userVotes.has(i);
+    return `
+      <div class="board-poll-option ${voted ? 'voted' : ''}" onclick="toggleBoardPollVote('${post.id}', ${i})">
+        <div class="board-poll-bar-fill" style="width:${pct}%"></div>
+        <div class="board-poll-option-label"><span>${voted ? '✓ ' : ''}${escapeHtml(opt)}</span><span>${pct}% (${count})</span></div>
+      </div>`;
+  }).join('');
+  return `
+    <div class="board-poll-block" id="board-poll-${post.id}">
+      <div class="board-poll-question">📊 ${escapeHtml(post.poll_question)}</div>
+      ${rows}
+      <div class="board-poll-meta">${total} vote${total === 1 ? '' : 's'} · tap an option to vote, tap again to remove your vote · multiple choices allowed</div>
+    </div>`;
+}
+
+async function toggleBoardPollVote(postId, optionIndex) {
+  if (!boardState.votesByPost[postId]) boardState.votesByPost[postId] = { counts: {}, userVotes: new Set() };
+  const bucket = boardState.votesByPost[postId];
+  const hasVoted = bucket.userVotes.has(optionIndex);
+
+  // Optimistic local update so the bar reacts instantly
+  if (hasVoted) {
+    bucket.userVotes.delete(optionIndex);
+    bucket.counts[optionIndex] = Math.max(0, (bucket.counts[optionIndex] || 1) - 1);
+  } else {
+    bucket.userVotes.add(optionIndex);
+    bucket.counts[optionIndex] = (bucket.counts[optionIndex] || 0) + 1;
+  }
+  const holder = document.getElementById('board-poll-' + postId);
+  if (holder) {
+    const post = boardState.posts.find(p => p.id === postId) || (boardState.currentPostId === postId ? boardThreadPostCache : null);
+    if (post) holder.outerHTML = renderBoardPollBlockHTML(post);
+  }
+
+  try {
+    if (hasVoted) {
+      const { error } = await sbClient.from('board_poll_votes').delete()
+        .eq('post_id', postId).eq('option_index', optionIndex).eq('user_id', currentUser.id);
+      if (error) throw error;
+    } else {
+      const { error } = await sbClient.from('board_poll_votes').insert({
+        post_id: postId, option_index: optionIndex, user_id: currentUser.id,
+      });
+      if (error) throw error;
+    }
+  } catch (err) {
+    console.error('toggleBoardPollVote error:', err);
+    // Revert on failure and re-fetch the real state
+    await loadBoardPosts();
+  }
+}
+
+function hydrateBoardImages(container) {
+  if (!container) return;
+  container.querySelectorAll('[data-board-img-path]').forEach(async (img) => {
+    const path = img.getAttribute('data-board-img-path');
+    try {
+      const { data, error } = await sbClient.storage.from(BOARD_IMAGE_BUCKET).createSignedUrl(path, 3600);
+      if (!error && data && data.signedUrl) img.src = data.signedUrl;
+    } catch (e) { /* leave broken image icon */ }
+  });
+}
+
+function renderBoardLinkHTML(post) {
+  if (!post.link_url) return '';
+  return `<div style="margin-top:10px;"><a href="${escapeHtml(post.link_url)}" target="_blank" rel="noopener noreferrer nofollow" style="color:var(--gold);font-size:13px;word-break:break-all;">🔗 ${escapeHtml(post.link_url)}</a></div>`;
+}
+
+function renderBoardPostCard(post, opts) {
+  opts = opts || {};
+  const isOwner = currentUser && post.user_id === currentUser.id;
+  return `
+    <div class="board-card" id="board-card-${post.id}">
+      <div class="board-card-head">
+        <span class="board-card-user">${escapeHtml(post.username)}</span>
+        <span class="board-card-time">${boardTimeAgo(post.created_at)}</span>
+      </div>
+      ${post.body ? `<div class="board-card-body">${escapeHtml(post.body)}</div>` : ''}
+      ${post.image_path ? `<img class="board-card-img" data-board-img-path="${escapeHtml(post.image_path)}" alt="Post image">` : ''}
+      ${renderBoardLinkHTML(post)}
+      ${post.poll_options ? renderBoardPollBlockHTML(post) : ''}
+      <div class="board-card-actions">
+        ${opts.showReplyLink !== false ? `<button class="board-action-btn" onclick="openBoardThread('${post.id}')">💬 Reply</button>` : ''}
+        <button class="board-action-btn" onclick="reportBoardItem('${post.id}', null)">🚩 Report</button>
+        ${isOwner ? `<button class="board-action-btn" onclick="deleteBoardPost('${post.id}')">🗑 Delete</button>` : ''}
+      </div>
+    </div>`;
+}
+
+function renderBoardList() {
+  const container = document.getElementById('boardContainer');
+  if (!container) return;
+  const composer = renderBoardComposerHTML();
+  const body = boardState.posts.length
+    ? boardState.posts.map(p => renderBoardPostCard(p)).join('')
+    : '<div class="board-empty-state">No posts yet — be the first to start a conversation.</div>';
+  container.innerHTML = `
+    <div class="board-toolbar">
+      <span class="board-username-pill">${escapeHtml(currentUsername)}</span>
+    </div>
+    ${composer}
+    ${body}`;
+  hydrateBoardImages(container);
+}
+
+let boardThreadPostCache = null;
+
+async function openBoardThread(postId) {
+  boardState.view = 'thread';
+  boardState.currentPostId = postId;
+  const container = document.getElementById('boardContainer');
+  if (container) container.innerHTML = '<div class="loading">Loading thread</div>';
+
+  boardThreadPostCache = boardState.posts.find(p => p.id === postId) || null;
+  if (!boardThreadPostCache) {
+    const { data } = await sbClient.from('board_posts').select('*').eq('id', postId).maybeSingle();
+    boardThreadPostCache = data || null;
+  }
+  if (!boardThreadPostCache) {
+    if (container) container.innerHTML = '<div class="board-empty-state">This post is gone.</div><button class="board-thread-back" onclick="backToBoardList()">← Back to Board</button>';
+    return;
+  }
+
+  const { data: replies } = await sbClient
+    .from('board_replies')
+    .select('*')
+    .eq('post_id', postId)
+    .order('created_at', { ascending: true });
+  boardState.replies = replies || [];
+  renderBoardThread();
+}
+
+function renderBoardThread() {
+  const container = document.getElementById('boardContainer');
+  if (!container) return;
+  const post = boardThreadPostCache;
+  const repliesHTML = boardState.replies.length
+    ? boardState.replies.map(r => `
+      <div class="board-reply">
+        <div class="board-card-head">
+          <span class="board-card-user">${escapeHtml(r.username)}</span>
+          <span class="board-card-time">${boardTimeAgo(r.created_at)}</span>
+        </div>
+        ${r.body ? `<div class="board-card-body">${escapeHtml(r.body)}</div>` : ''}
+        ${r.image_path ? `<img class="board-card-img" data-board-img-path="${escapeHtml(r.image_path)}" alt="Reply image">` : ''}
+        ${renderBoardLinkHTML(r)}
+        <div class="board-card-actions">
+          <button class="board-action-btn" onclick="reportBoardItem(null, '${r.id}')">🚩 Report</button>
+          ${currentUser && r.user_id === currentUser.id ? `<button class="board-action-btn" onclick="deleteBoardReply('${r.id}')">🗑 Delete</button>` : ''}
+        </div>
+      </div>`).join('')
+    : '<div class="board-empty-state">No replies yet.</div>';
+
+  container.innerHTML = `
+    <button class="board-thread-back" onclick="backToBoardList()">← Back to Board</button>
+    ${renderBoardPostCard(post, { showReplyLink: false })}
+    <div class="board-composer" style="margin-top:20px;">
+      <textarea class="form-input" id="boardReplyBody" placeholder="Write a reply..." maxlength="2000"></textarea>
+      <div class="board-composer-row">
+        <input type="file" id="boardReplyImageInput" accept="image/*" style="display:none" onchange="handleBoardReplyImageChange(event)">
+        <button type="button" class="board-attach-btn" onclick="document.getElementById('boardReplyImageInput').click()">📷 Photo</button>
+        <span id="boardReplyImageLabel" style="font-size:11px;color:var(--gray);"></span>
+        <span style="flex:1"></span>
+        <button type="button" class="plus-cta-btn" style="padding:9px 20px;" onclick="submitBoardReply()">Reply</button>
+      </div>
+      <div class="board-error-msg" id="boardReplyError"></div>
+    </div>
+    <div style="margin-top:16px;">${repliesHTML}</div>`;
+  hydrateBoardImages(container);
+}
+
+let pendingReplyImageFile = null;
+function handleBoardReplyImageChange(event) {
+  const file = event.target.files && event.target.files[0];
+  if (!file) return;
+  pendingReplyImageFile = file;
+  const label = document.getElementById('boardReplyImageLabel');
+  if (label) label.textContent = '📎 ' + file.name;
+}
+
+async function submitBoardReply() {
+  const bodyEl = document.getElementById('boardReplyBody');
+  const errEl = document.getElementById('boardReplyError');
+  const body = bodyEl ? bodyEl.value.trim() : '';
+  if (errEl) errEl.textContent = '';
+
+  if (!body && !pendingReplyImageFile) {
+    if (errEl) errEl.textContent = 'Write something or attach a photo before replying.';
+    return;
+  }
+
+  try {
+    let imagePath = null;
+    if (pendingReplyImageFile) imagePath = await uploadBoardImage(pendingReplyImageFile);
+
+    const { error } = await sbClient.from('board_replies').insert({
+      post_id: boardState.currentPostId,
+      user_id: currentUser.id,
+      username: currentUsername,
+      body: body,
+      image_path: imagePath,
+    });
+    if (error) throw error;
+
+    pendingReplyImageFile = null;
+    await openBoardThread(boardState.currentPostId);
+  } catch (err) {
+    console.error('submitBoardReply error:', err);
+    if (errEl) errEl.textContent = 'Could not post reply. Try again.';
+  }
+}
+
+async function deleteBoardReply(replyId) {
+  if (!confirm('Delete this reply?')) return;
+  try {
+    const { error } = await sbClient.from('board_replies').delete().eq('id', replyId).eq('user_id', currentUser.id);
+    if (error) throw error;
+    await openBoardThread(boardState.currentPostId);
+  } catch (err) {
+    console.error('deleteBoardReply error:', err);
+    alert('Could not delete reply.');
+  }
+}
+
+async function deleteBoardPost(postId) {
+  if (!confirm('Delete this post? This also removes its replies.')) return;
+  try {
+    const { error } = await sbClient.from('board_posts').delete().eq('id', postId).eq('user_id', currentUser.id);
+    if (error) throw error;
+    if (boardState.view === 'thread') backToBoardList(); else await loadBoardPosts();
+  } catch (err) {
+    console.error('deleteBoardPost error:', err);
+    alert('Could not delete post.');
+  }
+}
+
+async function reportBoardItem(postId, replyId) {
+  const reason = prompt('What\'s wrong with this post? (optional)') || '';
+  try {
+    const { error } = await sbClient.from('board_reports').insert({
+      post_id: postId, reply_id: replyId, reporter_id: currentUser.id, reason: reason,
+    });
+    if (error) throw error;
+    alert('Reported. Thanks for helping keep the Board clean.');
+  } catch (err) {
+    console.error('reportBoardItem error:', err);
+    alert('Could not submit report. Try again.');
+  }
+}
+
+function backToBoardList() {
+  boardState.view = 'list';
+  boardState.currentPostId = null;
+  boardThreadPostCache = null;
+  renderBoardList();
 }
 
 // ── Device fingerprinting (simple, browser-local — good enough for a soft 3-device cap) ──
@@ -2535,21 +3183,25 @@ async function refreshAuthState() {
   currentUser = session ? session.user : null;
   currentSubStatus = 'inactive';
   currentFavoriteTeams = [];
+  currentUsername = null;
   if (currentUser) {
     const { data: profile } = await sbClient
       .from('profiles')
-      .select('subscription_status, favorite_teams')
+      .select('subscription_status, favorite_teams, username')
       .eq('id', currentUser.id)
       .maybeSingle();
     if (profile) {
       if (profile.subscription_status) currentSubStatus = profile.subscription_status;
       if (Array.isArray(profile.favorite_teams)) currentFavoriteTeams = profile.favorite_teams;
+      if (profile.username) currentUsername = profile.username;
     }
   }
   renderPlusAuthBlock();
   renderLoginPanel();
   renderAccountNavButton();
   if (currentPage === 'signup') renderSignupPage();
+  if (currentPage === 'board') renderBoardPage();
+  refreshGatedStatsIfVisible();
 }
 
 function renderAccountNavButton() {
@@ -2962,6 +3614,7 @@ function buildStatsTable(category, rows) {
 function renderStatsPage() {
   const container = document.getElementById('statsTableContainer');
   if (!container) return;
+  if (!isPlusMember()) { container.innerHTML = statsPaywallHTML(); return; }
   const rows = sortStatsRows(mergeStats(statsState.category), statsState.sortKey, statsState.sortDir);
   container.innerHTML = buildStatsTable(statsState.category, rows);
 }
@@ -3029,6 +3682,7 @@ function goPage(id) {
   if (id === 'teams') renderTeams();
   if (id === 'scores' && weeklyData) showWeek(currentWeek);
   if (id === 'signup') renderSignupPage();
+  if (id === 'board') renderBoardPage();
 }
 
 function toggleMobMenu() {
