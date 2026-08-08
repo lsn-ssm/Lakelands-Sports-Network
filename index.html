@@ -2474,10 +2474,12 @@ let currentUsername = null;
 let stripeElements = null;
 let cardElement = null;
 let _devicePickerResolve = null;
-const signupState = { email: '', teams: [], usernameError: null };
+const signupState = { email: '', teams: [], usernameError: null, promoCode: null, promoDescription: null };
 
 function isPlusMember() {
-  return currentSubStatus === 'active' || currentSubStatus === 'trialing';
+  // 'comped' = redeemed a free-membership promo code — no Stripe subscription at all,
+  // but treated identically to a paying active/trialing member everywhere on the site.
+  return currentSubStatus === 'active' || currentSubStatus === 'trialing' || currentSubStatus === 'comped';
 }
 
 // Shared upsell block dropped in wherever stat tables used to be, for free/logged-out visitors.
@@ -3343,10 +3345,13 @@ function renderSignupPage() {
   }
 
   if (currentUser && isPlusMember()) {
+    const headline = currentSubStatus === 'comped' ? "Welcome to LSN+!" : "You're already an LSN+ member!";
+    const sub = currentSubStatus === 'comped' ? '<div style="font-size:13px;color:var(--gray);margin-bottom:18px;">Your free membership is active — no card needed.</div>' : '';
     el.innerHTML = `
       <div style="text-align:center;padding:32px 0;">
         <div style="font-size:32px;margin-bottom:12px;">🎉</div>
-        <div style="font-family:var(--D);font-weight:800;font-size:18px;color:var(--gold);margin-bottom:10px;">You're already an LSN+ member!</div>
+        <div style="font-family:var(--D);font-weight:800;font-size:18px;color:var(--gold);margin-bottom:10px;">${headline}</div>
+        ${sub}
         <button class="btn-outline" onclick="goPage('home')">Back to Home</button>
       </div>`;
     return;
@@ -3387,6 +3392,8 @@ function renderSignupPage() {
         </button>
         <div class="team-dropdown-panel" id="teamDropdownPanel">${teamItems}</div>
       </div>
+      <input type="text" id="su-promo" class="form-input" placeholder="Promo code (optional)" style="margin-top:16px;margin-bottom:4px;text-transform:uppercase;">
+      <div style="font-size:11px;color:var(--gray);margin-bottom:10px;">Have a discount or free-membership code? Enter it here — we'll check it when you continue.</div>
       <div id="signupError" style="color:var(--red);font-size:12px;margin-bottom:10px;display:none;"></div>
       <button class="plus-cta-btn" id="su-continue-btn" style="width:100%;" onclick="handleSignupStep1()">Continue to Payment →</button>
       <div style="text-align:center;margin-top:14px;font-size:12px;color:var(--gray);">
@@ -3405,6 +3412,7 @@ async function handleSignupStep1() {
   const password = document.getElementById('su-password').value;
   const password2 = document.getElementById('su-password2').value;
   const username = document.getElementById('su-username').value.trim();
+  const promoCodeRaw = document.getElementById('su-promo').value.trim();
   const teams = Array.from(document.querySelectorAll('.signup-team-cb:checked')).map(cb => cb.value);
 
   if (!email || !password) { showSignupError('Enter an email and password.'); return; }
@@ -3416,7 +3424,30 @@ async function handleSignupStep1() {
   }
 
   const btn = document.getElementById('su-continue-btn');
-  if (btn) { btn.disabled = true; btn.textContent = 'Creating account…'; }
+  if (btn) { btn.disabled = true; btn.textContent = 'Checking code…'; }
+
+  // Check the promo code (if any) before creating the account, so a bad code gets
+  // caught early instead of after an account already exists.
+  let promoResult = null;
+  if (promoCodeRaw) {
+    try {
+      const codeRes = await fetch('/api/validate-code', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ code: promoCodeRaw }),
+      });
+      promoResult = await codeRes.json();
+    } catch (e) {
+      promoResult = { valid: false, error: 'Could not check that code right now. Try again.' };
+    }
+    if (!promoResult.valid) {
+      showSignupError(promoResult.error || "That code isn't valid.");
+      if (btn) { btn.disabled = false; btn.textContent = 'Continue to Payment →'; }
+      return;
+    }
+  }
+
+  if (btn) btn.textContent = 'Creating account…';
 
   const { data, error } = await sbClient.auth.signUp({ email, password });
   if (error) {
@@ -3428,6 +3459,8 @@ async function handleSignupStep1() {
   signupState.email = email;
   signupState.teams = teams;
   signupState.usernameError = null;
+  signupState.promoCode = (promoResult && promoResult.type === 'discount') ? promoCodeRaw : null;
+  signupState.promoDescription = promoResult ? promoResult.description : null;
 
   if (!data.session) {
     // Email confirmation is still turned on in Supabase — can't proceed to a logged-in
@@ -3469,8 +3502,30 @@ async function handleSignupStep1() {
   }
 
   await Promise.all(saveCalls);
+
+  // Free-membership code: redeem it now and skip payment entirely — no Stripe customer
+  // or subscription ever gets created for this account.
+  if (promoResult && promoResult.type === 'free') {
+    try {
+      const redeemRes = await fetch('/api/redeem-free-code', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + data.session.access_token },
+        body: JSON.stringify({ code: promoCodeRaw }),
+      });
+      const redeemJson = await redeemRes.json();
+      if (!redeemJson.ok) {
+        // Rare race (code used up between validating and redeeming, etc.) — don't strand
+        // them; just fall through to the normal card step instead.
+        showSignupError((redeemJson.error || 'Could not redeem that code.') + ' You can still join with a card below.');
+      }
+    } catch (e) {
+      showSignupError('Could not redeem that code. You can still join with a card below.');
+    }
+  }
+
   await refreshAuthState();
-  renderSignupPage(); // now currentUser is set → falls into the card step
+  renderSignupPage(); // now currentUser is set → falls into the "already a member" state
+                       // (if the free code was redeemed) or the card step otherwise
 }
 
 function renderSignupCardStep(el) {
@@ -3482,6 +3537,11 @@ function renderSignupCardStep(el) {
       <div style="font-family:var(--D);font-weight:800;font-size:15px;color:#fff;margin-bottom:6px;">Step 2 of 2 — Payment</div>
       <div style="font-size:12px;color:var(--gray);margin-bottom:18px;">Signed in as ${currentUser.email} · 7-day free trial, then $9.99/month</div>
       ${usernameNote}
+      <div style="display:flex;gap:8px;margin-bottom:6px;">
+        <input class="form-input" id="checkoutPromoInput" placeholder="Promo code (optional)" style="margin-bottom:0;text-transform:uppercase;" value="${escapeHtml(signupState.promoCode || '')}" onkeydown="if(event.key==='Enter'){event.preventDefault();applyCheckoutPromoCode();}">
+        <button type="button" class="btn-outline" style="white-space:nowrap;padding:0 16px;" onclick="applyCheckoutPromoCode()">Apply</button>
+      </div>
+      <div id="checkoutPromoMsg" style="font-size:12px;margin-bottom:14px;${signupState.promoDescription ? 'color:var(--gold);' : 'display:none;'}">${signupState.promoDescription ? '🏷️ ' + escapeHtml(signupState.promoDescription) + ' — applied' : ''}</div>
       <div id="cardElementContainer" style="padding:12px;border:1px solid var(--border2);border-radius:4px;background:var(--navy);margin-bottom:14px;"></div>
       <div id="cardError" style="color:var(--red);font-size:12px;margin-bottom:10px;display:none;"></div>
       <button class="plus-cta-btn" id="su-pay-btn" style="width:100%;" onclick="handleSignupCardSubmit()">Start Free Trial</button>
@@ -3497,6 +3557,72 @@ function renderSignupCardStep(el) {
     style: { base: { color: '#fff', fontSize: '14px', '::placeholder': { color: '#8a9bb0' } } },
   });
   cardElement.mount('#cardElementContainer');
+}
+
+// Lets someone apply (or change) a promo code right at the payment step — covers people
+// who skipped the code field on step 1, or come back to a half-finished signup later.
+// A "free membership" code redeems immediately and skips the rest of checkout entirely;
+// a discount code just gets stored so handleSignupCardSubmit() passes it along to Stripe.
+async function applyCheckoutPromoCode() {
+  const input = document.getElementById('checkoutPromoInput');
+  const msgEl = document.getElementById('checkoutPromoMsg');
+  const code = input ? input.value.trim() : '';
+
+  if (!code) {
+    signupState.promoCode = null;
+    signupState.promoDescription = null;
+    if (msgEl) { msgEl.style.display = 'none'; msgEl.textContent = ''; }
+    return;
+  }
+
+  if (msgEl) { msgEl.style.display = 'block'; msgEl.style.color = 'var(--gray)'; msgEl.textContent = 'Checking code…'; }
+
+  let result;
+  try {
+    const res = await fetch('/api/validate-code', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ code }),
+    });
+    result = await res.json();
+  } catch (e) {
+    result = { valid: false, error: 'Could not check that code right now.' };
+  }
+
+  if (!result.valid) {
+    signupState.promoCode = null;
+    signupState.promoDescription = null;
+    if (msgEl) { msgEl.style.color = 'var(--red)'; msgEl.textContent = result.error || "That code isn't valid."; }
+    return;
+  }
+
+  if (result.type === 'free') {
+    if (msgEl) { msgEl.style.color = 'var(--gray)'; msgEl.textContent = 'Redeeming free membership…'; }
+    try {
+      const { data: { session } } = await sbClient.auth.getSession();
+      const redeemRes = await fetch('/api/redeem-free-code', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + session.access_token },
+        body: JSON.stringify({ code }),
+      });
+      const redeemJson = await redeemRes.json();
+      if (!redeemJson.ok) {
+        if (msgEl) { msgEl.style.color = 'var(--red)'; msgEl.textContent = redeemJson.error || 'Could not redeem this code.'; }
+        return;
+      }
+    } catch (e) {
+      if (msgEl) { msgEl.style.color = 'var(--red)'; msgEl.textContent = 'Could not redeem this code.'; }
+      return;
+    }
+    await refreshAuthState();
+    renderSignupPage(); // isPlusMember() is now true ('comped') → shows the "Welcome" screen
+    return;
+  }
+
+  // Discount code — hang onto it; handleSignupCardSubmit() sends it to Stripe at checkout.
+  signupState.promoCode = code;
+  signupState.promoDescription = result.description;
+  if (msgEl) { msgEl.style.color = 'var(--gold)'; msgEl.textContent = '🏷️ ' + result.description + ' — applied'; }
 }
 
 function showCardError(msg) {
@@ -3528,7 +3654,7 @@ async function handleSignupCardSubmit() {
     const subRes = await fetch('/api/create-subscription', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + session.access_token },
-      body: JSON.stringify({ payment_method_id: setupIntent.payment_method }),
+      body: JSON.stringify({ payment_method_id: setupIntent.payment_method, promo_code: signupState.promoCode || null }),
     });
     const subData = await subRes.json();
     if (!subData.status) { showCardError(subData.error || 'Could not start your subscription.'); return; }
