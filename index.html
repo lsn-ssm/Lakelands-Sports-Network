@@ -490,7 +490,7 @@ textarea.form-input { resize:vertical; min-height:80px; font-family:var(--B); }
       <button class="nav-link" id="nl-standings" onclick="goPage('standings')">Standings</button>
       <button class="nav-link" id="nl-teams" onclick="goPage('teams')">Teams</button>
       <button class="nav-link" id="nl-stats" onclick="goPage('stats')">Stats</button>
-      <button class="nav-link" id="nl-board" onclick="goPage('board')">Board</button>
+      <button class="nav-link" id="nl-board" onclick="goPage('board')" style="display:none;">Board</button>
     </div>
     <button class="nav-plus" onclick="goPage('plus')">LSN<span class="plus-gold">+</span></button>
     <button class="nav-account-btn" id="navAccountBtn" onclick="toggleLoginPanel()">Log In</button>
@@ -505,7 +505,7 @@ textarea.form-input { resize:vertical; min-height:80px; font-family:var(--B); }
       <button class="mob-dd-btn" id="mob-standings" onclick="goPage('standings')">Standings</button>
       <button class="mob-dd-btn" id="mob-teams" onclick="goPage('teams')">Teams</button>
       <button class="mob-dd-btn" id="mob-stats" onclick="goPage('stats')">Stats</button>
-      <button class="mob-dd-btn" id="mob-board" onclick="goPage('board')">Board</button>
+      <button class="mob-dd-btn" id="mob-board" onclick="goPage('board')" style="display:none;">Board</button>
       <button class="mob-dd-btn" id="mob-account" onclick="closeMobMenu();toggleLoginPanel();">Log In</button>
       <button class="mob-dd-btn gold-item" id="mob-plus" onclick="goPage('plus')">LSN+</button>
     </div>
@@ -3208,6 +3208,20 @@ function renderAccountNavButton() {
   const btn = document.getElementById('navAccountBtn');
   if (!btn) return;
   btn.textContent = currentUser ? currentUser.email : 'Log In';
+  updateBoardNavVisibility();
+}
+
+// The Board nav tab (desktop + mobile) is hidden entirely — not just gated on the page
+// itself — until someone is logged in AND an active/trialing LSN+ member.
+function updateBoardNavVisibility() {
+  const show = !!(currentUser && isPlusMember());
+  const nl = document.getElementById('nl-board');
+  const mb = document.getElementById('mob-board');
+  if (nl) nl.style.display = show ? '' : 'none';
+  if (mb) mb.style.display = show ? '' : 'none';
+  // If someone was on the Board and their membership just lapsed (or they logged out),
+  // bounce them back to the home page rather than leaving them on a now-hidden tab.
+  if (!show && currentPage === 'board') goPage('home');
 }
 
 // ── Top-right quick login panel ──
