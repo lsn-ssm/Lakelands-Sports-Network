@@ -65,6 +65,50 @@ nav { background:#ffffff; border-bottom:1px solid #e0e5eb; position:sticky; top:
 .device-row { display:flex; align-items:center; justify-content:space-between; gap:10px; padding:12px; border:1px solid var(--border2); border-radius:6px; margin-bottom:8px; cursor:pointer; transition:border-color 0.15s; }
 .device-row:hover { border-color:var(--gold); }
 
+/* BOX SCORE */
+.boxscore-overlay { display:none; position:fixed; inset:0; background:rgba(8,14,20,0.8); z-index:450; align-items:flex-start; justify-content:center; padding:24px 16px; overflow-y:auto; }
+.boxscore-overlay.open { display:flex; }
+.boxscore-panel { background:var(--navy); border:1px solid var(--border); border-radius:10px; width:100%; max-width:820px; margin:24px 0; position:relative; }
+.boxscore-close-btn { position:absolute; top:14px; right:14px; background:transparent; border:1px solid var(--border2); color:var(--gray2); width:32px; height:32px; border-radius:50%; font-size:16px; cursor:pointer; line-height:1; z-index:2; }
+.boxscore-close-btn:hover { color:#fff; border-color:rgba(255,255,255,0.4); }
+.boxscore-content { padding:28px 24px 36px; }
+.boxscore-matchup-head { text-align:center; margin-bottom:22px; padding-bottom:18px; border-bottom:1px solid var(--border2); }
+.boxscore-matchup-head .bs-meta { font-family:var(--D); font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--gray); margin-bottom:10px; }
+.boxscore-score-row { display:flex; align-items:center; justify-content:center; gap:22px; }
+.boxscore-score-row .bs-team { font-family:var(--D); font-weight:800; font-size:18px; }
+.boxscore-score-row .bs-pts { font-family:var(--D); font-weight:900; font-size:32px; }
+.boxscore-qtr-table { width:auto; margin:14px auto 0; border-collapse:collapse; font-size:12px; }
+.boxscore-qtr-table th, .boxscore-qtr-table td { padding:4px 10px; text-align:center; color:var(--gray2); }
+.boxscore-qtr-table th { font-family:var(--D); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--gray); border-bottom:1px solid var(--border2); }
+.boxscore-qtr-table td.bs-final { font-weight:800; color:#fff; }
+.boxscore-section-label { font-family:var(--D); font-weight:800; font-size:12px; letter-spacing:0.18em; text-transform:uppercase; color:var(--green3); margin:26px 0 12px; padding-bottom:8px; border-bottom:1px solid var(--border2); }
+.boxscore-team-stats-table { width:100%; border-collapse:collapse; font-size:13px; }
+.boxscore-team-stats-table th { font-family:var(--D); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--gray); text-align:right; padding:7px 4px; }
+.boxscore-team-stats-table th:first-child { text-align:left; }
+.boxscore-team-stats-table td { padding:8px 4px; border-bottom:1px solid var(--border); text-align:right; color:#fff; }
+.boxscore-team-stats-table td:first-child { text-align:left; color:var(--gray2); }
+.boxscore-play { display:flex; gap:12px; padding:10px 0; border-bottom:1px solid var(--border); font-size:13px; align-items:baseline; }
+.boxscore-play:last-child { border-bottom:none; }
+.boxscore-play .bs-play-time { font-family:var(--D); font-size:11px; color:var(--gray); white-space:nowrap; width:66px; flex-shrink:0; }
+.boxscore-play .bs-play-tag { font-family:var(--D); font-size:10px; font-weight:700; letter-spacing:0.08em; padding:2px 7px; border-radius:3px; white-space:nowrap; flex-shrink:0; }
+.boxscore-play .bs-play-tag.td { background:rgba(45,184,112,0.15); color:var(--green3); }
+.boxscore-play .bs-play-tag.pat { background:rgba(255,255,255,0.08); color:var(--gray2); }
+.boxscore-play .bs-play-tag.failed { background:rgba(220,80,80,0.15); color:var(--red); }
+.boxscore-play .bs-play-desc { color:#fff; flex:1; }
+.boxscore-play .bs-play-score { font-family:var(--D); font-weight:700; color:var(--gray2); white-space:nowrap; }
+.boxscore-team-block { margin-top:6px; }
+.boxscore-team-name { font-family:var(--D); font-weight:900; font-size:16px; text-transform:uppercase; margin:30px 0 4px; padding-top:20px; border-top:2px solid var(--green); }
+.boxscore-cat-label { font-family:var(--D); font-weight:700; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--gray2); margin:16px 0 6px; }
+.boxscore-stat-table { width:100%; border-collapse:collapse; font-size:12px; margin-bottom:4px; }
+.boxscore-stat-table th { font-family:var(--D); font-size:9px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--white); text-align:center; padding:6px 6px; background:#111d2a; white-space:nowrap; }
+.boxscore-stat-table th:nth-child(2) { text-align:left; }
+.boxscore-stat-table td { padding:6px 6px; text-align:center; border-bottom:1px solid var(--border); color:var(--gray2); white-space:nowrap; }
+.boxscore-stat-table td:nth-child(2) { text-align:left; color:#fff; }
+.boxscore-stat-table tr.bs-totals td { font-family:var(--D); font-weight:800; color:var(--green3); border-top:1px solid var(--green); }
+.has-boxscore { cursor:pointer; transition:border-color 0.15s; }
+.has-boxscore:hover { border-color:var(--gold); }
+.boxscore-tag { display:inline-flex; align-items:center; gap:4px; font-family:var(--D); font-size:10px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--gold); }
+
 /* PAGES */
 .page { display:none; } .page.active { display:block; }
 .wrap { max-width:1100px; margin:0 auto; padding:0 24px; }
@@ -458,6 +502,18 @@ textarea.form-input { resize:vertical; min-height:80px; font-family:var(--B); }
 .board-error-msg { font-size:12px; color:var(--red); margin-top:8px; }
 .board-username-setup { text-align:center; background:var(--navy2); border:1px solid var(--border); border-left:3px solid var(--gold); border-radius:8px; padding:32px 24px; max-width:440px; margin:16px auto; }
 
+/* ACCOUNT */
+.account-row { display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px solid var(--border); font-size:13px; }
+.account-row:last-child { border-bottom:none; }
+.account-row span:first-child { color:var(--gray); }
+.account-row span:last-child { color:#fff; font-weight:600; text-align:right; }
+.account-post-card { background:var(--navy2); border:1px solid var(--border); border-radius:8px; padding:14px 16px; margin-bottom:10px; }
+.account-post-meta { display:flex; justify-content:space-between; align-items:baseline; gap:10px; margin-bottom:6px; font-size:11px; color:var(--gray); text-transform:uppercase; letter-spacing:0.06em; }
+.account-post-body { font-size:13px; color:#fff; line-height:1.5; margin-bottom:10px; white-space:pre-wrap; word-break:break-word; }
+.account-post-actions { display:flex; gap:14px; }
+.account-post-actions a { font-size:11px; color:var(--gray2); cursor:pointer; text-decoration:none; letter-spacing:0.04em; }
+.account-post-actions a:hover { color:var(--green3); }
+
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="https://js.stripe.com/v3/"></script>
@@ -527,6 +583,14 @@ textarea.form-input { resize:vertical; min-height:80px; font-family:var(--B); }
     <p style="font-size:12px;color:var(--gray);margin-bottom:16px;">LSN+ accounts are limited to 3 devices at a time. Pick one to sign out to continue logging in here.</p>
     <div id="devicePickerList"></div>
     <button class="btn-outline" style="width:100%;margin-top:6px;" onclick="closeDevicePicker()">Cancel</button>
+  </div>
+</div>
+
+<!-- ══ BOX SCORE ══ -->
+<div class="boxscore-overlay" id="boxScoreOverlay" onclick="if(event.target===this) closeBoxScore()">
+  <div class="boxscore-panel">
+    <button class="boxscore-close-btn" onclick="closeBoxScore()">✕</button>
+    <div class="boxscore-content" id="boxScoreContent"><div class="loading">Loading</div></div>
   </div>
 </div>
 
@@ -742,7 +806,7 @@ textarea.form-input { resize:vertical; min-height:80px; font-family:var(--B); }
     </div>
     <div class="team-stats-bar" style="border-color:rgba(160,168,176,0.3);background:#0d1520;">
       <div class="tsb-item"><div class="tsb-val" style="color:#A0A8B0;">0</div><div class="tsb-label">2026 W</div></div>
-      <div class="tsb-item"><div class="tsb-val" style="color:#A0A8B0;">0</div><div class="tsb-label">2026 L</div></div>
+      <div class="tsb-item"><div class="tsb-val" style="color:#A0A8B0;">1</div><div class="tsb-label">2026 L</div></div>
       <div class="tsb-item"><div class="tsb-val" style="color:#A0A8B0;">—</div><div class="tsb-label">Region</div></div>
       <div class="tsb-item"><div class="tsb-val" style="color:#A0A8B0;">SCISA</div><div class="tsb-label">Class</div></div>
     </div>
@@ -853,7 +917,7 @@ textarea.form-input { resize:vertical; min-height:80px; font-family:var(--B); }
       </div>
     </div>
     <div class="team-stats-bar" style="border-color:rgba(107,20,20,0.3);background:#120404;">
-      <div class="tsb-item"><div class="tsb-val" style="color:#C9A84C;">0</div><div class="tsb-label">2026 W</div></div>
+      <div class="tsb-item"><div class="tsb-val" style="color:#C9A84C;">1</div><div class="tsb-label">2026 W</div></div>
       <div class="tsb-item"><div class="tsb-val" style="color:#C9A84C;">0</div><div class="tsb-label">2026 L</div></div>
       <div class="tsb-item"><div class="tsb-val" style="color:#C9A84C;">—</div><div class="tsb-label">Region</div></div>
       <div class="tsb-item"><div class="tsb-val" style="color:#C9A84C;">A</div><div class="tsb-label">Class</div></div>
@@ -1008,7 +1072,7 @@ textarea.form-input { resize:vertical; min-height:80px; font-family:var(--B); }
     </div>
     <div class="team-stats-bar" style="border-color:rgba(86,43,135,0.4);background:#0d0618;">
       <div class="tsb-item"><div class="tsb-val" style="color:#C9A8E8;">0</div><div class="tsb-label">2026 W</div></div>
-      <div class="tsb-item"><div class="tsb-val" style="color:#C9A8E8;">0</div><div class="tsb-label">2026 L</div></div>
+      <div class="tsb-item"><div class="tsb-val" style="color:#C9A8E8;">1</div><div class="tsb-label">2026 L</div></div>
       <div class="tsb-item"><div class="tsb-val" style="color:#C9A8E8;">—</div><div class="tsb-label">Region</div></div>
       <div class="tsb-item"><div class="tsb-val" style="color:#C9A8E8;">AA</div><div class="tsb-label">Class</div></div>
     </div>
@@ -1065,6 +1129,17 @@ textarea.form-input { resize:vertical; min-height:80px; font-family:var(--B); }
   </div>
   <div class="wrap" style="padding-top:8px;padding-bottom:48px;max-width:720px;">
     <div id="boardContainer"><div class="loading">Loading</div></div>
+  </div>
+</div>
+
+<!-- ══ ACCOUNT ══ -->
+<div class="page" id="page-account">
+  <div class="page-header">
+    <h2>My <span>Account</span></h2>
+    <p>Membership, billing, and your Board activity</p>
+  </div>
+  <div class="wrap" style="padding-top:8px;padding-bottom:48px;max-width:640px;">
+    <div id="accountContainer"><div class="loading">Loading</div></div>
   </div>
 </div>
 
@@ -1216,7 +1291,7 @@ textarea.form-input { resize:vertical; min-height:80px; font-family:var(--B); }
           <div class="st-rec">Overall</div>
           <div class="st-rec">Region</div>
         </div>
-        <div class="st-row lsn-bold" onclick="openTeam('abbeville')" style="cursor:pointer"><div class="st-team">Abbeville</div><div class="st-rec">0-0</div><div class="st-rec">0-0</div></div>
+        <div class="st-row lsn-bold" onclick="openTeam('abbeville')" style="cursor:pointer"><div class="st-team">Abbeville</div><div class="st-rec">1-0</div><div class="st-rec">0-0</div></div>
         <div class="st-row lsn-bold" onclick="openTeam('calhounfalls')" style="cursor:pointer"><div class="st-team">Calhoun Falls</div><div class="st-rec">0-0</div><div class="st-rec">0-0</div></div>
         <div class="st-row lsn-bold" onclick="openTeam('dixie')" style="cursor:pointer"><div class="st-team">Dixie</div><div class="st-rec">0-0</div><div class="st-rec">0-0</div></div>
         <div class="st-row lsn-bold" onclick="openTeam('mccormick')" style="cursor:pointer"><div class="st-team">McCormick</div><div class="st-rec">0-0</div><div class="st-rec">0-0</div></div>
@@ -1238,7 +1313,7 @@ textarea.form-input { resize:vertical; min-height:80px; font-family:var(--B); }
         <div class="st-row"><div class="st-team">American Leadership Academy</div><div class="st-rec">0-0</div><div class="st-rec">0-0</div></div>
         <div class="st-row"><div class="st-team">Orangeburg-Wilkinson</div><div class="st-rec">0-0</div><div class="st-rec">0-0</div></div>
         <div class="st-row"><div class="st-team">Pelion</div><div class="st-rec">0-0</div><div class="st-rec">0-0</div></div>
-        <div class="st-row lsn-bold" onclick="openTeam('saluda')" style="cursor:pointer"><div class="st-team">Saluda</div><div class="st-rec">0-0</div><div class="st-rec">0-0</div></div>
+        <div class="st-row lsn-bold" onclick="openTeam('saluda')" style="cursor:pointer"><div class="st-team">Saluda</div><div class="st-rec">0-1</div><div class="st-rec">0-0</div></div>
         <div class="st-row"><div class="st-team">Silver Bluff</div><div class="st-rec">0-0</div><div class="st-rec">0-0</div></div>
         <div class="st-row"><div class="st-team">Strom Thurmond</div><div class="st-rec">0-0</div><div class="st-rec">0-0</div></div>
       </div>
@@ -1288,7 +1363,7 @@ textarea.form-input { resize:vertical; min-height:80px; font-family:var(--B); }
           <div class="st-rec">Overall</div>
           <div class="st-rec">Region</div>
         </div>
-        <div class="st-row lsn-bold" onclick="openTeam('gwchristian')" style="cursor:pointer"><div class="st-team">Greenwood Christian</div><div class="st-rec">0-0</div><div class="st-rec">0-0</div></div>
+        <div class="st-row lsn-bold" onclick="openTeam('gwchristian')" style="cursor:pointer"><div class="st-team">Greenwood Christian</div><div class="st-rec">0-1</div><div class="st-rec">0-0</div></div>
         <div class="st-row"><div class="st-team">Orangeburg Prep</div><div class="st-rec">0-0</div><div class="st-rec">0-0</div></div>
         <div class="st-row"><div class="st-team">Pee Dee Academy</div><div class="st-rec">0-0</div><div class="st-rec">0-0</div></div>
         <div class="st-row"><div class="st-team">Spartanburg Day</div><div class="st-rec">0-0</div><div class="st-rec">0-0</div></div>
@@ -1470,14 +1545,14 @@ const SHEETS = {
 // ══════════════════════════════════════════
 const OTHER_TEAMS = [
   { id:'emerald',     badge:'EM', abbr:'EHS', name:'Emerald',      mascot:'Vikings',        cls:'AAA · Region 2',  w:0, l:0, lsn:true,  primary:'#5B2D8E', secondary:'#C8971F', textColor:'#fff' },
-  { id:'gwchristian', badge:'GCS',abbr:'GCS', name:'Greenwood Christian', mascot:'Hawks',   cls:'SCISA 2A',        w:0, l:0, lsn:false, primary:'#1B2A4A', secondary:'#A0A8B0', textColor:'#fff' },
+  { id:'gwchristian', badge:'GCS',abbr:'GCS', name:'Greenwood Christian', mascot:'Hawks',   cls:'SCISA 2A',        w:0, l:1, lsn:false, primary:'#1B2A4A', secondary:'#A0A8B0', textColor:'#fff' },
   { id:'wareshoals',  badge:'WS', abbr:'WS',  name:'Ware Shoals',  mascot:'Hornets',        cls:'A · Region 1',    w:0, l:0, lsn:false, primary:'#6B2D8B', secondary:'#FFD100', textColor:'#fff' },
   { id:'ninetysix',   badge:'96', abbr:'96',  name:'Ninety Six',   mascot:'Wildcats',       cls:'A · Region 1',    w:0, l:0, lsn:false, primary:'#741819', secondary:'#C7AC59', textColor:'#fff' },
-  { id:'abbeville',   badge:'AB', abbr:'AHS', name:'Abbeville',    mascot:'Panthers',       cls:'A · Region 1',    w:0, l:0, lsn:false, primary:'#1a2e44', secondary:'#c8a84b', textColor:'#fff' },
+  { id:'abbeville',   badge:'AB', abbr:'AHS', name:'Abbeville',    mascot:'Panthers',       cls:'A · Region 1',    w:1, l:0, lsn:false, primary:'#1a2e44', secondary:'#c8a84b', textColor:'#fff' },
   { id:'dixie',       badge:'DX', abbr:'DHS', name:'Dixie',        mascot:'Hornets',        cls:'A · Region 1',    w:0, l:0, lsn:false, primary:'#006400', secondary:'#FFD100', textColor:'#fff' },
   { id:'calhounfalls',badge:'CF', abbr:'CF',  name:'Calhoun Falls',mascot:'Blue Flashes',   cls:'A · Region 1',    w:0, l:0, lsn:false, primary:'#003087', secondary:'#FFD100', textColor:'#fff' },
   { id:'mccormick',   badge:'MC', abbr:'MC',  name:'McCormick',    mascot:'Chiefs',         cls:'A · Region 1',    w:0, l:0, lsn:false, primary:'#8B0000', secondary:'#ffffff', textColor:'#fff' },
-  { id:'saluda',      badge:'SA', abbr:'SAL', name:'Saluda',       mascot:'Tigers',         cls:'AA · Region 4',   w:0, l:0, lsn:false, primary:'#562B87', secondary:'#ffffff', textColor:'#fff' }
+  { id:'saluda',      badge:'SA', abbr:'SAL', name:'Saluda',       mascot:'Tigers',         cls:'AA · Region 4',   w:0, l:1, lsn:false, primary:'#562B87', secondary:'#ffffff', textColor:'#fff' }
 ];
 
 // ══════════════════════════════════════════
@@ -2165,7 +2240,11 @@ function renderGenericScheduleCard(g, teamName, scoreKey, primaryColor) {
   function ns(w){ return !played?'color:#fff;':w?'color:#fff;font-weight:900;':'color:rgba(255,255,255,0.45);font-weight:600;'; }
   function ps(w){ return !played?'':w?'color:#fff;font-weight:900;font-size:28px;':'color:rgba(255,255,255,0.45);font-weight:700;font-size:26px;'; }
   const gameLabel = gameTypeLabel(teamName, g.opp, false);
-  return '<div class="score-card" style="border-top:2px solid '+primaryColor+';">' +
+  const hasBox = !!g.boxScoreKey;
+  const cardAttrs = hasBox
+    ? ' class="score-card has-boxscore" onclick="openBoxScore(\''+g.boxScoreKey+'\')"'
+    : ' class="score-card"';
+  return '<div'+cardAttrs+' style="border-top:2px solid '+primaryColor+';">' +
     '<div class="sc-top"><span class="sc-label">Football · ' + gameLabel + '</span>' +
     (played?'<span class="sc-final">Final</span>':'<span class="sc-upcoming-tag">'+g.date+' · '+(g.time||'7:30 PM')+'</span>') +
     '</div><div class="sc-teams">' +
@@ -2177,7 +2256,7 @@ function renderGenericScheduleCard(g, teamName, scoreKey, primaryColor) {
     '<span style="color:var(--gray2)">'+g.date+' · '+(isAway?'Away':'Home')+'</span>' +
     '<span style="'+(played?(isWin?'color:var(--live);font-weight:700':'color:var(--red);font-weight:700'):'')+'">'+
     (played?(isWin?'W':'L')+' '+g[scoreKey]+'–'+g.oppScore:'')+'</span>' +
-    '</div></div>';
+    '</div>' + (hasBox ? '<div class="boxscore-tag">📋 Full Box Score — LSN+</div>' : '') + '</div>';
 }
 
 function _comingSoonHTML(title, msg) {
@@ -2591,6 +2670,135 @@ function refreshGatedStatsIfVisible() {
 }
 
 // ══════════════════════════════════════════
+// BOX SCORES — opened by clicking a game card on the Scores tab or a team's Schedule
+// tab. Full stat detail is an LSN+ benefit; everyone sees the final score + quarter
+// breakdown (that's already public on the card itself), but the team-stat comparison,
+// scoring log, and player tables are gated.
+// ══════════════════════════════════════════
+let boxScoreCurrentKey = null;
+
+function openBoxScore(key) {
+  boxScoreCurrentKey = key;
+  const overlay = document.getElementById('boxScoreOverlay');
+  const content = document.getElementById('boxScoreContent');
+  if (overlay) overlay.classList.add('open');
+  if (content) content.innerHTML = renderBoxScoreHTML(key);
+}
+
+function closeBoxScore() {
+  const overlay = document.getElementById('boxScoreOverlay');
+  if (overlay) overlay.classList.remove('open');
+  boxScoreCurrentKey = null;
+}
+
+function renderBoxScoreHTML(key) {
+  const data = BOX_SCORES[key];
+  if (!data) return '<div class="board-empty-state">Box score not available.</div>';
+  const headHTML = renderBoxScoreHeaderHTML(data);
+  return headHTML + (isPlusMember() ? renderBoxScoreFullHTML(data) : boxScorePaywallHTML());
+}
+
+function renderBoxScoreHeaderHTML(data) {
+  const awayWon = data.awayFinal > data.homeFinal;
+  const homeWon = data.homeFinal > data.awayFinal;
+  const qtrTable =
+    '<table class="boxscore-qtr-table">' +
+    '<tr><th></th>' + data.quarterLabels.map(l => '<th>' + escapeHtml(l) + '</th>').join('') + '<th>Final</th></tr>' +
+    '<tr><td style="text-align:left;color:var(--gray2);font-weight:700;">' + escapeHtml(data.awayTeam) + '</td>' +
+      data.awayByQtr.map(v => '<td>' + v + '</td>').join('') + '<td class="bs-final">' + data.awayFinal + '</td></tr>' +
+    '<tr><td style="text-align:left;color:var(--gray2);font-weight:700;">' + escapeHtml(data.homeTeam) + '</td>' +
+      data.homeByQtr.map(v => '<td>' + v + '</td>').join('') + '<td class="bs-final">' + data.homeFinal + '</td></tr>' +
+    '</table>';
+
+  return '<div class="boxscore-matchup-head">' +
+    '<div class="bs-meta">' + escapeHtml(data.weekLabel) + ' · ' + escapeHtml(data.dateLabel) + ' · Final</div>' +
+    '<div class="boxscore-score-row">' +
+      '<span class="bs-team" style="color:' + (awayWon ? '#fff' : 'var(--gray)') + ';">' + escapeHtml(data.awayTeam) + '</span>' +
+      '<span class="bs-pts" style="color:' + (awayWon ? 'var(--green3)' : 'var(--gray)') + ';">' + data.awayFinal + '</span>' +
+      '<span style="color:var(--gray);">–</span>' +
+      '<span class="bs-pts" style="color:' + (homeWon ? 'var(--green3)' : 'var(--gray)') + ';">' + data.homeFinal + '</span>' +
+      '<span class="bs-team" style="color:' + (homeWon ? '#fff' : 'var(--gray)') + ';">' + escapeHtml(data.homeTeam) + '</span>' +
+    '</div>' + qtrTable + '</div>';
+}
+
+// Shown in place of the detailed stats for non-members — the score/quarter header above
+// is always visible either way, so this only gates the stuff behind it.
+function boxScorePaywallHTML() {
+  return '<div style="text-align:center;background:var(--navy2);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:8px;padding:36px 24px;">' +
+    '<div style="font-size:28px;margin-bottom:10px;">🔒</div>' +
+    '<div style="font-family:var(--D);font-weight:800;font-size:16px;color:var(--white);margin-bottom:10px;">Full box scores are an LSN+ benefit</div>' +
+    '<div style="font-size:13px;color:var(--gray);margin-bottom:20px;line-height:1.6;">Team stats, the scoring log, and every player\'s full stat line from this game are available to LSN+ members.</div>' +
+    '<button class="plus-cta-btn" onclick="closeBoxScore();goPage(\'signup\');">Join LSN+ — $9.99/month</button>' +
+    '<div style="font-size:11px;color:var(--gray);margin-top:14px;">Already a member? <a href="#" onclick="event.preventDefault();closeBoxScore();toggleLoginPanel();" style="color:var(--gold);">Log in</a></div>' +
+    '</div>';
+}
+
+function renderBoxScoreFullHTML(data) {
+  let html = '<div class="boxscore-section-label">Team Stats</div>' + renderBoxScoreTeamStatsTable(data);
+  html += '<div class="boxscore-section-label">Scoring Summary</div>' + renderBoxScorePlaysHTML(data);
+  html += renderBoxScoreTeamBlockHTML(data.awayTeam, data.stats[data.awayTeam]);
+  html += renderBoxScoreTeamBlockHTML(data.homeTeam, data.stats[data.homeTeam]);
+  return html;
+}
+
+function renderBoxScoreTeamStatsTable(data) {
+  const rows = data.teamStats.map(s =>
+    '<tr><td>' + escapeHtml(s.label) + '</td><td>' + escapeHtml(s.away) + '</td><td>' + escapeHtml(s.home) + '</td></tr>'
+  ).join('');
+  return '<table class="boxscore-team-stats-table">' +
+    '<tr><th></th><th>' + escapeHtml(data.awayTeam) + '</th><th>' + escapeHtml(data.homeTeam) + '</th></tr>' +
+    rows + '</table>';
+}
+
+function renderBoxScorePlaysHTML(data) {
+  return data.scoringPlays.map(p => {
+    const tagClass = p.kind === 'TD' ? 'td' : (p.kind.indexOf('Failed') !== -1 ? 'failed' : 'pat');
+    return '<div class="boxscore-play">' +
+      '<span class="bs-play-time">Q' + p.qtr + ' ' + escapeHtml(p.time) + '</span>' +
+      '<span class="bs-play-tag ' + tagClass + '">' + escapeHtml(p.kind) + '</span>' +
+      '<span class="bs-play-desc">' + escapeHtml(p.team) + ' — ' + escapeHtml(p.desc) + '</span>' +
+      '<span class="bs-play-score">' + p.awayScore + '-' + p.homeScore + '</span>' +
+      '</div>';
+  }).join('');
+}
+
+const BOX_SCORE_CATEGORY_LABELS = [
+  ['rushing', 'Rushing'], ['passing', 'Passing'], ['receiving', 'Pass Receiving'],
+  ['punting', 'Punting'], ['puntReturns', 'Punt Returns'], ['kickoffs', 'Kickoffs'],
+  ['kickReturns', 'Kick Returns'], ['kicking', 'Kicking'], ['defensive', 'Defensive'],
+];
+
+function renderBoxScoreTeamBlockHTML(teamName, teamStats) {
+  if (!teamStats) return '';
+  let html = '<div class="boxscore-team-name">' + escapeHtml(teamName) + '</div>';
+  BOX_SCORE_CATEGORY_LABELS.forEach(([key, label]) => {
+    const cat = teamStats[key];
+    if (!cat || !cat.rows || !cat.rows.length) return;
+    html += '<div class="boxscore-cat-label">' + label + '</div>' + renderBoxScoreCategoryTable(cat);
+  });
+  return html;
+}
+
+function renderBoxScoreCategoryTable(cat) {
+  const headerHTML = cat.cols.map(([, label]) => '<th>' + escapeHtml(label) + '</th>').join('');
+  const bodyHTML = cat.rows.map(row =>
+    '<tr>' + cat.cols.map(([key]) => {
+      const v = row[key];
+      return '<td>' + (v === '' || v == null ? '–' : escapeHtml(String(v))) + '</td>';
+    }).join('') + '</tr>'
+  ).join('');
+  const totalsHTML = cat.totals
+    ? '<tr class="bs-totals">' + cat.cols.map(([key], i) => {
+        if (i === 0) return '<td></td>';
+        if (i === 1) return '<td>Total</td>';
+        const v = cat.totals[key];
+        return '<td>' + (v === '' || v == null ? '' : escapeHtml(String(v))) + '</td>';
+      }).join('') + '</tr>'
+    : '';
+  return '<table class="boxscore-stat-table"><tr>' + headerHTML + '</tr>' + bodyHTML + totalsHTML + '</table>';
+}
+
+// ══════════════════════════════════════════
 // LSN+ MEMBERS BOARD
 // ══════════════════════════════════════════
 const BOARD_IMAGE_BUCKET = 'board-images';
@@ -2687,7 +2895,7 @@ async function submitUsernameSetup() {
   }
 }
 
-function renderBoardPage() {
+function renderBoardPage(openPostId) {
   const container = document.getElementById('boardContainer');
   if (!container) return;
 
@@ -2704,10 +2912,17 @@ function renderBoardPage() {
     return;
   }
 
-  boardState.view = 'list';
-  boardState.currentPostId = null;
   container.innerHTML = '<div class="loading">Loading board</div>';
-  loadBoardPosts();
+  if (openPostId) {
+    // Skip straight to the thread instead of loading the list first — avoids the list's
+    // async render landing after this one and silently bouncing back to it.
+    boardState.currentPostId = openPostId;
+    openBoardThread(openPostId);
+  } else {
+    boardState.view = 'list';
+    boardState.currentPostId = null;
+    loadBoardPosts();
+  }
 }
 
 async function loadBoardPosts() {
@@ -3142,6 +3357,210 @@ function backToBoardList() {
   renderBoardList();
 }
 
+// ══════════════════════════════════════════
+// ACCOUNT PAGE — membership management + Board post history
+// ══════════════════════════════════════════
+let accountInfoCache = null;
+
+async function renderAccountPage() {
+  const container = document.getElementById('accountContainer');
+  if (!container) return;
+
+  if (!sbClient) {
+    container.innerHTML = '<div class="board-empty-state">Account system not configured yet.</div>';
+    return;
+  }
+  if (!currentUser) {
+    container.innerHTML = '<div class="board-empty-state">Log in to view your account.</div>';
+    return;
+  }
+
+  container.innerHTML = '<div class="loading">Loading account</div>';
+
+  try {
+    const { data: { session } } = await sbClient.auth.getSession();
+    const res = await fetch('/api/account-info', {
+      method: 'POST',
+      headers: { 'Authorization': 'Bearer ' + (session ? session.access_token : '') },
+    });
+    const info = await res.json();
+    if (!res.ok) throw new Error(info.error || 'Could not load account info');
+    accountInfoCache = info;
+  } catch (err) {
+    console.error('renderAccountPage error:', err);
+    container.innerHTML = '<div class="board-empty-state">Couldn\'t load your account. Try refreshing the page.</div>';
+    return;
+  }
+
+  container.innerHTML = renderAccountDetailsHTML(accountInfoCache) +
+    (isPlusMember() ? '<div id="myPostsSection" style="margin-top:24px;"><div class="loading">Loading your posts</div></div>' : '');
+
+  if (isPlusMember()) loadMyPostHistory();
+}
+
+function accountFormatDate(unixSeconds) {
+  if (!unixSeconds) return '';
+  return new Date(unixSeconds * 1000).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+}
+
+function renderAccountDetailsHTML(info) {
+  const statusLabel = {
+    active: 'Active', trialing: 'Free trial', comped: 'Free membership',
+    past_due: 'Payment past due', unpaid: 'Payment failed', canceled: 'Canceled', inactive: 'Free account',
+  }[info.subscriptionStatus] || info.subscriptionStatus;
+
+  let membershipHTML;
+  if (info.subscriptionStatus === 'comped') {
+    membershipHTML = `
+      <div class="account-row"><span>Plan</span><span>Free LSN+ membership</span></div>
+      <div class="account-row"><span>Status</span><span style="color:var(--gold);">${statusLabel}</span></div>
+      <button class="btn-outline" style="width:100%;margin-top:14px;" onclick="confirmCancelMembership()">Cancel Membership</button>`;
+  } else if (info.billing) {
+    const b = info.billing;
+    const dateLabel = accountFormatDate(b.currentPeriodEnd);
+    const isTroubled = b.status === 'past_due' || b.status === 'unpaid';
+    membershipHTML = `
+      <div class="account-row"><span>Plan</span><span>LSN+ — $9.99/month</span></div>
+      <div class="account-row"><span>Status</span><span style="color:${isTroubled ? 'var(--red)' : 'var(--gold)'};">${statusLabel}</span></div>
+      ${b.cancelAtPeriodEnd
+        ? `<div class="account-row"><span>Access ends</span><span>${dateLabel}</span></div>
+           <div style="font-size:12px;color:var(--gray);margin-top:10px;">Your membership is set to cancel — you'll keep full access until then.</div>
+           <button class="plus-cta-btn" style="width:100%;margin-top:14px;" onclick="submitCancelMembership(true)">Resume Membership</button>`
+        : `<div class="account-row"><span>${b.status === 'trialing' ? 'Trial ends' : 'Next billing date'}</span><span>${dateLabel}</span></div>
+           <button class="btn-outline" style="width:100%;margin-top:14px;" onclick="confirmCancelMembership()">Cancel Membership</button>`
+      }`;
+  } else {
+    membershipHTML = `
+      <div style="font-size:13px;color:var(--gray);margin-bottom:14px;">You're not currently an LSN+ member.</div>
+      <button class="plus-cta-btn" style="width:100%;" onclick="goPage('signup');">Join LSN+ — $9.99/month</button>`;
+  }
+
+  return `
+    <div class="board-card" style="margin-bottom:20px;">
+      <div class="section-title">Account</div>
+      <div class="account-row"><span>Email</span><span>${escapeHtml(info.email)}</span></div>
+      ${info.username ? `<div class="account-row"><span>Board username</span><span>${escapeHtml(info.username)}</span></div>` : ''}
+    </div>
+    <div class="board-card">
+      <div class="section-title">Membership</div>
+      ${membershipHTML}
+      <div class="board-error-msg" id="accountCancelError"></div>
+    </div>`;
+}
+
+function confirmCancelMembership() {
+  const isComped = accountInfoCache && accountInfoCache.subscriptionStatus === 'comped';
+  const msg = isComped
+    ? "Cancel your free LSN+ membership? You'll lose access right away."
+    : "Cancel your LSN+ membership? You'll keep full access through the end of your current billing period — it just won't renew after that.";
+  if (!confirm(msg)) return;
+  submitCancelMembership(false);
+}
+
+async function submitCancelMembership(resume) {
+  const errEl = document.getElementById('accountCancelError');
+  if (errEl) errEl.textContent = '';
+  try {
+    const { data: { session } } = await sbClient.auth.getSession();
+    const res = await fetch('/api/cancel-subscription', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + (session ? session.access_token : '') },
+      body: JSON.stringify({ resume: !!resume }),
+    });
+    const result = await res.json();
+    if (!res.ok) throw new Error(result.error || 'Could not update membership.');
+    // refreshAuthState() re-fetches subscription_status and re-renders the Account page
+    // (via its currentPage === 'account' hook) with the new state.
+    await refreshAuthState();
+  } catch (err) {
+    console.error('submitCancelMembership error:', err);
+    if (errEl) errEl.textContent = err.message || 'Could not update your membership. Try again.';
+  }
+}
+
+// ── My Board Activity — posts and replies this member has made, newest first ──
+function accountPostSnippet(item) {
+  if (item.body && item.body.trim()) {
+    const text = item.body.trim();
+    return text.length > 160 ? escapeHtml(text.slice(0, 160)) + '…' : escapeHtml(text);
+  }
+  if (item.poll_question) return '📊 Poll: ' + escapeHtml(item.poll_question);
+  if (item.image_path) return '📷 Photo';
+  if (item.link_url) return '🔗 Link shared';
+  return '(no content)';
+}
+
+async function loadMyPostHistory() {
+  const el = document.getElementById('myPostsSection');
+  if (!el || !currentUser) return;
+  try {
+    const [postsRes, repliesRes] = await Promise.all([
+      sbClient.from('board_posts').select('*').eq('user_id', currentUser.id).order('created_at', { ascending: false }),
+      sbClient.from('board_replies').select('*').eq('user_id', currentUser.id).order('created_at', { ascending: false }),
+    ]);
+    if (postsRes.error) throw postsRes.error;
+    if (repliesRes.error) throw repliesRes.error;
+
+    const items = [
+      ...(postsRes.data || []).map(p => ({ ...p, _type: 'post' })),
+      ...(repliesRes.data || []).map(r => ({ ...r, _type: 'reply' })),
+    ].sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+
+    el.innerHTML = renderMyPostHistoryHTML(items);
+  } catch (err) {
+    console.error('loadMyPostHistory error:', err);
+    el.innerHTML = '<div class="section-title">My Board Activity</div><div class="board-empty-state">Couldn\'t load your Board activity.</div>';
+  }
+}
+
+function renderMyPostHistoryHTML(items) {
+  const header = '<div class="section-title">My Board Activity</div>';
+  if (!items.length) {
+    return header + '<div class="board-empty-state">You haven\'t posted on the Board yet.</div>';
+  }
+  return header + items.map(item => {
+    const isPost = item._type === 'post';
+    const threadId = isPost ? item.id : item.post_id;
+    return `
+      <div class="account-post-card">
+        <div class="account-post-meta"><span>${isPost ? 'Post' : 'Reply'} · ${boardTimeAgo(item.created_at)}</span></div>
+        <div class="account-post-body">${accountPostSnippet(item)}</div>
+        <div class="account-post-actions">
+          <a onclick="viewMyPostThread('${threadId}')">View thread →</a>
+          <a onclick="${isPost ? 'deleteMyPost' : 'deleteMyReply'}('${item.id}')">Delete</a>
+        </div>
+      </div>`;
+  }).join('');
+}
+
+function viewMyPostThread(postId) {
+  goPage('board', { postId });
+}
+
+async function deleteMyPost(postId) {
+  if (!confirm('Delete this post? This also removes its replies.')) return;
+  try {
+    const { error } = await sbClient.from('board_posts').delete().eq('id', postId).eq('user_id', currentUser.id);
+    if (error) throw error;
+    loadMyPostHistory();
+  } catch (err) {
+    console.error('deleteMyPost error:', err);
+    alert('Could not delete post.');
+  }
+}
+
+async function deleteMyReply(replyId) {
+  if (!confirm('Delete this reply?')) return;
+  try {
+    const { error } = await sbClient.from('board_replies').delete().eq('id', replyId).eq('user_id', currentUser.id);
+    if (error) throw error;
+    loadMyPostHistory();
+  } catch (err) {
+    console.error('deleteMyReply error:', err);
+    alert('Could not delete reply.');
+  }
+}
+
 // ── Device fingerprinting (simple, browser-local — good enough for a soft 3-device cap) ──
 function getOrCreateDeviceId() {
   try {
@@ -3269,6 +3688,7 @@ async function refreshAuthState() {
   renderAccountNavButton();
   if (currentPage === 'signup') renderSignupPage();
   if (currentPage === 'board') renderBoardPage();
+  if (currentPage === 'account') renderAccountPage();
   refreshGatedStatsIfVisible();
 }
 
@@ -3314,6 +3734,7 @@ function renderLoginPanel() {
       <div style="font-family:var(--D);font-weight:800;font-size:14px;color:#fff;margin-bottom:6px;">${currentUser.email}</div>
       <div style="font-size:12px;color:${isPlusMember() ? 'var(--gold)' : 'var(--gray)'};margin-bottom:16px;">${isPlusMember() ? '✓ LSN+ member' : 'Free account'}</div>
       ${!isPlusMember() ? `<button class="plus-cta-btn" style="width:100%;margin-bottom:10px;" onclick="toggleLoginPanel(false);goPage('signup');">Join LSN+</button>` : ''}
+      <button class="btn-outline" style="width:100%;margin-bottom:10px;" onclick="toggleLoginPanel(false);goPage('account');">My Account</button>
       <button class="btn-outline" style="width:100%;" onclick="handleLogout()">Log Out</button>`;
     return;
   }
@@ -3907,7 +4328,10 @@ function resetTeamPageTabs(pageId) {
 let prevPage = 'home';
 let currentPage = 'home';
 
-function goPage(id) {
+// opts.postId — when navigating to the Board, optionally jump straight into a specific
+// thread instead of the list (used by the Account page's "My Board Posts" history so a
+// "View thread" link lands exactly where it says, not just on the board's front page).
+function goPage(id, opts) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.getElementById('page-'+id).classList.add('active');
   document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
@@ -3923,7 +4347,8 @@ function goPage(id) {
   if (id === 'teams') renderTeams();
   if (id === 'scores' && weeklyData) showWeek(currentWeek);
   if (id === 'signup') renderSignupPage();
-  if (id === 'board') renderBoardPage();
+  if (id === 'board') renderBoardPage(opts && opts.postId);
+  if (id === 'account') renderAccountPage();
   // Re-render every time the Stats tab is opened (not just once at page load) so it
   // always reflects current membership — same reasoning as the Board and Signup pages
   // above. Without this, logging in/redeeming a code on a different page left Stats
@@ -4370,17 +4795,17 @@ function renderSidebarFav() {
 // 2026 Greenwood schedule (hardcoded from your Google Sheet as fallback)
 // Wk 0 = Aug 21, then weeks 1-10 follow every Friday through playoffs
 const GW_SCHEDULE_2026 = [
-  { wk:0,  date:'Fri Aug 21', opp:'Riverside',      ha:'Home', time:'7:30 PM', result:'', gwScore:'', oppScore:'' },
-  { wk:1,  date:'Fri Aug 28', opp:'Spartanburg',    ha:'Home', time:'7:30 PM', result:'', gwScore:'', oppScore:'' },
-  { wk:2,  date:'Fri Sep 4',  opp:'North Augusta',  ha:'Away', time:'7:30 PM', result:'', gwScore:'', oppScore:'' },
-  { wk:3,  date:'Fri Sep 11', opp:'BYE',            ha:'',     time:'',        result:'', gwScore:'', oppScore:'' },
-  { wk:4,  date:'Fri Sep 18', opp:'Midland Valley', ha:'Home', time:'7:30 PM', result:'', gwScore:'', oppScore:'' },
-  { wk:5,  date:'Fri Sep 25', opp:'Belton-Honea Path', ha:'Away', time:'7:30 PM', result:'', gwScore:'', oppScore:'' },
-  { wk:6,  date:'Fri Oct 2',  opp:'Easley',         ha:'Home', time:'7:30 PM', result:'', gwScore:'', oppScore:'' },
-  { wk:7,  date:'Fri Oct 9',  opp:'Fountain Inn',   ha:'Away', time:'7:30 PM', result:'', gwScore:'', oppScore:'' },
-  { wk:8,  date:'Fri Oct 16', opp:'TL Hanna',       ha:'Home', time:'7:30 PM', result:'', gwScore:'', oppScore:'' },
-  { wk:9,  date:'Fri Oct 23', opp:'Westside',       ha:'Away', time:'7:30 PM', result:'', gwScore:'', oppScore:'' },
-  { wk:10, date:'Fri Oct 30', opp:'Laurens',        ha:'Away', time:'7:30 PM', result:'', gwScore:'', oppScore:'' },
+  { wk:1,  date:'Fri Aug 21', opp:'Riverside',      ha:'Home', time:'7:30 PM', result:'', gwScore:'', oppScore:'' },
+  { wk:2,  date:'Fri Aug 28', opp:'Spartanburg',    ha:'Home', time:'7:30 PM', result:'', gwScore:'', oppScore:'' },
+  { wk:3,  date:'Fri Sep 4',  opp:'North Augusta',  ha:'Away', time:'7:30 PM', result:'', gwScore:'', oppScore:'' },
+  { wk:4,  date:'Fri Sep 11', opp:'BYE',            ha:'',     time:'',        result:'', gwScore:'', oppScore:'' },
+  { wk:5,  date:'Fri Sep 18', opp:'Midland Valley', ha:'Home', time:'7:30 PM', result:'', gwScore:'', oppScore:'' },
+  { wk:6,  date:'Fri Sep 25', opp:'Belton-Honea Path', ha:'Away', time:'7:30 PM', result:'', gwScore:'', oppScore:'' },
+  { wk:7,  date:'Fri Oct 2',  opp:'Easley',         ha:'Home', time:'7:30 PM', result:'', gwScore:'', oppScore:'' },
+  { wk:8,  date:'Fri Oct 9',  opp:'Fountain Inn',   ha:'Away', time:'7:30 PM', result:'', gwScore:'', oppScore:'' },
+  { wk:9,  date:'Fri Oct 16', opp:'TL Hanna',       ha:'Home', time:'7:30 PM', result:'', gwScore:'', oppScore:'' },
+  { wk:10, date:'Fri Oct 23', opp:'Westside',       ha:'Away', time:'7:30 PM', result:'', gwScore:'', oppScore:'' },
+  { wk:11, date:'Fri Oct 30', opp:'Laurens',        ha:'Away', time:'7:30 PM', result:'', gwScore:'', oppScore:'' },
 ];
 const GW_2025 = [
   { 'Date':'Aug 29', 'Opponent':'Beaufort',      'Home/Away':'Home', 'GW Score':'48', 'OPP Score':'8',  'Result':'W', 'Type':'' },
@@ -4414,17 +4839,17 @@ const EMERALD_2025 = [
 
 // ── EMERALD 2026 SCHEDULE ──
 const EMERALD_2026 = [
-  { wk:0,  date:'Fri Aug 21', opp:'Crescent',         ha:'Away', time:'7:30 PM', result:'', eScore:'', oppScore:'' },
-  { wk:1,  date:'Fri Aug 28', opp:'Newberry',         ha:'Home', time:'7:30 PM', result:'', eScore:'', oppScore:'' },
-  { wk:2,  date:'Fri Sep 4',  opp:'Woodruff',         ha:'Away', time:'7:30 PM', result:'', eScore:'', oppScore:'' },
-  { wk:3,  date:'Fri Sep 11', opp:'Broome',           ha:'Home', time:'7:30 PM', result:'', eScore:'', oppScore:'' },
-  { wk:4,  date:'Fri Sep 18', opp:'Lexington',        ha:'Away', time:'7:30 PM', result:'', eScore:'', oppScore:'' },
-  { wk:5,  date:'Fri Sep 25', opp:'Saluda',           ha:'Home', time:'7:30 PM', result:'', eScore:'', oppScore:'' },
-  { wk:6,  date:'Fri Oct 2',  opp:'Palmetto',         ha:'Away', time:'7:30 PM', result:'', eScore:'', oppScore:'' },
-  { wk:7,  date:'Fri Oct 9',  opp:'Wren',               ha:'Away', time:'7:30 PM', result:'', eScore:'', oppScore:'' },
-  { wk:8,  date:'Fri Oct 16', opp:'BYE',                ha:'',     time:'',        result:'', eScore:'', oppScore:'' },
-  { wk:9,  date:'Fri Oct 23', opp:'Powdersville',       ha:'Home', time:'7:30 PM', result:'', eScore:'', oppScore:'' },
-  { wk:10, date:'Fri Oct 30', opp:'Belton-Honea Path',  ha:'Home', time:'7:30 PM', result:'', eScore:'', oppScore:'' },
+  { wk:1,  date:'Fri Aug 21', opp:'Crescent',         ha:'Away', time:'7:30 PM', result:'', eScore:'', oppScore:'' },
+  { wk:2,  date:'Fri Aug 28', opp:'Newberry',         ha:'Home', time:'7:30 PM', result:'', eScore:'', oppScore:'' },
+  { wk:3,  date:'Fri Sep 4',  opp:'Woodruff',         ha:'Away', time:'7:30 PM', result:'', eScore:'', oppScore:'' },
+  { wk:4,  date:'Fri Sep 11', opp:'Broome',           ha:'Home', time:'7:30 PM', result:'', eScore:'', oppScore:'' },
+  { wk:5,  date:'Fri Sep 18', opp:'Lexington',        ha:'Away', time:'7:30 PM', result:'', eScore:'', oppScore:'' },
+  { wk:6,  date:'Fri Sep 25', opp:'Saluda',           ha:'Home', time:'7:30 PM', result:'', eScore:'', oppScore:'' },
+  { wk:7,  date:'Fri Oct 2',  opp:'Palmetto',         ha:'Away', time:'7:30 PM', result:'', eScore:'', oppScore:'' },
+  { wk:8,  date:'Fri Oct 9',  opp:'Wren',               ha:'Away', time:'7:30 PM', result:'', eScore:'', oppScore:'' },
+  { wk:9,  date:'Fri Oct 16', opp:'BYE',                ha:'',     time:'',        result:'', eScore:'', oppScore:'' },
+  { wk:10, date:'Fri Oct 23', opp:'Powdersville',       ha:'Home', time:'7:30 PM', result:'', eScore:'', oppScore:'' },
+  { wk:11, date:'Fri Oct 30', opp:'Belton-Honea Path',  ha:'Home', time:'7:30 PM', result:'', eScore:'', oppScore:'' },
 ];
 
 // ── GW CHRISTIAN 2025 RESULTS (Source: MaxPreps) ──
@@ -4444,20 +4869,21 @@ const GCS_2025 = [
 ];
 
 // ── GW CHRISTIAN 2026 SCHEDULE (SCISA — games on Thu/Fri) ──
-// Week 0 has TWO games (Aug 14 + Aug 21) — SCISA start
+// Week 0 is just the season-opening Northside Christian game (Aug 14) — every other
+// team's own "week 0" batch (including GCS's own Aug 21 McCormick game) is Week 1.
 const GCS_2026 = [
-  { wk:'0a', date:'Fri Aug 14', opp:'Northside Christian', ha:'Away', time:'7:30 PM', result:'', gScore:'', oppScore:'' },
-  { wk:'0b', date:'Fri Aug 21', opp:'McCormick',           ha:'Home', time:'7:30 PM', result:'', gScore:'', oppScore:'' },
-  { wk:1,    date:'Fri Aug 28', opp:'Dixie',               ha:'Away', time:'7:30 PM', result:'', gScore:'', oppScore:'' },
-  { wk:2,    date:'Fri Sep 4',  opp:'Calhoun Falls',       ha:'Home', time:'7:30 PM', result:'', gScore:'', oppScore:'' },
-  { wk:3,    date:'Fri Sep 11', opp:'Williamsburg',        ha:'Home', time:'7:30 PM', result:'', gScore:'', oppScore:'' },
-  { wk:4,    date:'Fri Sep 18', opp:'Orangeburg Prep',     ha:'Away', time:'7:30 PM', result:'', gScore:'', oppScore:'' },
-  { wk:5,    date:'Fri Sep 25', opp:'BYE',                 ha:'',     time:'',        result:'', gScore:'', oppScore:'' },
-  { wk:6,    date:'Fri Oct 2',  opp:'Thomas Sumter',       ha:'Home', time:'7:30 PM', result:'', gScore:'', oppScore:'' },
-  { wk:7,    date:'Fri Oct 9',  opp:'Pee Dee Academy',     ha:'Away', time:'7:30 PM', result:'', gScore:'', oppScore:'' },
-  { wk:8,    date:'Fri Oct 16', opp:'BYE',                 ha:'',     time:'',        result:'', gScore:'', oppScore:'' },
-  { wk:9,    date:'Fri Oct 23', opp:'Camden Military',     ha:'Home', time:'7:30 PM', result:'', gScore:'', oppScore:'' },
-  { wk:10,   date:'Fri Oct 30', opp:'Spartanburg Day',     ha:'Away', time:'7:30 PM', result:'', gScore:'', oppScore:'' },
+  { wk:0,   date:'Fri Aug 14', opp:'Northside Christian', ha:'Away', time:'7:30 PM', result:'L', gScore:'20', oppScore:'21' },
+  { wk:1,   date:'Fri Aug 21', opp:'McCormick',           ha:'Home', time:'7:30 PM', result:'', gScore:'', oppScore:'' },
+  { wk:2,   date:'Fri Aug 28', opp:'Dixie',               ha:'Away', time:'7:30 PM', result:'', gScore:'', oppScore:'' },
+  { wk:3,   date:'Fri Sep 4',  opp:'Calhoun Falls',       ha:'Home', time:'7:30 PM', result:'', gScore:'', oppScore:'' },
+  { wk:4,   date:'Fri Sep 11', opp:'Williamsburg',        ha:'Home', time:'7:30 PM', result:'', gScore:'', oppScore:'' },
+  { wk:5,   date:'Fri Sep 18', opp:'Orangeburg Prep',     ha:'Away', time:'7:30 PM', result:'', gScore:'', oppScore:'' },
+  { wk:6,   date:'Fri Sep 25', opp:'BYE',                 ha:'',     time:'',        result:'', gScore:'', oppScore:'' },
+  { wk:7,   date:'Fri Oct 2',  opp:'Thomas Sumter',       ha:'Home', time:'7:30 PM', result:'', gScore:'', oppScore:'' },
+  { wk:8,   date:'Fri Oct 9',  opp:'Pee Dee Academy',     ha:'Away', time:'7:30 PM', result:'', gScore:'', oppScore:'' },
+  { wk:9,   date:'Fri Oct 16', opp:'BYE',                 ha:'',     time:'',        result:'', gScore:'', oppScore:'' },
+  { wk:10,  date:'Fri Oct 23', opp:'Camden Military',     ha:'Home', time:'7:30 PM', result:'', gScore:'', oppScore:'' },
+  { wk:11,  date:'Fri Oct 30', opp:'Spartanburg Day',     ha:'Away', time:'7:30 PM', result:'', gScore:'', oppScore:'' },
 ];
 
 // ── WARE SHOALS 2025 RESULTS (Source: MaxPreps) ──
@@ -4478,16 +4904,16 @@ const WS_2025 = [
 
 // ── WARE SHOALS 2026 SCHEDULE (Source: MaxPreps) ──
 const WS_2026 = [
-  { wk:1,  date:'Fri Aug 28', opp:'Carolina Academy', ha:'Home', time:'7:30 PM', result:'', wsScore:'', oppScore:'' },
-  { wk:2,  date:'Fri Sep 4',  opp:'Thornwell',         ha:'Home', time:'7:30 PM', result:'', wsScore:'', oppScore:'' },
-  { wk:3,  date:'Fri Sep 11', opp:'Whitmire',          ha:'Away', time:'7:30 PM', result:'', wsScore:'', oppScore:'' },
-  { wk:4,  date:'Fri Sep 18', opp:'Landrum',           ha:'Away', time:'7:30 PM', result:'', wsScore:'', oppScore:'' },
-  { wk:5,  date:'Fri Sep 25', opp:'BYE',               ha:'',     time:'',        result:'', wsScore:'', oppScore:'' },
-  { wk:6,  date:'Fri Oct 2',  opp:'Ninety Six',        ha:'Home', time:'7:30 PM', result:'', wsScore:'', oppScore:'' },
-  { wk:7,  date:'Fri Oct 9',  opp:'Calhoun Falls',     ha:'Away', time:'7:30 PM', result:'', wsScore:'', oppScore:'' },
-  { wk:8,  date:'Fri Oct 16', opp:'Abbeville',         ha:'Away', time:'7:30 PM', result:'', wsScore:'', oppScore:'' },
-  { wk:9,  date:'Fri Oct 23', opp:'McCormick',         ha:'Away', time:'7:30 PM', result:'', wsScore:'', oppScore:'' },
-  { wk:10, date:'Fri Oct 30', opp:'Dixie',             ha:'Home', time:'7:30 PM', result:'', wsScore:'', oppScore:'' },
+  { wk:2,  date:'Fri Aug 28', opp:'Carolina Academy', ha:'Home', time:'7:30 PM', result:'', wsScore:'', oppScore:'' },
+  { wk:3,  date:'Fri Sep 4',  opp:'Thornwell',         ha:'Home', time:'7:30 PM', result:'', wsScore:'', oppScore:'' },
+  { wk:4,  date:'Fri Sep 11', opp:'Whitmire',          ha:'Away', time:'7:30 PM', result:'', wsScore:'', oppScore:'' },
+  { wk:5,  date:'Fri Sep 18', opp:'Landrum',           ha:'Away', time:'7:30 PM', result:'', wsScore:'', oppScore:'' },
+  { wk:6,  date:'Fri Sep 25', opp:'BYE',               ha:'',     time:'',        result:'', wsScore:'', oppScore:'' },
+  { wk:7,  date:'Fri Oct 2',  opp:'Ninety Six',        ha:'Home', time:'7:30 PM', result:'', wsScore:'', oppScore:'' },
+  { wk:8,  date:'Fri Oct 9',  opp:'Calhoun Falls',     ha:'Away', time:'7:30 PM', result:'', wsScore:'', oppScore:'' },
+  { wk:9,  date:'Fri Oct 16', opp:'Abbeville',         ha:'Away', time:'7:30 PM', result:'', wsScore:'', oppScore:'' },
+  { wk:10, date:'Fri Oct 23', opp:'McCormick',         ha:'Away', time:'7:30 PM', result:'', wsScore:'', oppScore:'' },
+  { wk:11, date:'Fri Oct 30', opp:'Dixie',             ha:'Home', time:'7:30 PM', result:'', wsScore:'', oppScore:'' },
 ];
 
 // ── NINETY SIX ──
@@ -4505,17 +4931,17 @@ const NS_2025 = [
   { 'Date':'Nov 7',  'Opponent':'Andrew Jackson',           'Home/Away':'Away', 'NS Score':'15', 'OPP Score':'34', 'Result':'L', 'Type':'Playoff' },
 ];
 const NS_2026 = [
-  { wk:0,  date:'Fri Aug 21', opp:'Mid-Carolina',  ha:'Away', time:'7:30 PM', result:'', nsScore:'', oppScore:'' },
-  { wk:1,  date:'Fri Aug 28', opp:'Landrum',        ha:'Home', time:'7:30 PM', result:'', nsScore:'', oppScore:'' },
-  { wk:2,  date:'Fri Sep 4',  opp:'Wagener-Salley', ha:'Home', time:'7:30 PM', result:'', nsScore:'', oppScore:'' },
-  { wk:3,  date:'Fri Sep 11', opp:'Saluda',         ha:'Home', time:'7:30 PM', result:'', nsScore:'', oppScore:'' },
-  { wk:4,  date:'Fri Sep 18', opp:'Calhoun Falls',  ha:'Home', time:'7:30 PM', result:'', nsScore:'', oppScore:'' },
-  { wk:5,  date:'Fri Sep 25', opp:'McCormick',      ha:'Away', time:'7:30 PM', result:'', nsScore:'', oppScore:'' },
-  { wk:6,  date:'Fri Oct 2',  opp:'Ware Shoals',    ha:'Away', time:'7:30 PM', result:'', nsScore:'', oppScore:'' },
-  { wk:7,  date:'Fri Oct 9',  opp:'Thornwell',      ha:'Home', time:'7:30 PM', result:'', nsScore:'', oppScore:'' },
-  { wk:8,  date:'Fri Oct 16', opp:'Dixie',          ha:'Away', time:'7:30 PM', result:'', nsScore:'', oppScore:'' },
-  { wk:9,  date:'Fri Oct 23', opp:'BYE',            ha:'',     time:'',        result:'', nsScore:'', oppScore:'' },
-  { wk:10, date:'Fri Oct 30', opp:'Abbeville',      ha:'Home', time:'7:30 PM', result:'', nsScore:'', oppScore:'' },
+  { wk:1,  date:'Fri Aug 21', opp:'Mid-Carolina',  ha:'Away', time:'7:30 PM', result:'', nsScore:'', oppScore:'' },
+  { wk:2,  date:'Fri Aug 28', opp:'Landrum',        ha:'Home', time:'7:30 PM', result:'', nsScore:'', oppScore:'' },
+  { wk:3,  date:'Fri Sep 4',  opp:'Wagener-Salley', ha:'Home', time:'7:30 PM', result:'', nsScore:'', oppScore:'' },
+  { wk:4,  date:'Fri Sep 11', opp:'Saluda',         ha:'Home', time:'7:30 PM', result:'', nsScore:'', oppScore:'' },
+  { wk:5,  date:'Fri Sep 18', opp:'Calhoun Falls',  ha:'Home', time:'7:30 PM', result:'', nsScore:'', oppScore:'' },
+  { wk:6,  date:'Fri Sep 25', opp:'McCormick',      ha:'Away', time:'7:30 PM', result:'', nsScore:'', oppScore:'' },
+  { wk:7,  date:'Fri Oct 2',  opp:'Ware Shoals',    ha:'Away', time:'7:30 PM', result:'', nsScore:'', oppScore:'' },
+  { wk:8,  date:'Fri Oct 9',  opp:'Thornwell',      ha:'Home', time:'7:30 PM', result:'', nsScore:'', oppScore:'' },
+  { wk:9,  date:'Fri Oct 16', opp:'Dixie',          ha:'Away', time:'7:30 PM', result:'', nsScore:'', oppScore:'' },
+  { wk:10, date:'Fri Oct 23', opp:'BYE',            ha:'',     time:'',        result:'', nsScore:'', oppScore:'' },
+  { wk:11, date:'Fri Oct 30', opp:'Abbeville',      ha:'Home', time:'7:30 PM', result:'', nsScore:'', oppScore:'' },
 ];
 
 // ── ABBEVILLE ──
@@ -4535,17 +4961,17 @@ const AHS_2025 = [
 ];
 const AHS_2026 = [
   { wk:'pre', date:'Fri Aug 14', opp:'Lincoln County',  ha:'Away', time:'7:30 PM', result:'', ahsScore:'', oppScore:'' },
-  { wk:0,     date:'Fri Aug 21', opp:'Saluda',           ha:'Away', time:'7:30 PM', result:'', ahsScore:'', oppScore:'' },
-  { wk:1,     date:'Fri Aug 28', opp:'Strom Thurmond',   ha:'Home', time:'7:30 PM', result:'', ahsScore:'', oppScore:'' },
-  { wk:2,     date:'Fri Sep 4',  opp:'Crescent',         ha:'Away', time:'7:30 PM', result:'', ahsScore:'', oppScore:'' },
-  { wk:3,     date:'Fri Sep 11', opp:'BHP',              ha:'Home', time:'7:30 PM', result:'', ahsScore:'', oppScore:'' },
-  { wk:4,     date:'Fri Sep 18', opp:'BYE',              ha:'',     time:'',        result:'', ahsScore:'', oppScore:'' },
-  { wk:5,     date:'Fri Sep 25', opp:'Calhoun Falls',    ha:'Home', time:'7:30 PM', result:'', ahsScore:'', oppScore:'' },
-  { wk:6,     date:'Fri Oct 2',  opp:'Dixie',            ha:'Home', time:'7:30 PM', result:'', ahsScore:'', oppScore:'' },
-  { wk:7,     date:'Fri Oct 9',  opp:'McCormick',        ha:'Away', time:'7:30 PM', result:'', ahsScore:'', oppScore:'' },
-  { wk:8,     date:'Fri Oct 16', opp:'Ware Shoals',      ha:'Home', time:'7:30 PM', result:'', ahsScore:'', oppScore:'' },
-  { wk:9,     date:'Fri Oct 23', opp:'Thornwell',        ha:'Away', time:'7:30 PM', result:'', ahsScore:'', oppScore:'' },
-  { wk:10,    date:'Fri Oct 30', opp:'Ninety Six',       ha:'Away', time:'7:30 PM', result:'', ahsScore:'', oppScore:'' },
+  { wk:1,     date:'Fri Aug 21', opp:'Saluda',           ha:'Away', time:'7:30 PM', result:'W', ahsScore:'35', oppScore:'33', boxScoreKey:'ahs-saluda-2026-wk1' },
+  { wk:2,     date:'Fri Aug 28', opp:'Strom Thurmond',   ha:'Home', time:'7:30 PM', result:'', ahsScore:'', oppScore:'' },
+  { wk:3,     date:'Fri Sep 4',  opp:'Crescent',         ha:'Away', time:'7:30 PM', result:'', ahsScore:'', oppScore:'' },
+  { wk:4,     date:'Fri Sep 11', opp:'BHP',              ha:'Home', time:'7:30 PM', result:'', ahsScore:'', oppScore:'' },
+  { wk:5,     date:'Fri Sep 18', opp:'BYE',              ha:'',     time:'',        result:'', ahsScore:'', oppScore:'' },
+  { wk:6,     date:'Fri Sep 25', opp:'Calhoun Falls',    ha:'Home', time:'7:30 PM', result:'', ahsScore:'', oppScore:'' },
+  { wk:7,     date:'Fri Oct 2',  opp:'Dixie',            ha:'Home', time:'7:30 PM', result:'', ahsScore:'', oppScore:'' },
+  { wk:8,     date:'Fri Oct 9',  opp:'McCormick',        ha:'Away', time:'7:30 PM', result:'', ahsScore:'', oppScore:'' },
+  { wk:9,     date:'Fri Oct 16', opp:'Ware Shoals',      ha:'Home', time:'7:30 PM', result:'', ahsScore:'', oppScore:'' },
+  { wk:10,    date:'Fri Oct 23', opp:'Thornwell',        ha:'Away', time:'7:30 PM', result:'', ahsScore:'', oppScore:'' },
+  { wk:11,    date:'Fri Oct 30', opp:'Ninety Six',       ha:'Away', time:'7:30 PM', result:'', ahsScore:'', oppScore:'' },
 ];
 
 const AHS_STATS_2025 = {
@@ -4661,16 +5087,16 @@ const DHS_2025 = [
 ];
 // ── DIXIE 2026 SCHEDULE (Source: MaxPreps) ──
 const DHS_2026 = [
-  { wk:1,  date:'Fri Aug 28', opp:'Greenwood Christian', ha:'Home', time:'7:30 PM', result:'', dhsScore:'', oppScore:'' },
-  { wk:2,  date:'Fri Sep 4',  opp:'Fox Creek',            ha:'Home', time:'7:30 PM', result:'', dhsScore:'', oppScore:'' },
-  { wk:3,  date:'Fri Sep 11', opp:'Ridge Spring-Monetta', ha:'Away', time:'7:30 PM', result:'', dhsScore:'', oppScore:'' },
-  { wk:4,  date:'Fri Sep 18', opp:'McCormick',            ha:'Home', time:'7:30 PM', result:'', dhsScore:'', oppScore:'' },
-  { wk:5,  date:'Fri Sep 25', opp:'Thornwell',            ha:'Away', time:'7:30 PM', result:'', dhsScore:'', oppScore:'' },
-  { wk:6,  date:'Fri Oct 2',  opp:'Abbeville',            ha:'Away', time:'7:30 PM', result:'', dhsScore:'', oppScore:'' },
-  { wk:7,  date:'Fri Oct 9',  opp:'BYE',                  ha:'',     time:'',        result:'', dhsScore:'', oppScore:'' },
-  { wk:8,  date:'Fri Oct 16', opp:'Ninety Six',           ha:'Home', time:'7:30 PM', result:'', dhsScore:'', oppScore:'' },
-  { wk:9,  date:'Fri Oct 23', opp:'Calhoun Falls',        ha:'Home', time:'7:30 PM', result:'', dhsScore:'', oppScore:'' },
-  { wk:10, date:'Fri Oct 30', opp:'Ware Shoals',          ha:'Away', time:'7:30 PM', result:'', dhsScore:'', oppScore:'' },
+  { wk:2,  date:'Fri Aug 28', opp:'Greenwood Christian', ha:'Home', time:'7:30 PM', result:'', dhsScore:'', oppScore:'' },
+  { wk:3,  date:'Fri Sep 4',  opp:'Fox Creek',            ha:'Home', time:'7:30 PM', result:'', dhsScore:'', oppScore:'' },
+  { wk:4,  date:'Fri Sep 11', opp:'Ridge Spring-Monetta', ha:'Away', time:'7:30 PM', result:'', dhsScore:'', oppScore:'' },
+  { wk:5,  date:'Fri Sep 18', opp:'McCormick',            ha:'Home', time:'7:30 PM', result:'', dhsScore:'', oppScore:'' },
+  { wk:6,  date:'Fri Sep 25', opp:'Thornwell',            ha:'Away', time:'7:30 PM', result:'', dhsScore:'', oppScore:'' },
+  { wk:7,  date:'Fri Oct 2',  opp:'Abbeville',            ha:'Away', time:'7:30 PM', result:'', dhsScore:'', oppScore:'' },
+  { wk:8,  date:'Fri Oct 9',  opp:'BYE',                  ha:'',     time:'',        result:'', dhsScore:'', oppScore:'' },
+  { wk:9,  date:'Fri Oct 16', opp:'Ninety Six',           ha:'Home', time:'7:30 PM', result:'', dhsScore:'', oppScore:'' },
+  { wk:10, date:'Fri Oct 23', opp:'Calhoun Falls',        ha:'Home', time:'7:30 PM', result:'', dhsScore:'', oppScore:'' },
+  { wk:11, date:'Fri Oct 30', opp:'Ware Shoals',          ha:'Away', time:'7:30 PM', result:'', dhsScore:'', oppScore:'' },
 ];
 
 // ── CALHOUN FALLS 2025 RESULTS (Source: MaxPreps) ──
@@ -4689,16 +5115,16 @@ const CF_2025 = [
 ];
 // ── CALHOUN FALLS 2026 SCHEDULE (Source: MaxPreps) ──
 const CF_2026 = [
-  // wk:2 confirmed from GCS schedule (GCS Home vs Calhoun Falls)
-  { wk:2, date:'Fri Sep 4',  opp:'Greenwood Christian',   ha:'Away', time:'7:30 PM', result:'', cfScore:'', oppScore:'' },
-  { wk:3,  date:'Fri Sep 11', opp:'Greenville Hurricanes', ha:'Home', time:'7:30 PM', result:'', cfScore:'', oppScore:'' },
-  // wk:4 confirmed from Ninety Six schedule (NS Home vs Calhoun Falls)
-  { wk:4, date:'Fri Sep 18', opp:'Ninety Six',            ha:'Away', time:'7:30 PM', result:'', cfScore:'', oppScore:'' },
-  { wk:5,  date:'Fri Sep 25', opp:'Abbeville',             ha:'Away', time:'7:30 PM', result:'', cfScore:'', oppScore:'' },
-  { wk:6,  date:'Fri Oct 2',  opp:'Thornwell',             ha:'Home', time:'7:30 PM', result:'', cfScore:'', oppScore:'' },
-  { wk:7,  date:'Fri Oct 9',  opp:'Ware Shoals',           ha:'Home', time:'7:30 PM', result:'', cfScore:'', oppScore:'' },
-  { wk:8,  date:'Fri Oct 16', opp:'McCormick',             ha:'Home', time:'7:30 PM', result:'', cfScore:'', oppScore:'' },
-  { wk:9,  date:'Fri Oct 23', opp:'Dixie',                 ha:'Away', time:'7:30 PM', result:'', cfScore:'', oppScore:'' },
+  // wk:3 confirmed from GCS schedule (GCS Home vs Calhoun Falls)
+  { wk:3, date:'Fri Sep 4',  opp:'Greenwood Christian',   ha:'Away', time:'7:30 PM', result:'', cfScore:'', oppScore:'' },
+  { wk:4,  date:'Fri Sep 11', opp:'Greenville Hurricanes', ha:'Home', time:'7:30 PM', result:'', cfScore:'', oppScore:'' },
+  // wk:5 confirmed from Ninety Six schedule (NS Home vs Calhoun Falls)
+  { wk:5, date:'Fri Sep 18', opp:'Ninety Six',            ha:'Away', time:'7:30 PM', result:'', cfScore:'', oppScore:'' },
+  { wk:6,  date:'Fri Sep 25', opp:'Abbeville',             ha:'Away', time:'7:30 PM', result:'', cfScore:'', oppScore:'' },
+  { wk:7,  date:'Fri Oct 2',  opp:'Thornwell',             ha:'Home', time:'7:30 PM', result:'', cfScore:'', oppScore:'' },
+  { wk:8,  date:'Fri Oct 9',  opp:'Ware Shoals',           ha:'Home', time:'7:30 PM', result:'', cfScore:'', oppScore:'' },
+  { wk:9,  date:'Fri Oct 16', opp:'McCormick',             ha:'Home', time:'7:30 PM', result:'', cfScore:'', oppScore:'' },
+  { wk:10,  date:'Fri Oct 23', opp:'Dixie',                 ha:'Away', time:'7:30 PM', result:'', cfScore:'', oppScore:'' },
 ];
 
 // ── McCORMICK ──
@@ -4717,17 +5143,17 @@ const MC_2025 = [
 ];
 // ── McCORMICK 2026 SCHEDULE (Source: MaxPreps) ──
 const MC_2026 = [
-  // wk:0 confirmed from GCS schedule (GCS Home vs McCormick, wk 0b Aug 21)
-  { wk:0, date:'Fri Aug 21', opp:'Greenwood Christian', ha:'Away', time:'7:30 PM', result:'', mcScore:'', oppScore:'' },
-  { wk:1,  date:'Fri Aug 28', opp:'Ridge Spring-Monetta', ha:'Home', time:'7:30 PM', result:'', mcScore:'', oppScore:'' },
-  { wk:3,  date:'Fri Sep 11', opp:'Washington-Wilkes',    ha:'Home', time:'7:30 PM', result:'', mcScore:'', oppScore:'' },
-  { wk:4,  date:'Fri Sep 18', opp:'Dixie',                ha:'Away', time:'7:30 PM', result:'', mcScore:'', oppScore:'' },
-  // wk:5 confirmed from Ninety Six schedule (NS Away at McCormick)
-  { wk:5, date:'Fri Sep 25', opp:'Ninety Six',          ha:'Home', time:'7:30 PM', result:'', mcScore:'', oppScore:'' },
-  { wk:7,  date:'Fri Oct 9',  opp:'Abbeville',            ha:'Home', time:'7:30 PM', result:'', mcScore:'', oppScore:'' },
-  { wk:8,  date:'Fri Oct 16', opp:'Calhoun Falls',        ha:'Away', time:'7:30 PM', result:'', mcScore:'', oppScore:'' },
-  { wk:9,  date:'Fri Oct 23', opp:'Ware Shoals',          ha:'Home', time:'7:30 PM', result:'', mcScore:'', oppScore:'' },
-  { wk:10, date:'Fri Oct 30', opp:'Thornwell',            ha:'Away', time:'7:30 PM', result:'', mcScore:'', oppScore:'' },
+  // wk:1 confirmed from GCS schedule (GCS Home vs McCormick, now Week 1 Aug 21)
+  { wk:1, date:'Fri Aug 21', opp:'Greenwood Christian', ha:'Away', time:'7:30 PM', result:'', mcScore:'', oppScore:'' },
+  { wk:2,  date:'Fri Aug 28', opp:'Ridge Spring-Monetta', ha:'Home', time:'7:30 PM', result:'', mcScore:'', oppScore:'' },
+  { wk:4,  date:'Fri Sep 11', opp:'Washington-Wilkes',    ha:'Home', time:'7:30 PM', result:'', mcScore:'', oppScore:'' },
+  { wk:5,  date:'Fri Sep 18', opp:'Dixie',                ha:'Away', time:'7:30 PM', result:'', mcScore:'', oppScore:'' },
+  // wk:6 confirmed from Ninety Six schedule (NS Away at McCormick)
+  { wk:6, date:'Fri Sep 25', opp:'Ninety Six',          ha:'Home', time:'7:30 PM', result:'', mcScore:'', oppScore:'' },
+  { wk:8,  date:'Fri Oct 9',  opp:'Abbeville',            ha:'Home', time:'7:30 PM', result:'', mcScore:'', oppScore:'' },
+  { wk:9,  date:'Fri Oct 16', opp:'Calhoun Falls',        ha:'Away', time:'7:30 PM', result:'', mcScore:'', oppScore:'' },
+  { wk:10, date:'Fri Oct 23', opp:'Ware Shoals',          ha:'Home', time:'7:30 PM', result:'', mcScore:'', oppScore:'' },
+  { wk:11, date:'Fri Oct 30', opp:'Thornwell',            ha:'Away', time:'7:30 PM', result:'', mcScore:'', oppScore:'' },
 ];
 
 // ── SALUDA 2025 RESULTS (Source: MaxPreps) ──
@@ -4747,16 +5173,206 @@ const SALUDA_2025 = [
 ];
 // ── SALUDA 2026 SCHEDULE (Source: MaxPreps) ──
 const SALUDA_2026 = [
-  { wk:0,  date:'Fri Aug 21', opp:'Abbeville',              ha:'Home', time:'7:30 PM', result:'', saScore:'', oppScore:'' },
-  { wk:2,  date:'Fri Sep 4',  opp:'Batesburg-Leesville',    ha:'Away', time:'7:30 PM', result:'', saScore:'', oppScore:'' },
-  { wk:3,  date:'Fri Sep 11', opp:'Ninety Six',             ha:'Away', time:'7:30 PM', result:'', saScore:'', oppScore:'' },
-  { wk:4,  date:'Fri Sep 18', opp:'Chester',                ha:'Home', time:'7:30 PM', result:'', saScore:'', oppScore:'' },
-  { wk:5,  date:'Fri Sep 25', opp:'Emerald',                ha:'Away', time:'7:30 PM', result:'', saScore:'', oppScore:'' },
-  { wk:7,  date:'Fri Oct 9',  opp:'Pelion',                 ha:'Away', time:'7:00 PM', result:'', saScore:'', oppScore:'' },
-  { wk:8,  date:'Fri Oct 16', opp:'Orangeburg-Wilkinson',   ha:'Away', time:'7:30 PM', result:'', saScore:'', oppScore:'' },
-  { wk:9,  date:'Fri Oct 23', opp:'Strom Thurmond',         ha:'Home', time:'7:30 PM', result:'', saScore:'', oppScore:'' },
-  { wk:10, date:'Fri Oct 30', opp:'Silver Bluff',           ha:'Home', time:'7:30 PM', result:'', saScore:'', oppScore:'' },
+  { wk:1,  date:'Fri Aug 21', opp:'Abbeville',              ha:'Home', time:'7:30 PM', result:'L', saScore:'33', oppScore:'35', boxScoreKey:'ahs-saluda-2026-wk1' },
+  { wk:3,  date:'Fri Sep 4',  opp:'Batesburg-Leesville',    ha:'Away', time:'7:30 PM', result:'', saScore:'', oppScore:'' },
+  { wk:4,  date:'Fri Sep 11', opp:'Ninety Six',             ha:'Away', time:'7:30 PM', result:'', saScore:'', oppScore:'' },
+  { wk:5,  date:'Fri Sep 18', opp:'Chester',                ha:'Home', time:'7:30 PM', result:'', saScore:'', oppScore:'' },
+  { wk:6,  date:'Fri Sep 25', opp:'Emerald',                ha:'Away', time:'7:30 PM', result:'', saScore:'', oppScore:'' },
+  { wk:8,  date:'Fri Oct 9',  opp:'Pelion',                 ha:'Away', time:'7:00 PM', result:'', saScore:'', oppScore:'' },
+  { wk:9,  date:'Fri Oct 16', opp:'Orangeburg-Wilkinson',   ha:'Away', time:'7:30 PM', result:'', saScore:'', oppScore:'' },
+  { wk:10, date:'Fri Oct 23', opp:'Strom Thurmond',         ha:'Home', time:'7:30 PM', result:'', saScore:'', oppScore:'' },
+  { wk:11, date:'Fri Oct 30', opp:'Silver Bluff',           ha:'Home', time:'7:30 PM', result:'', saScore:'', oppScore:'' },
 ];
+
+// ══════════════════════════════════════════
+// BOX SCORES — full game detail, gated to LSN+ members, opened by clicking a game card
+// on a team's Schedule tab or the combined Scores tab (see boxScoreKey on the schedule
+// entries above and the wiring in renderGenericScheduleCard / renderWeekScores).
+// ══════════════════════════════════════════
+const BOX_SCORES = {
+  'ahs-saluda-2026-wk1': {
+    awayTeam: 'Abbeville', homeTeam: 'Saluda',
+    dateLabel: 'Aug 20, 2026', weekLabel: 'Week 1',
+    quarterLabels: ['1', '2', '3', '4'],
+    awayByQtr: [0, 7, 14, 14], homeByQtr: [6, 7, 0, 20],
+    awayFinal: 35, homeFinal: 33,
+    teamStats: [
+      { label: 'First Downs (Rush-Pass-DP)', away: '16-1-1-18', home: '6-9-2-17' },
+      { label: '3rd Down Efficiency', away: '4-9 (44%)', home: '3-12 (25%)' },
+      { label: '4th Down Efficiency', away: '0-1 (0%)', home: '1-2 (50%)' },
+      { label: 'Rushing (Att-Yds-Avg)', away: '51-436-8.5', home: '30-109-3.6' },
+      { label: 'Passing (Att-Yds-Avg)', away: '7-34-34.0', home: '24-216-16.6' },
+      { label: 'Comp-Att-Int (Pct)', away: '1-7-2 (14%)', home: '13-24-1 (54%)' },
+      { label: 'Total Offense', away: '470', home: '325' },
+      { label: 'Sacks-Yards', away: '0-0', home: '0-0' },
+      { label: 'Penalties-Yards', away: '7-65', home: '11-81' },
+      { label: 'Fumbles-Lost', away: '0-0', home: '1-0' },
+      { label: 'Punts (No-Avg)', away: '2-37.0', home: '4-34.0' },
+      { label: 'Field Goals', away: '0-0', home: '0-0' },
+      { label: 'Touchdowns (Tot-Run-Pass)', away: '5-5-0', home: '5-1-4' },
+      { label: 'Possessions', away: '11', home: '12' },
+      { label: 'Total Plays', away: '56', home: '53' },
+      { label: 'Time of Possession', away: '24:17', home: '23:43' },
+    ],
+    scoringPlays: [
+      { qtr: 1, time: '1:18',  team: 'Saluda',    kind: 'TD',         desc: 'Avery Coyle pass complete to Tristan Daniels for 16 yards',                     awayScore: 0,  homeScore: 6  },
+      { qtr: 1, time: '1:18',  team: 'Saluda',    kind: 'PAT Failed', desc: 'Ericson Vasquez extra point — no good',                                          awayScore: 0,  homeScore: 6  },
+      { qtr: 2, time: '8:17',  team: 'Saluda',    kind: 'TD',         desc: 'Avery Coyle pass complete to Tristan Daniels for 31 yards',                     awayScore: 0,  homeScore: 12 },
+      { qtr: 2, time: '8:08',  team: 'Saluda',    kind: 'PAT',        desc: 'Ericson Vasquez extra point (drive: 7 plays, 52 yds, 3:43)',                    awayScore: 0,  homeScore: 13 },
+      { qtr: 2, time: '7:09',  team: 'Abbeville', kind: 'TD',         desc: 'Jamearion Williams rush for 41 yards',                                          awayScore: 6,  homeScore: 13 },
+      { qtr: 2, time: '7:09',  team: 'Abbeville', kind: 'PAT',        desc: 'Colton Busbee extra point (drive: 4 plays, 75 yds, 1:08)',                      awayScore: 7,  homeScore: 13 },
+      { qtr: 3, time: '8:49',  team: 'Abbeville', kind: 'TD',         desc: 'Jamiere Killingsworth rush for 5 yards',                                        awayScore: 13, homeScore: 13 },
+      { qtr: 3, time: '5:05',  team: 'Abbeville', kind: 'PAT',        desc: 'Colton Busbee extra point (drive: 9 plays, 97 yds, 3:44)',                      awayScore: 14, homeScore: 13 },
+      { qtr: 3, time: '4:10',  team: 'Abbeville', kind: 'TD',         desc: 'Jamearion Williams rush for 40 yards',                                          awayScore: 20, homeScore: 13 },
+      { qtr: 3, time: '4:10',  team: 'Abbeville', kind: 'PAT',        desc: 'Colton Busbee extra point (drive: 5 plays, 69 yds, 1:26)',                      awayScore: 21, homeScore: 13 },
+      { qtr: 4, time: '11:53', team: 'Saluda',    kind: 'TD',         desc: 'Avery Coyle pass complete to Ceddion Springs for 33 yards',                     awayScore: 21, homeScore: 19 },
+      { qtr: 4, time: '11:22', team: 'Saluda',    kind: 'PAT Failed', desc: 'Avery Coyle pass complete to Darryl Hill for 2 yards — conversion no good',      awayScore: 21, homeScore: 19 },
+      { qtr: 4, time: '11:22', team: 'Abbeville', kind: 'TD',         desc: 'Jamearion Williams rush for 34 yards',                                          awayScore: 27, homeScore: 19 },
+      { qtr: 4, time: '8:25',  team: 'Abbeville', kind: 'PAT',        desc: 'Colton Busbee extra point (drive: 6 plays, 73 yds, 2:57)',                      awayScore: 28, homeScore: 19 },
+      { qtr: 4, time: '7:25',  team: 'Saluda',    kind: 'TD',         desc: 'Avery Coyle pass complete to Mekhi Linton for 24 yards',                        awayScore: 28, homeScore: 25 },
+      { qtr: 4, time: '7:25',  team: 'Saluda',    kind: 'PAT',        desc: 'Ericson Vasquez extra point (drive: 6 plays, 53 yds, 1:53)',                    awayScore: 28, homeScore: 26 },
+      { qtr: 4, time: '6:32',  team: 'Abbeville', kind: 'TD',         desc: 'Collins Brown rush for 30 yards',                                               awayScore: 34, homeScore: 26 },
+      { qtr: 4, time: '5:20',  team: 'Abbeville', kind: 'PAT',        desc: 'Colton Busbee extra point (drive: 4 plays, 65 yds, 1:12)',                      awayScore: 35, homeScore: 26 },
+      { qtr: 4, time: '4:58',  team: 'Saluda',    kind: 'TD',         desc: 'Tristan Daniels rush for 1 yard',                                               awayScore: 35, homeScore: 32 },
+      { qtr: 4, time: '3:33',  team: 'Saluda',    kind: 'PAT',        desc: 'Ericson Vasquez extra point (drive: 6 plays, 64 yds, 1:47)',                    awayScore: 35, homeScore: 33 },
+    ],
+    stats: {
+      Abbeville: {
+        rushing: {
+          cols: [['num','#'],['player','Player'],['att','Att'],['yds','Yds'],['avg','Avg'],['lg','LG'],['td','TD']],
+          rows: [
+            { num:'2',  player:'Jamearion Williams',     att:15, yds:172, avg:'11.5', lg:41, td:3 },
+            { num:'12', player:'Jamiere Killingsworth',  att:17, yds:91,  avg:'5.4',  lg:25, td:1 },
+            { num:'11', player:'Jacob Wilson',           att:9,  yds:78,  avg:'8.7',  lg:32, td:0 },
+            { num:'22', player:'Aden Harrison',          att:1,  yds:16,  avg:'16.0', lg:16, td:0 },
+            { num:'20', player:'Kingston Marshall',      att:6,  yds:46,  avg:'7.7',  lg:24, td:0 },
+            { num:'4',  player:'Collins Brown',          att:3,  yds:33,  avg:'11.0', lg:30, td:1 },
+          ],
+          totals: { att:51, yds:436, avg:'8.5', lg:41, td:5 },
+        },
+        passing: {
+          cols: [['num','#'],['player','Player'],['cmp','Cmp'],['att','Att'],['yds','Yds'],['sac','Sac'],['lg','LG'],['td','TD'],['int','Int'],['rtg','Rtg']],
+          rows: [ { num:'11', player:'Jacob Wilson', cmp:1, att:7, yds:34, sac:0, lg:34, td:0, int:2, rtg:'7.7' } ],
+          totals: { cmp:1, att:7, yds:34, sac:0, lg:34, td:0, int:2, rtg:'7.7' },
+        },
+        receiving: {
+          cols: [['num','#'],['player','Player'],['rec','Rec'],['tar','Tar'],['yds','Yds'],['avg','Avg'],['lg','LG'],['td','TD']],
+          rows: [
+            { num:'2',  player:'Jamearion Williams', rec:1, tar:2, yds:34, avg:'34.0', lg:34, td:0 },
+            { num:'22', player:'Aden Harrison',      rec:0, tar:1, yds:0,  avg:'0.0',  lg:0,  td:0 },
+            { num:'20', player:'Kingston Marshall',  rec:0, tar:1, yds:0,  avg:'0.0',  lg:0,  td:0 },
+          ],
+          totals: { rec:1, tar:4, yds:34, avg:'34.0', lg:34, td:0 },
+        },
+        punting: {
+          cols: [['num','#'],['player','Player'],['no','No'],['tb','TB'],['yds','Yds'],['avg','Avg'],['lg','LG'],['in20','In20']],
+          rows: [
+            { num:'80', player:'Player',       no:1, tb:0, yds:43, avg:'43.0', lg:43, in20:0 },
+            { num:'43', player:'Devin Sorrow',  no:1, tb:0, yds:31, avg:'31.0', lg:31, in20:0 },
+          ],
+          totals: { no:2, tb:0, yds:74, avg:'37.0', lg:43, in20:0 },
+        },
+        puntReturns: {
+          cols: [['num','#'],['player','Player'],['no','No'],['fc','FC'],['yds','Yds'],['avg','Avg'],['lg','LG'],['td','TD']],
+          rows: [ { num:'6', player:'Corde Hadden', no:1, fc:0, yds:0, avg:'0.0', lg:0, td:0 } ],
+          totals: { no:1, fc:0, yds:0, avg:'0.0', lg:0, td:0 },
+        },
+        kickoffs: {
+          cols: [['num','#'],['player','Player'],['no','No'],['tb','TB'],['yds','Yds'],['avg','Avg'],['lg','LG'],['sh','SH']],
+          rows: [ { num:'41', player:'Colton Busbee', no:6, tb:0, yds:160, avg:'26.7', lg:35, sh:13 } ],
+          totals: { no:6, tb:0, yds:160, avg:'26.7', lg:35, sh:13 },
+        },
+        kickReturns: {
+          cols: [['num','#'],['player','Player'],['no','No'],['fc','FC'],['yds','Yds'],['avg','Avg'],['lg','LG'],['td','TD']],
+          rows: [
+            { num:'2',  player:'Jamearion Williams', no:3, fc:0, yds:36, avg:'12.0', lg:20, td:0 },
+            { num:'',   player:'Unassigned',          no:1, fc:0, yds:0,  avg:'0.0',  lg:0,  td:0 },
+            { num:'10', player:'Dee Brown',           no:1, fc:0, yds:7,  avg:'7.0',  lg:7,  td:0 },
+          ],
+          totals: { no:5, fc:0, yds:43, avg:'8.6', lg:20, td:0 },
+        },
+        kicking: {
+          cols: [['num','#'],['player','Player'],['fg','FG'],['fgAtt','FG Att'],['long','Long'],['pat','PAT'],['patAtt','PAT Att'],['pts','Pts']],
+          rows: [ { num:'41', player:'Colton Busbee', fg:0, fgAtt:0, long:0, pat:5, patAtt:5, pts:5 } ],
+          totals: { fg:0, fgAtt:0, long:0, pat:5, patAtt:5, pts:5 },
+        },
+        defensive: {
+          cols: [['num','#'],['player','Player'],['ua','UA'],['as','AS'],['tot','Tot'],['sk','Sk/Yds'],['tl','TL'],['int','Int'],['f','F'],['fr','FR'],['td','TD']],
+          rows: [ { num:'6', player:'Corde Hadden', ua:0, as:0, tot:0, sk:'0/0', tl:0, int:0, f:1, fr:0, td:0 } ],
+          totals: { ua:0, as:0, tot:0, sk:'0/0', tl:0, int:0, f:1, fr:0, td:0 },
+        },
+      },
+      Saluda: {
+        rushing: {
+          cols: [['num','#'],['player','Player'],['att','Att'],['yds','Yds'],['avg','Avg'],['lg','LG'],['td','TD']],
+          rows: [
+            { num:'23', player:'Tristan Daniels',  att:15, yds:56, avg:'3.7',  lg:18, td:1 },
+            { num:'4',  player:'Avery Coyle',      att:9,  yds:48, avg:'5.3',  lg:26, td:0 },
+            { num:'2',  player:'Darryl Hill',      att:2,  yds:22, avg:'11.0', lg:17, td:0 },
+            { num:'',   player:'Unassigned',       att:1,  yds:-7, avg:'-7.0', lg:0,  td:0 },
+            { num:'12', player:'Ceddion Springs',  att:1,  yds:-6, avg:'-6.0', lg:0,  td:0 },
+            { num:'0',  player:'Jaylen Bledsoe',   att:2,  yds:-4, avg:'-2.0', lg:0,  td:0 },
+          ],
+          totals: { att:30, yds:109, avg:'3.6', lg:26, td:1 },
+        },
+        passing: {
+          cols: [['num','#'],['player','Player'],['cmp','Cmp'],['att','Att'],['yds','Yds'],['sac','Sac'],['lg','LG'],['td','TD'],['int','Int'],['rtg','Rtg']],
+          rows: [ { num:'4', player:'Avery Coyle', cmp:13, att:24, yds:216, sac:2, lg:33, td:4, int:1, rtg:'106.9' } ],
+          totals: { cmp:13, att:24, yds:216, sac:2, lg:33, td:4, int:1, rtg:'106.9' },
+        },
+        receiving: {
+          cols: [['num','#'],['player','Player'],['rec','Rec'],['tar','Tar'],['yds','Yds'],['avg','Avg'],['lg','LG'],['td','TD']],
+          rows: [
+            { num:'23', player:'Tristan Daniels', rec:4, tar:4, yds:53, avg:'13.3', lg:31, td:2 },
+            { num:'2',  player:'Darryl Hill',     rec:4, tar:6, yds:56, avg:'14.0', lg:25, td:0 },
+            { num:'12', player:'Ceddion Springs', rec:3, tar:4, yds:72, avg:'24.0', lg:33, td:1 },
+            { num:'3',  player:'Mekhi Linton',    rec:2, tar:7, yds:35, avg:'17.5', lg:24, td:1 },
+            { num:'17', player:'Chris Rushton',   rec:0, tar:1, yds:0,  avg:'0.0',  lg:0,  td:0 },
+          ],
+          totals: { rec:13, tar:22, yds:216, avg:'16.6', lg:33, td:4 },
+        },
+        punting: {
+          cols: [['num','#'],['player','Player'],['no','No'],['tb','TB'],['yds','Yds'],['avg','Avg'],['lg','LG'],['in20','In20']],
+          rows: [ { num:'23', player:'Tristan Daniels', no:4, tb:0, yds:136, avg:'34.0', lg:42, in20:1 } ],
+          totals: { no:4, tb:0, yds:136, avg:'34.0', lg:42, in20:1 },
+        },
+        puntReturns: {
+          cols: [['num','#'],['player','Player'],['no','No'],['fc','FC'],['yds','Yds'],['avg','Avg'],['lg','LG'],['td','TD']],
+          rows: [ { num:'2', player:'Darryl Hill', no:1, fc:0, yds:0, avg:'0.0', lg:0, td:0 } ],
+          totals: { no:1, fc:0, yds:0, avg:'0.0', lg:0, td:0 },
+        },
+        kickoffs: {
+          cols: [['num','#'],['player','Player'],['no','No'],['tb','TB'],['yds','Yds'],['avg','Avg'],['lg','LG'],['sh','SH']],
+          rows: [ { num:'82', player:'Ericson Vasquez', no:6, tb:0, yds:219, avg:'36.5', lg:50, sh:6 } ],
+          totals: { no:6, tb:0, yds:219, avg:'36.5', lg:50, sh:6 },
+        },
+        kickReturns: {
+          cols: [['num','#'],['player','Player'],['no','No'],['fc','FC'],['yds','Yds'],['avg','Avg'],['lg','LG'],['td','TD']],
+          rows: [
+            { num:'8',  player:'King Mathis',        no:2, fc:0, yds:27, avg:'13.5', lg:18, td:0 },
+            { num:'3',  player:'Mekhi Linton',       no:1, fc:0, yds:0,  avg:'0.0',  lg:0,  td:0 },
+            { num:'28', player:'Player28',           no:1, fc:0, yds:0,  avg:'0.0',  lg:0,  td:0 },
+            { num:'44', player:'Jeremiah Freeman',   no:2, fc:0, yds:21, avg:'10.5', lg:15, td:0 },
+          ],
+          totals: { no:6, fc:0, yds:48, avg:'8.0', lg:18, td:0 },
+        },
+        kicking: {
+          cols: [['num','#'],['player','Player'],['fg','FG'],['fgAtt','FG Att'],['long','Long'],['pat','PAT'],['patAtt','PAT Att'],['pts','Pts']],
+          rows: [ { num:'82', player:'Ericson Vasquez', fg:0, fgAtt:0, long:0, pat:3, patAtt:4, pts:3 } ],
+          totals: { fg:0, fgAtt:0, long:0, pat:3, patAtt:4, pts:3 },
+        },
+        defensive: {
+          cols: [['num','#'],['player','Player'],['ua','UA'],['as','AS'],['tot','Tot'],['sk','Sk/Yds'],['tl','TL'],['int','Int'],['f','F'],['fr','FR'],['td','TD']],
+          rows: [
+            { num:'9',  player:'Corbin Shaw',     ua:0, as:0, tot:0, sk:'0/0', tl:0, int:0, f:1, fr:0, td:0 },
+            { num:'14', player:'Jakaile Stevens', ua:0, as:0, tot:0, sk:'0/0', tl:0, int:0, f:1, fr:0, td:0 },
+          ],
+          totals: { ua:0, as:0, tot:0, sk:'0/0', tl:0, int:0, f:2, fr:0, td:0 },
+        },
+      },
+    },
+  },
+};
 
 // All 10 teams — each week shows every game happening that week
 // Structure: array of 11 weeks (wk 0–10), each with array of matchups
@@ -4767,11 +5383,11 @@ function buildWeeklyMatchups(sheetData2026) {
   // teamIds: array of team ids involved (for fav highlighting)
 
   const weeks = [];
-  for (let wk = 0; wk <= 10; wk++) {
+  for (let wk = 0; wk <= 11; wk++) {
     const matchups = [];
 
     // ── Greenwood ──
-    const gwG = GW_SCHEDULE_2026[wk];
+    const gwG = GW_SCHEDULE_2026.find(g => g.wk === wk);
     if (gwG) {
       if (gwG.opp === 'BYE') {
         matchups.push({ isBye:true, wk, team:'Greenwood', date: gwG.date, teamIds:['greenwood'] });
@@ -4789,7 +5405,7 @@ function buildWeeklyMatchups(sheetData2026) {
     }
 
     // ── Emerald ──
-    const emG = EMERALD_2026[wk];
+    const emG = EMERALD_2026.find(g => g.wk === wk);
     if (emG) {
       if (emG.opp === 'BYE') {
         matchups.push({ isBye:true, wk, team:'Emerald', date: emG.date, teamIds:['emerald'] });
@@ -4806,10 +5422,8 @@ function buildWeeklyMatchups(sheetData2026) {
       }
     }
 
-    // ── Greenwood Christian (SCISA — both 0a and 0b show in week 0) ──
-    const gcsGames = wk === 0
-      ? GCS_2026.filter(g => g.wk === '0a' || g.wk === '0b')
-      : GCS_2026.filter(g => g.wk === wk);
+    // ── Greenwood Christian (SCISA — Week 0 is just the Northside Christian opener) ──
+    const gcsGames = GCS_2026.filter(g => g.wk === wk);
     for (const gcsGame of gcsGames) {
       if (gcsGame.opp === 'BYE') {
         matchups.push({ isBye:true, wk, team:'Greenwood Christian', date:gcsGame.date, teamIds:['gwchristian'] });
@@ -4827,7 +5441,7 @@ function buildWeeklyMatchups(sheetData2026) {
     }
 
     // ── Ware Shoals ──
-    if (wk >= 1 && wk <= 10) {
+    if (wk >= 1 && wk <= 11) {
       if (WS_2026 && WS_2026.length > 0) {
         const wsG = WS_2026.find(g => g.wk === wk);
         if (wsG) {
@@ -4868,7 +5482,7 @@ function buildWeeklyMatchups(sheetData2026) {
     }
 
     // ── Abbeville ──
-    if (wk >= 0 && wk <= 10) {
+    if (wk >= 0 && wk <= 11) {
       if (AHS_2026.length > 0) {
         const abG = AHS_2026.find(g => g.wk === wk);
         if (abG) {
@@ -4878,7 +5492,8 @@ function buildWeeklyMatchups(sheetData2026) {
             const abAway = abG.ha === 'Away';
             matchups.push({ top: abAway?'Abbeville':abG.opp, bot: abAway?abG.opp:'Abbeville',
               topScore: abAway?abG.ahsScore:abG.oppScore, botScore: abAway?abG.oppScore:abG.ahsScore,
-              result: abG.result, date: abG.date+' · 7:30 PM', teamIds:['abbeville'], lsn:false });
+              result: abG.result, date: abG.date+' · 7:30 PM', teamIds:['abbeville'], lsn:false,
+              boxScoreKey: abG.boxScoreKey });
           }
         }
       } else {
@@ -4887,7 +5502,7 @@ function buildWeeklyMatchups(sheetData2026) {
     }
 
     // ── Dixie ──
-    if (wk >= 1 && wk <= 10) {
+    if (wk >= 1 && wk <= 11) {
       if (DHS_2026.length > 0) {
         const dxG = DHS_2026.find(g => g.wk === wk);
         if (dxG) {
@@ -4906,7 +5521,7 @@ function buildWeeklyMatchups(sheetData2026) {
     }
 
     // ── Calhoun Falls ──
-    if (wk >= 1 && wk <= 10) {
+    if (wk >= 1 && wk <= 11) {
       if (CF_2026.length > 0) {
         const cfG = CF_2026.find(g => g.wk === wk);
         if (cfG) {
@@ -4991,7 +5606,7 @@ const LAKELANDS_NAME_TO_ID = {
 function teamLink(name) {
   const id = LAKELANDS_NAME_TO_ID[name];
   if (!id) return name;
-  return '<span onclick="openTeam(\''+id+'\')" style="cursor:pointer;">'+name+'</span>';
+  return '<span onclick="event.stopPropagation();openTeam(\''+id+'\')" style="cursor:pointer;">'+name+'</span>';
 }
 
 function renderWeekScores(week) {
@@ -5000,11 +5615,15 @@ function renderWeekScores(week) {
   }
   const favId = getSidebarFav();
 
-  // Sort: fav team game first, then LSN games, then others
+  // Sort: fav team game first, then games with a full box score (our featured/played
+  // games), then LSN games, then others
   const sorted = [...week.matchups].sort((a, b) => {
     const aFav = favId && a.teamIds && a.teamIds.includes(favId) ? 0 : 1;
     const bFav = favId && b.teamIds && b.teamIds.includes(favId) ? 0 : 1;
     if (aFav !== bFav) return aFav - bFav;
+    const aBox = a.boxScoreKey ? 0 : 1;
+    const bBox = b.boxScoreKey ? 0 : 1;
+    if (aBox !== bBox) return aBox - bBox;
     if (a.lsn && !b.lsn) return -1;
     if (!a.lsn && b.lsn) return 1;
     return 0;
@@ -5024,10 +5643,9 @@ function renderWeekScores(week) {
     }
 
     const played = m.result === 'W' || m.result === 'L' || (m.topScore !== '' && m.botScore !== '');
-    // Determine winner for LSN games (we know which team is which)
+    // Determine winner for any completed game (we know the score for both sides)
     let topWon = false, botWon = false;
-    if (played && m.lsn) {
-      // figure out who won by score comparison
+    if (played) {
       const ts = parseInt(m.topScore) || 0;
       const bs = parseInt(m.botScore) || 0;
       topWon = ts > bs;
@@ -5035,14 +5653,16 @@ function renderWeekScores(week) {
     }
     function ns(w) { return played ? (w?'color:#fff;font-weight:900;':'color:rgba(255,255,255,0.45);font-weight:600;') : 'color:#fff;'; }
     function ps(w) { return played ? (w?'color:#fff;font-weight:900;font-size:28px;':'color:rgba(255,255,255,0.45);font-weight:700;font-size:26px;') : ''; }
-    const topStyle = m.lsn ? ns(topWon) : 'color:#fff;';
-    const botStyle = m.lsn ? ns(botWon) : 'color:#fff;';
-    const topPts   = m.lsn ? ps(topWon) : '';
-    const botPts   = m.lsn ? ps(botWon) : '';
-    const cardClass = 'score-card' + (m.lsn ? ' lsn-game' : '') + (isFavGame ? ' fav-game' : '');
+    const topStyle = ns(topWon);
+    const botStyle = ns(botWon);
+    const topPts   = ps(topWon);
+    const botPts   = ps(botWon);
+    const hasBox = !!m.boxScoreKey;
+    const cardClass = 'score-card' + (m.lsn ? ' lsn-game' : '') + (isFavGame ? ' fav-game' : '') + (hasBox ? ' has-boxscore' : '');
     const label = m.lsn ? '📻 LSN Radio' : gameTypeLabel(m.top, m.bot, false);
+    const cardOnclick = hasBox ? ' onclick="openBoxScore(\'' + m.boxScoreKey + '\')"' : '';
 
-    return '<div class="' + cardClass + '">' +
+    return '<div class="' + cardClass + '"' + cardOnclick + '>' +
       '<div class="sc-top"><span class="sc-label">Football · ' + label + '</span>' +
       (played ? '<span class="sc-final">Final</span>' : '<span class="sc-upcoming-tag">' + m.date + '</span>') +
       '</div><div class="sc-teams">' +
@@ -5050,7 +5670,7 @@ function renderWeekScores(week) {
       '<span class="sc-pts" style="' + topPts + '">' + (played ? m.topScore : '–') + '</span></div>' +
       '<div class="sc-team"><span class="sc-name" style="' + botStyle + '">' + teamLink(m.bot) + '</span>' +
       '<span class="sc-pts" style="' + botPts + '">' + (played ? m.botScore : '–') + '</span></div>' +
-      '</div></div>';
+      '</div>' + (hasBox ? '<div class="boxscore-tag">📋 Full Box Score — LSN+</div>' : '') + '</div>';
   }).join('');
 }
 
@@ -5058,18 +5678,14 @@ function renderWeekScores(week) {
 function initScoresPage(sheetData2026) {
   weeklyData = buildWeeklyMatchups(sheetData2026);
 
-  // Determine current week based on today's date
-  const today = new Date();
-  const aug21 = new Date('2026-08-21');
-  const diffDays = (today - aug21) / (1000 * 60 * 60 * 24);
-  currentWeek = Math.max(0, Math.min(10, Math.floor(diffDays / 7)));
-  // Before season, default to week 0
-  if (today < aug21) currentWeek = 0;
+  // The Scores tab always opens on Week 1 — Week 0 is just the single GCS season
+  // opener, so Week 1 (everyone else's opening week) is the more useful default view.
+  currentWeek = 1;
 
   const weekSelector = document.getElementById('weekSelector');
   const byeWeeks = new Set(GW_SCHEDULE_2026.filter(g => g.opp === 'BYE').map(g => g.wk));
   let btns = '';
-  for (let w = 0; w <= 10; w++) {
+  for (let w = 0; w <= 11; w++) {
     const label = 'Wk ' + w;
     btns += '<button class="week-btn' + (w === currentWeek ? ' active' : '') + '" onclick="showWeek(' + w + ')">' + label + '</button>';
   }
