@@ -744,7 +744,7 @@ textarea.form-input { resize:vertical; min-height:80px; font-family:var(--B); }
 <div class="page" id="page-signup">
   <div class="page-header">
     <h2>Join <span>LSN+</span></h2>
-    <p>$9.99/month · 7-day free trial · cancel anytime</p>
+    <p>$9.99/month · cancel anytime</p>
   </div>
   <div class="wrap" style="max-width:480px;padding-top:24px;padding-bottom:64px;">
     <div id="signupContainer"></div>
@@ -4022,7 +4022,7 @@ function renderSignupCardStep(el) {
   el.innerHTML = `
     <div style="background:var(--navy2);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:8px;padding:28px 24px;">
       <div style="font-family:var(--D);font-weight:800;font-size:15px;color:#fff;margin-bottom:6px;">Step 2 of 2 — Payment</div>
-      <div style="font-size:12px;color:var(--gray);margin-bottom:18px;">Signed in as ${currentUser.email} · 7-day free trial, then $9.99/month</div>
+      <div style="font-size:12px;color:var(--gray);margin-bottom:18px;">Signed in as ${currentUser.email} · $9.99/month</div>
       ${usernameNote}
       <div style="display:flex;gap:8px;margin-bottom:6px;">
         <input class="form-input" id="checkoutPromoInput" placeholder="Promo code (optional)" style="margin-bottom:0;text-transform:uppercase;" value="${escapeHtml(signupState.promoCode || '')}" onkeydown="if(event.key==='Enter'){event.preventDefault();applyCheckoutPromoCode();}">
@@ -4031,8 +4031,8 @@ function renderSignupCardStep(el) {
       <div id="checkoutPromoMsg" style="font-size:12px;margin-bottom:14px;${signupState.promoDescription ? 'color:var(--gold);' : 'display:none;'}">${signupState.promoDescription ? '🏷️ ' + escapeHtml(signupState.promoDescription) + ' — applied' : ''}</div>
       <div id="cardElementContainer" style="padding:12px;border:1px solid var(--border2);border-radius:4px;background:var(--navy);margin-bottom:14px;"></div>
       <div id="cardError" style="color:var(--red);font-size:12px;margin-bottom:10px;display:none;"></div>
-      <button class="plus-cta-btn" id="su-pay-btn" style="width:100%;" onclick="handleSignupCardSubmit()">Start Free Trial</button>
-      <div style="font-size:11px;color:var(--gray);text-align:center;margin-top:10px;">Card is saved now but not charged until your trial ends. Cancel anytime.</div>
+      <button class="plus-cta-btn" id="su-pay-btn" style="width:100%;" onclick="handleSignupCardSubmit()">Join LSN+</button>
+      <div style="font-size:11px;color:var(--gray);text-align:center;margin-top:10px;">Your card will be charged $9.99/month starting today. Cancel anytime.</div>
     </div>`;
 
   if (!stripeClient) {
@@ -4152,13 +4152,13 @@ async function handleSignupCardSubmit() {
       <div style="text-align:center;padding:32px 0;">
         <div style="font-size:32px;margin-bottom:12px;">🎉</div>
         <div style="font-family:var(--D);font-weight:800;font-size:18px;color:var(--gold);margin-bottom:10px;">Welcome to LSN+!</div>
-        <p style="font-size:13px;color:var(--gray);margin-bottom:20px;">Your 7-day free trial has started.</p>
+        <p style="font-size:13px;color:var(--gray);margin-bottom:20px;">Your membership is active.</p>
         <button class="plus-cta-btn" onclick="goPage('home')">Go to the Site</button>
       </div>`;
   } catch (e) {
     showCardError('Something went wrong. Please try again.');
   } finally {
-    if (btn) { btn.disabled = false; btn.textContent = 'Start Free Trial'; }
+    if (btn) { btn.disabled = false; btn.textContent = 'Join LSN+'; }
   }
 }
 
