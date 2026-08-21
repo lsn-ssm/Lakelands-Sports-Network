@@ -882,7 +882,7 @@ textarea.form-input { resize:vertical; min-height:80px; font-family:var(--B); }
     </div>
     <div class="team-stats-bar" style="border-color:rgba(116,24,25,0.3);background:#0d0304;">
       <div class="tsb-item"><div class="tsb-val" style="color:#C7AC59;">0</div><div class="tsb-label">2026 W</div></div>
-      <div class="tsb-item"><div class="tsb-val" style="color:#C7AC59;">0</div><div class="tsb-label">2026 L</div></div>
+      <div class="tsb-item"><div class="tsb-val" style="color:#C7AC59;">1</div><div class="tsb-label">2026 L</div></div>
       <div class="tsb-item"><div class="tsb-val" style="color:#C7AC59;">—</div><div class="tsb-label">Region</div></div>
       <div class="tsb-item"><div class="tsb-val" style="color:#C7AC59;">A</div><div class="tsb-label">Class</div></div>
     </div>
@@ -1295,7 +1295,7 @@ textarea.form-input { resize:vertical; min-height:80px; font-family:var(--B); }
         <div class="st-row lsn-bold" onclick="openTeam('calhounfalls')" style="cursor:pointer"><div class="st-team">Calhoun Falls</div><div class="st-rec">0-0</div><div class="st-rec">0-0</div></div>
         <div class="st-row lsn-bold" onclick="openTeam('dixie')" style="cursor:pointer"><div class="st-team">Dixie</div><div class="st-rec">0-0</div><div class="st-rec">0-0</div></div>
         <div class="st-row lsn-bold" onclick="openTeam('mccormick')" style="cursor:pointer"><div class="st-team">McCormick</div><div class="st-rec">0-0</div><div class="st-rec">0-0</div></div>
-        <div class="st-row lsn-bold" onclick="openTeam('ninetysix')" style="cursor:pointer"><div class="st-team">Ninety Six</div><div class="st-rec">0-0</div><div class="st-rec">0-0</div></div>
+        <div class="st-row lsn-bold" onclick="openTeam('ninetysix')" style="cursor:pointer"><div class="st-team">Ninety Six</div><div class="st-rec">0-1</div><div class="st-rec">0-0</div></div>
         <div class="st-row"><div class="st-team">Thornwell</div><div class="st-rec">0-0</div><div class="st-rec">0-0</div></div>
         <div class="st-row lsn-bold" onclick="openTeam('wareshoals')" style="cursor:pointer"><div class="st-team">Ware Shoals</div><div class="st-rec">0-0</div><div class="st-rec">0-0</div></div>
       </div>
@@ -1547,7 +1547,7 @@ const OTHER_TEAMS = [
   { id:'emerald',     badge:'EM', abbr:'EHS', name:'Emerald',      mascot:'Vikings',        cls:'AAA · Region 2',  w:0, l:0, lsn:true,  primary:'#5B2D8E', secondary:'#C8971F', textColor:'#fff' },
   { id:'gwchristian', badge:'GCS',abbr:'GCS', name:'Greenwood Christian', mascot:'Hawks',   cls:'SCISA 2A',        w:0, l:1, lsn:false, primary:'#1B2A4A', secondary:'#A0A8B0', textColor:'#fff' },
   { id:'wareshoals',  badge:'WS', abbr:'WS',  name:'Ware Shoals',  mascot:'Hornets',        cls:'A · Region 1',    w:0, l:0, lsn:false, primary:'#6B2D8B', secondary:'#FFD100', textColor:'#fff' },
-  { id:'ninetysix',   badge:'96', abbr:'96',  name:'Ninety Six',   mascot:'Wildcats',       cls:'A · Region 1',    w:0, l:0, lsn:false, primary:'#741819', secondary:'#C7AC59', textColor:'#fff' },
+  { id:'ninetysix',   badge:'96', abbr:'96',  name:'Ninety Six',   mascot:'Wildcats',       cls:'A · Region 1',    w:0, l:1, lsn:false, primary:'#741819', secondary:'#C7AC59', textColor:'#fff' },
   { id:'abbeville',   badge:'AB', abbr:'AHS', name:'Abbeville',    mascot:'Panthers',       cls:'A · Region 1',    w:1, l:0, lsn:false, primary:'#1a2e44', secondary:'#c8a84b', textColor:'#fff' },
   { id:'dixie',       badge:'DX', abbr:'DHS', name:'Dixie',        mascot:'Hornets',        cls:'A · Region 1',    w:0, l:0, lsn:false, primary:'#006400', secondary:'#FFD100', textColor:'#fff' },
   { id:'calhounfalls',badge:'CF', abbr:'CF',  name:'Calhoun Falls',mascot:'Blue Flashes',   cls:'A · Region 1',    w:0, l:0, lsn:false, primary:'#003087', secondary:'#FFD100', textColor:'#fff' },
@@ -4931,7 +4931,7 @@ const NS_2025 = [
   { 'Date':'Nov 7',  'Opponent':'Andrew Jackson',           'Home/Away':'Away', 'NS Score':'15', 'OPP Score':'34', 'Result':'L', 'Type':'Playoff' },
 ];
 const NS_2026 = [
-  { wk:1,  date:'Fri Aug 21', opp:'Mid-Carolina',  ha:'Away', time:'7:30 PM', result:'', nsScore:'', oppScore:'' },
+  { wk:1,  date:'Fri Aug 21', opp:'Mid-Carolina',  ha:'Away', time:'7:30 PM', result:'L', nsScore:'41', oppScore:'49' },
   { wk:2,  date:'Fri Aug 28', opp:'Landrum',        ha:'Home', time:'7:30 PM', result:'', nsScore:'', oppScore:'' },
   { wk:3,  date:'Fri Sep 4',  opp:'Wagener-Salley', ha:'Home', time:'7:30 PM', result:'', nsScore:'', oppScore:'' },
   { wk:4,  date:'Fri Sep 11', opp:'Saluda',         ha:'Home', time:'7:30 PM', result:'', nsScore:'', oppScore:'' },
