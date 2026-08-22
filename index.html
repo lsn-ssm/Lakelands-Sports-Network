@@ -517,6 +517,7 @@ textarea.form-input { resize:vertical; min-height:80px; font-family:var(--B); }
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="https://js.stripe.com/v3/"></script>
+<script async src="https://js.stripe.com/v3/buy-button.js"></script>
 </head>
 <body>
 <img id="abbeville-logo-data" src="data:image/png;base64,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" style="display:none;" alt="">
@@ -765,7 +766,7 @@ textarea.form-input { resize:vertical; min-height:80px; font-family:var(--B); }
       </div>
     </div>
     <div class="team-stats-bar" style="border-color:rgba(200,151,31,0.3);background:#120820;">
-      <div class="tsb-item"><div class="tsb-val" style="color:#C8971F;">0</div><div class="tsb-label">2026 W</div></div>
+      <div class="tsb-item"><div class="tsb-val" style="color:#C8971F;">1</div><div class="tsb-label">2026 W</div></div>
       <div class="tsb-item"><div class="tsb-val" style="color:#C8971F;">0</div><div class="tsb-label">2026 L</div></div>
       <div class="tsb-item"><div class="tsb-val" style="color:#C8971F;">—</div><div class="tsb-label">Region</div></div>
       <div class="tsb-item"><div class="tsb-val" style="color:#C8971F;">AAA</div><div class="tsb-label">Class</div></div>
@@ -805,7 +806,7 @@ textarea.form-input { resize:vertical; min-height:80px; font-family:var(--B); }
       </div>
     </div>
     <div class="team-stats-bar" style="border-color:rgba(160,168,176,0.3);background:#0d1520;">
-      <div class="tsb-item"><div class="tsb-val" style="color:#A0A8B0;">0</div><div class="tsb-label">2026 W</div></div>
+      <div class="tsb-item"><div class="tsb-val" style="color:#A0A8B0;">1</div><div class="tsb-label">2026 W</div></div>
       <div class="tsb-item"><div class="tsb-val" style="color:#A0A8B0;">1</div><div class="tsb-label">2026 L</div></div>
       <div class="tsb-item"><div class="tsb-val" style="color:#A0A8B0;">—</div><div class="tsb-label">Region</div></div>
       <div class="tsb-item"><div class="tsb-val" style="color:#A0A8B0;">SCISA</div><div class="tsb-label">Class</div></div>
@@ -1180,11 +1181,11 @@ textarea.form-input { resize:vertical; min-height:80px; font-family:var(--B); }
       </div>
     </div>
     <div class="team-stats-bar">
-      <div class="tsb-item"><div class="tsb-val" id="td-w">0</div><div class="tsb-label">2026 W</div></div>
+      <div class="tsb-item"><div class="tsb-val" id="td-w">1</div><div class="tsb-label">2026 W</div></div>
       <div class="tsb-item"><div class="tsb-val" id="td-l">0</div><div class="tsb-label">2026 L</div></div>
-      <div class="tsb-item"><div class="tsb-val" id="td-streak">—</div><div class="tsb-label">Streak</div></div>
-      <div class="tsb-item"><div class="tsb-val" id="td-pf">—</div><div class="tsb-label">Pts For</div></div>
-      <div class="tsb-item"><div class="tsb-val" id="td-pa">—</div><div class="tsb-label">Pts Agst</div></div>
+      <div class="tsb-item"><div class="tsb-val" id="td-streak">W1</div><div class="tsb-label">Streak</div></div>
+      <div class="tsb-item"><div class="tsb-val" id="td-pf">33</div><div class="tsb-label">Pts For</div></div>
+      <div class="tsb-item"><div class="tsb-val" id="td-pa">7</div><div class="tsb-label">Pts Agst</div></div>
     </div>
   </div>
   <div class="team-tab-bar">
@@ -1329,7 +1330,7 @@ textarea.form-input { resize:vertical; min-height:80px; font-family:var(--B); }
           <div class="st-rec">Region</div>
         </div>
         <div class="st-row"><div class="st-team">Belton-Honea Path</div><div class="st-rec">0-0</div><div class="st-rec">0-0</div></div>
-        <div class="st-row lsn-bold" onclick="openTeam('emerald')" style="cursor:pointer"><div class="st-team">Emerald</div><div class="st-rec">0-0</div><div class="st-rec">0-0</div></div>
+        <div class="st-row lsn-bold" onclick="openTeam('emerald')" style="cursor:pointer"><div class="st-team">Emerald</div><div class="st-rec">1-0</div><div class="st-rec">0-0</div></div>
         <div class="st-row"><div class="st-team">Palmetto</div><div class="st-rec">0-0</div><div class="st-rec">0-0</div></div>
         <div class="st-row"><div class="st-team">Powdersville</div><div class="st-rec">0-0</div><div class="st-rec">0-0</div></div>
         <div class="st-row"><div class="st-team">Wren</div><div class="st-rec">0-0</div><div class="st-rec">0-0</div></div>
@@ -1347,7 +1348,7 @@ textarea.form-input { resize:vertical; min-height:80px; font-family:var(--B); }
         </div>
         <div class="st-row"><div class="st-team">Easley</div><div class="st-rec">0-0</div><div class="st-rec">0-0</div></div>
         <div class="st-row"><div class="st-team">Fountain Inn</div><div class="st-rec">0-0</div><div class="st-rec">0-0</div></div>
-        <div class="st-row lsn-bold" onclick="openTeam('greenwood')" style="cursor:pointer"><div class="st-team">Greenwood</div><div class="st-rec">0-0</div><div class="st-rec">0-0</div></div>
+        <div class="st-row lsn-bold" onclick="openTeam('greenwood')" style="cursor:pointer"><div class="st-team">Greenwood</div><div class="st-rec">1-0</div><div class="st-rec">0-0</div></div>
         <div class="st-row"><div class="st-team">Laurens</div><div class="st-rec">0-0</div><div class="st-rec">0-0</div></div>
         <div class="st-row"><div class="st-team">T.L. Hanna</div><div class="st-rec">0-0</div><div class="st-rec">0-0</div></div>
         <div class="st-row"><div class="st-team">Westside</div><div class="st-rec">0-0</div><div class="st-rec">0-0</div></div>
@@ -1363,7 +1364,7 @@ textarea.form-input { resize:vertical; min-height:80px; font-family:var(--B); }
           <div class="st-rec">Overall</div>
           <div class="st-rec">Region</div>
         </div>
-        <div class="st-row lsn-bold" onclick="openTeam('gwchristian')" style="cursor:pointer"><div class="st-team">Greenwood Christian</div><div class="st-rec">0-1</div><div class="st-rec">0-0</div></div>
+        <div class="st-row lsn-bold" onclick="openTeam('gwchristian')" style="cursor:pointer"><div class="st-team">Greenwood Christian</div><div class="st-rec">1-1</div><div class="st-rec">0-0</div></div>
         <div class="st-row"><div class="st-team">Orangeburg Prep</div><div class="st-rec">0-0</div><div class="st-rec">0-0</div></div>
         <div class="st-row"><div class="st-team">Pee Dee Academy</div><div class="st-rec">0-0</div><div class="st-rec">0-0</div></div>
         <div class="st-row"><div class="st-team">Spartanburg Day</div><div class="st-rec">0-0</div><div class="st-rec">0-0</div></div>
@@ -1544,8 +1545,8 @@ const SHEETS = {
 // STATIC TEAM DATA (other Lakelands teams)
 // ══════════════════════════════════════════
 const OTHER_TEAMS = [
-  { id:'emerald',     badge:'EM', abbr:'EHS', name:'Emerald',      mascot:'Vikings',        cls:'AAA · Region 2',  w:0, l:0, lsn:true,  primary:'#5B2D8E', secondary:'#C8971F', textColor:'#fff' },
-  { id:'gwchristian', badge:'GCS',abbr:'GCS', name:'Greenwood Christian', mascot:'Hawks',   cls:'SCISA 2A',        w:0, l:1, lsn:false, primary:'#1B2A4A', secondary:'#A0A8B0', textColor:'#fff' },
+  { id:'emerald',     badge:'EM', abbr:'EHS', name:'Emerald',      mascot:'Vikings',        cls:'AAA · Region 2',  w:1, l:0, lsn:true,  primary:'#5B2D8E', secondary:'#C8971F', textColor:'#fff' },
+  { id:'gwchristian', badge:'GCS',abbr:'GCS', name:'Greenwood Christian', mascot:'Hawks',   cls:'SCISA 2A',        w:1, l:1, lsn:false, primary:'#1B2A4A', secondary:'#A0A8B0', textColor:'#fff' },
   { id:'wareshoals',  badge:'WS', abbr:'WS',  name:'Ware Shoals',  mascot:'Hornets',        cls:'A · Region 1',    w:0, l:0, lsn:false, primary:'#6B2D8B', secondary:'#FFD100', textColor:'#fff' },
   { id:'ninetysix',   badge:'96', abbr:'96',  name:'Ninety Six',   mascot:'Wildcats',       cls:'A · Region 1',    w:0, l:1, lsn:false, primary:'#741819', secondary:'#C7AC59', textColor:'#fff' },
   { id:'abbeville',   badge:'AB', abbr:'AHS', name:'Abbeville',    mascot:'Panthers',       cls:'A · Region 1',    w:1, l:0, lsn:false, primary:'#1a2e44', secondary:'#c8a84b', textColor:'#fff' },
@@ -2604,6 +2605,17 @@ const SUPABASE_URL = 'https://qipobfdgbtfrpokkmubx.supabase.co';       // e.g. h
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFpcG9iZmRnYnRmcnBva2ttdWJ4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODU4MzI5MjgsImV4cCI6MjEwMTQwODkyOH0.uouKin79wEMTfxkXSpce4Dca77FHSa6ucRT0okJOfRo';     // Settings → API → anon public key
 const STRIPE_PUBLISHABLE_KEY = 'pk_live_51U0fymGc7qn79KlRELIEVlC0PkL5W5EorVlwjs8Zgpw9Z8KmG4DccrbIQmcgcEVJ22YLF0CHq8CBg1nofdQFMFO900FhsX4Exq';          // Stripe → Developers → API keys → Publishable key (starts pk_) — LIVE key
 
+// ⚠️ TEST MODE — the Buy Button below is running on a pk_test_ key, so real cards will
+// NOT be charged; only Stripe's test cards (e.g. 4242 4242 4242 4242) work against it, and
+// completed test payments will only show up in the Stripe Dashboard while it's toggled to
+// "Test mode" (top-right switch) — not under Live subscriptions. That mismatch is almost
+// certainly why the Dashboard looked like it had "no subscriptions."
+// Before going live: in the Stripe Dashboard, switch to LIVE mode, create a new Buy Button
+// there (Product catalog → your $9.99/mo price → Create Buy Button), then replace both
+// values below with the live buy-button-id and pk_live_ key it gives you.
+const STRIPE_BUY_BUTTON_ID = 'buy_btn_1U6jQhK8OgrqO1dYNh2gmbVZ';
+const STRIPE_BUY_BUTTON_PUBLISHABLE_KEY = 'pk_test_51U0fyvK8OgrqO1dYGYBTJ8sXVAmyTjxBluTZVPP24CXOVKJIexhJH5gYUbUqILLVxf0tMwtvCallkTn5EJacJ3DB00kaTqQJ0j';
+
 const sbClient = (window.supabase && SUPABASE_URL.startsWith('http'))
   ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
   : null;
@@ -2616,8 +2628,6 @@ let currentUser = null;
 let currentSubStatus = 'inactive';
 let currentFavoriteTeams = [];
 let currentUsername = null;
-let stripeElements = null;
-let cardElement = null;
 let _devicePickerResolve = null;
 const signupState = { email: '', teams: [], usernameError: null, promoCode: null, promoDescription: null };
 
@@ -2701,14 +2711,17 @@ function renderBoxScoreHTML(key) {
 function renderBoxScoreHeaderHTML(data) {
   const awayWon = data.awayFinal > data.homeFinal;
   const homeWon = data.homeFinal > data.awayFinal;
-  const qtrTable =
-    '<table class="boxscore-qtr-table">' +
-    '<tr><th></th>' + data.quarterLabels.map(l => '<th>' + escapeHtml(l) + '</th>').join('') + '<th>Final</th></tr>' +
-    '<tr><td style="text-align:left;color:var(--gray2);font-weight:700;">' + escapeHtml(data.awayTeam) + '</td>' +
-      data.awayByQtr.map(v => '<td>' + v + '</td>').join('') + '<td class="bs-final">' + data.awayFinal + '</td></tr>' +
-    '<tr><td style="text-align:left;color:var(--gray2);font-weight:700;">' + escapeHtml(data.homeTeam) + '</td>' +
-      data.homeByQtr.map(v => '<td>' + v + '</td>').join('') + '<td class="bs-final">' + data.homeFinal + '</td></tr>' +
-    '</table>';
+  // Quarter-by-quarter breakdown is optional — some games only have a final cumulative
+  // stat sheet with no scoring-by-quarter detail, so skip the table when it's not there.
+  const qtrTable = (data.quarterLabels && data.awayByQtr && data.homeByQtr)
+    ? '<table class="boxscore-qtr-table">' +
+      '<tr><th></th>' + data.quarterLabels.map(l => '<th>' + escapeHtml(l) + '</th>').join('') + '<th>Final</th></tr>' +
+      '<tr><td style="text-align:left;color:var(--gray2);font-weight:700;">' + escapeHtml(data.awayTeam) + '</td>' +
+        data.awayByQtr.map(v => '<td>' + v + '</td>').join('') + '<td class="bs-final">' + data.awayFinal + '</td></tr>' +
+      '<tr><td style="text-align:left;color:var(--gray2);font-weight:700;">' + escapeHtml(data.homeTeam) + '</td>' +
+        data.homeByQtr.map(v => '<td>' + v + '</td>').join('') + '<td class="bs-final">' + data.homeFinal + '</td></tr>' +
+      '</table>'
+    : '';
 
   return '<div class="boxscore-matchup-head">' +
     '<div class="bs-meta">' + escapeHtml(data.weekLabel) + ' · ' + escapeHtml(data.dateLabel) + ' · Final</div>' +
@@ -2735,7 +2748,10 @@ function boxScorePaywallHTML() {
 
 function renderBoxScoreFullHTML(data) {
   let html = '<div class="boxscore-section-label">Team Stats</div>' + renderBoxScoreTeamStatsTable(data);
-  html += '<div class="boxscore-section-label">Scoring Summary</div>' + renderBoxScorePlaysHTML(data);
+  // Scoring log is optional — only render the section when there's actually a play list.
+  if (data.scoringPlays && data.scoringPlays.length) {
+    html += '<div class="boxscore-section-label">Scoring Summary</div>' + renderBoxScorePlaysHTML(data);
+  }
   html += renderBoxScoreTeamBlockHTML(data.awayTeam, data.stats[data.awayTeam]);
   html += renderBoxScoreTeamBlockHTML(data.homeTeam, data.stats[data.homeTeam]);
   return html;
@@ -4019,147 +4035,35 @@ function renderSignupCardStep(el) {
   const usernameNote = signupState.usernameError
     ? `<div class="board-error-msg" style="margin-bottom:14px;">${escapeHtml(signupState.usernameError)} You can pick a different one from the Board later.</div>`
     : '';
+  // A discount code entered on step 1 can't be forwarded into a Stripe Buy Button from our
+  // side — Buy Buttons/Payment Links have their own "promotion code" box on Stripe's hosted
+  // checkout page, which only appears if it's been turned on for this specific button in the
+  // Stripe Dashboard. Just let them know to re-enter it there.
+  const promoNote = signupState.promoDescription
+    ? `<div style="font-size:12px;color:var(--gold);margin-bottom:14px;">🏷️ Code applied: ${escapeHtml(signupState.promoDescription)} — if the payment screen below has a promo code box, enter it again there.</div>`
+    : '';
   el.innerHTML = `
     <div style="background:var(--navy2);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:8px;padding:28px 24px;">
       <div style="font-family:var(--D);font-weight:800;font-size:15px;color:#fff;margin-bottom:6px;">Step 2 of 2 — Payment</div>
       <div style="font-size:12px;color:var(--gray);margin-bottom:18px;">Signed in as ${currentUser.email} · $9.99/month</div>
       ${usernameNote}
-      <div style="display:flex;gap:8px;margin-bottom:6px;">
-        <input class="form-input" id="checkoutPromoInput" placeholder="Promo code (optional)" style="margin-bottom:0;text-transform:uppercase;" value="${escapeHtml(signupState.promoCode || '')}" onkeydown="if(event.key==='Enter'){event.preventDefault();applyCheckoutPromoCode();}">
-        <button type="button" class="btn-outline" style="white-space:nowrap;padding:0 16px;" onclick="applyCheckoutPromoCode()">Apply</button>
-      </div>
-      <div id="checkoutPromoMsg" style="font-size:12px;margin-bottom:14px;${signupState.promoDescription ? 'color:var(--gold);' : 'display:none;'}">${signupState.promoDescription ? '🏷️ ' + escapeHtml(signupState.promoDescription) + ' — applied' : ''}</div>
-      <div id="cardElementContainer" style="padding:12px;border:1px solid var(--border2);border-radius:4px;background:var(--navy);margin-bottom:14px;"></div>
-      <div id="cardError" style="color:var(--red);font-size:12px;margin-bottom:10px;display:none;"></div>
-      <button class="plus-cta-btn" id="su-pay-btn" style="width:100%;" onclick="handleSignupCardSubmit()">Join LSN+</button>
-      <div style="font-size:11px;color:var(--gray);text-align:center;margin-top:10px;">Your card will be charged $9.99/month starting today. Cancel anytime.</div>
+      ${promoNote}
+      <div id="stripeBuyButtonWrap" style="display:flex;justify-content:center;padding:8px 0;"></div>
+      <div style="font-size:11px;color:var(--gray);text-align:center;margin-top:10px;">You'll pay through Stripe's secure checkout. Cancel anytime from My Account.</div>
     </div>`;
 
-  if (!stripeClient) {
-    document.getElementById('cardElementContainer').innerHTML = '<div style="font-size:12px;color:var(--gray);">Payments not configured yet.</div>';
-    return;
-  }
-  stripeElements = stripeClient.elements();
-  cardElement = stripeElements.create('card', {
-    style: { base: { color: '#fff', fontSize: '14px', '::placeholder': { color: '#8a9bb0' } } },
-  });
-  cardElement.mount('#cardElementContainer');
-}
-
-// Lets someone apply (or change) a promo code right at the payment step — covers people
-// who skipped the code field on step 1, or come back to a half-finished signup later.
-// A "free membership" code redeems immediately and skips the rest of checkout entirely;
-// a discount code just gets stored so handleSignupCardSubmit() passes it along to Stripe.
-async function applyCheckoutPromoCode() {
-  const input = document.getElementById('checkoutPromoInput');
-  const msgEl = document.getElementById('checkoutPromoMsg');
-  const code = input ? input.value.trim() : '';
-
-  if (!code) {
-    signupState.promoCode = null;
-    signupState.promoDescription = null;
-    if (msgEl) { msgEl.style.display = 'none'; msgEl.textContent = ''; }
-    return;
-  }
-
-  if (msgEl) { msgEl.style.display = 'block'; msgEl.style.color = 'var(--gray)'; msgEl.textContent = 'Checking code…'; }
-
-  let result;
-  try {
-    const res = await fetch('/api/validate-code', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ code }),
-    });
-    result = await res.json();
-  } catch (e) {
-    result = { valid: false, error: 'Could not check that code right now.' };
-  }
-
-  if (!result.valid) {
-    signupState.promoCode = null;
-    signupState.promoDescription = null;
-    if (msgEl) { msgEl.style.color = 'var(--red)'; msgEl.textContent = result.error || "That code isn't valid."; }
-    return;
-  }
-
-  if (result.type === 'free') {
-    if (msgEl) { msgEl.style.color = 'var(--gray)'; msgEl.textContent = 'Redeeming free membership…'; }
-    try {
-      const { data: { session } } = await sbClient.auth.getSession();
-      const redeemRes = await fetch('/api/redeem-free-code', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + session.access_token },
-        body: JSON.stringify({ code }),
-      });
-      const redeemJson = await redeemRes.json();
-      if (!redeemJson.ok) {
-        if (msgEl) { msgEl.style.color = 'var(--red)'; msgEl.textContent = redeemJson.error || 'Could not redeem this code.'; }
-        return;
-      }
-    } catch (e) {
-      if (msgEl) { msgEl.style.color = 'var(--red)'; msgEl.textContent = 'Could not redeem this code.'; }
-      return;
-    }
-    await refreshAuthState();
-    renderSignupPage(); // isPlusMember() is now true ('comped') → shows the "Welcome" screen
-    return;
-  }
-
-  // Discount code — hang onto it; handleSignupCardSubmit() sends it to Stripe at checkout.
-  signupState.promoCode = code;
-  signupState.promoDescription = result.description;
-  if (msgEl) { msgEl.style.color = 'var(--gold)'; msgEl.textContent = '🏷️ ' + result.description + ' — applied'; }
-}
-
-function showCardError(msg) {
-  const el = document.getElementById('cardError');
-  if (el) { el.textContent = msg; el.style.display = 'block'; }
-}
-
-async function handleSignupCardSubmit() {
-  if (!sbClient || !stripeClient) return;
-  const btn = document.getElementById('su-pay-btn');
-  if (btn) { btn.disabled = true; btn.textContent = 'Processing…'; }
-
-  try {
-    const { data: { session } } = await sbClient.auth.getSession();
-    if (!session) { showCardError('Session expired — please log in again.'); return; }
-
-    const intentRes = await fetch('/api/create-setup-intent', {
-      method: 'POST',
-      headers: { 'Authorization': 'Bearer ' + session.access_token },
-    });
-    const intentData = await intentRes.json();
-    if (!intentData.clientSecret) { showCardError(intentData.error || 'Could not start card setup.'); return; }
-
-    const { setupIntent, error: stripeErr } = await stripeClient.confirmCardSetup(intentData.clientSecret, {
-      payment_method: { card: cardElement },
-    });
-    if (stripeErr) { showCardError(stripeErr.message); return; }
-
-    const subRes = await fetch('/api/create-subscription', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + session.access_token },
-      body: JSON.stringify({ payment_method_id: setupIntent.payment_method, promo_code: signupState.promoCode || null }),
-    });
-    const subData = await subRes.json();
-    if (!subData.status) { showCardError(subData.error || 'Could not start your subscription.'); return; }
-
-    await refreshAuthState();
-    const el = document.getElementById('signupContainer');
-    el.innerHTML = `
-      <div style="text-align:center;padding:32px 0;">
-        <div style="font-size:32px;margin-bottom:12px;">🎉</div>
-        <div style="font-family:var(--D);font-weight:800;font-size:18px;color:var(--gold);margin-bottom:10px;">Welcome to LSN+!</div>
-        <p style="font-size:13px;color:var(--gray);margin-bottom:20px;">Your membership is active.</p>
-        <button class="plus-cta-btn" onclick="goPage('home')">Go to the Site</button>
-      </div>`;
-  } catch (e) {
-    showCardError('Something went wrong. Please try again.');
-  } finally {
-    if (btn) { btn.disabled = false; btn.textContent = 'Join LSN+'; }
-  }
+  const wrap = document.getElementById('stripeBuyButtonWrap');
+  if (!wrap || !currentUser) return;
+  // Built with createElement (not an innerHTML string) so the <stripe-buy-button> custom
+  // element — defined by the buy-button.js script tag loaded near the top of <body> —
+  // reliably upgrades once it's attached to the DOM.
+  const buyBtn = document.createElement('stripe-buy-button');
+  buyBtn.setAttribute('buy-button-id', STRIPE_BUY_BUTTON_ID);
+  buyBtn.setAttribute('publishable-key', STRIPE_BUY_BUTTON_PUBLISHABLE_KEY);
+  // Ties the resulting Stripe Checkout session back to this Supabase user — the webhook's
+  // checkout.session.completed handler reads this to know whose profile to update.
+  buyBtn.setAttribute('client-reference-id', currentUser.id);
+  wrap.appendChild(buyBtn);
 }
 
 // ══════════════════════════════════════════
@@ -4454,7 +4358,7 @@ function renderTeams() {
         <div class="tc-lsn">📻 LSN</div>
       </div>
       <div class="tc-footer">
-        <span class="tc-record">2026: 0–0</span>
+        <span class="tc-record">2026: 1–0</span>
       </div>
     </div>`; }
 
@@ -4795,7 +4699,7 @@ function renderSidebarFav() {
 // 2026 Greenwood schedule (hardcoded from your Google Sheet as fallback)
 // Wk 0 = Aug 21, then weeks 1-10 follow every Friday through playoffs
 const GW_SCHEDULE_2026 = [
-  { wk:1,  date:'Fri Aug 21', opp:'Riverside',      ha:'Home', time:'7:30 PM', result:'', gwScore:'', oppScore:'' },
+  { wk:1,  date:'Fri Aug 21', opp:'Riverside',      ha:'Home', time:'7:30 PM', result:'W', gwScore:'33', oppScore:'7', boxScoreKey:'gw-riverside-2026-wk1' },
   { wk:2,  date:'Fri Aug 28', opp:'Spartanburg',    ha:'Home', time:'7:30 PM', result:'', gwScore:'', oppScore:'' },
   { wk:3,  date:'Fri Sep 4',  opp:'North Augusta',  ha:'Away', time:'7:30 PM', result:'', gwScore:'', oppScore:'' },
   { wk:4,  date:'Fri Sep 11', opp:'BYE',            ha:'',     time:'',        result:'', gwScore:'', oppScore:'' },
@@ -4839,7 +4743,7 @@ const EMERALD_2025 = [
 
 // ── EMERALD 2026 SCHEDULE ──
 const EMERALD_2026 = [
-  { wk:1,  date:'Fri Aug 21', opp:'Crescent',         ha:'Away', time:'7:30 PM', result:'', eScore:'', oppScore:'' },
+  { wk:1,  date:'Fri Aug 21', opp:'Crescent',         ha:'Away', time:'7:30 PM', result:'W', eScore:'21', oppScore:'6' },
   { wk:2,  date:'Fri Aug 28', opp:'Newberry',         ha:'Home', time:'7:30 PM', result:'', eScore:'', oppScore:'' },
   { wk:3,  date:'Fri Sep 4',  opp:'Woodruff',         ha:'Away', time:'7:30 PM', result:'', eScore:'', oppScore:'' },
   { wk:4,  date:'Fri Sep 11', opp:'Broome',           ha:'Home', time:'7:30 PM', result:'', eScore:'', oppScore:'' },
@@ -4873,7 +4777,7 @@ const GCS_2025 = [
 // team's own "week 0" batch (including GCS's own Aug 21 McCormick game) is Week 1.
 const GCS_2026 = [
   { wk:0,   date:'Fri Aug 14', opp:'Northside Christian', ha:'Away', time:'7:30 PM', result:'L', gScore:'20', oppScore:'21' },
-  { wk:1,   date:'Fri Aug 21', opp:'McCormick',           ha:'Home', time:'7:30 PM', result:'', gScore:'', oppScore:'' },
+  { wk:1,   date:'Fri Aug 21', opp:'McCormick',           ha:'Home', time:'7:30 PM', result:'W', gScore:'28', oppScore:'0' },
   { wk:2,   date:'Fri Aug 28', opp:'Dixie',               ha:'Away', time:'7:30 PM', result:'', gScore:'', oppScore:'' },
   { wk:3,   date:'Fri Sep 4',  opp:'Calhoun Falls',       ha:'Home', time:'7:30 PM', result:'', gScore:'', oppScore:'' },
   { wk:4,   date:'Fri Sep 11', opp:'Williamsburg',        ha:'Home', time:'7:30 PM', result:'', gScore:'', oppScore:'' },
@@ -4931,7 +4835,7 @@ const NS_2025 = [
   { 'Date':'Nov 7',  'Opponent':'Andrew Jackson',           'Home/Away':'Away', 'NS Score':'15', 'OPP Score':'34', 'Result':'L', 'Type':'Playoff' },
 ];
 const NS_2026 = [
-  { wk:1,  date:'Fri Aug 21', opp:'Mid-Carolina',  ha:'Away', time:'7:30 PM', result:'L', nsScore:'41', oppScore:'49' },
+  { wk:1,  date:'Fri Aug 21', opp:'Mid-Carolina',  ha:'Away', time:'7:30 PM', result:'L', nsScore:'21', oppScore:'49', boxScoreKey:'ns-midcarolina-2026-wk1' },
   { wk:2,  date:'Fri Aug 28', opp:'Landrum',        ha:'Home', time:'7:30 PM', result:'', nsScore:'', oppScore:'' },
   { wk:3,  date:'Fri Sep 4',  opp:'Wagener-Salley', ha:'Home', time:'7:30 PM', result:'', nsScore:'', oppScore:'' },
   { wk:4,  date:'Fri Sep 11', opp:'Saluda',         ha:'Home', time:'7:30 PM', result:'', nsScore:'', oppScore:'' },
@@ -5244,9 +5148,9 @@ const BOX_SCORES = {
             { num:'2',  player:'Jamearion Williams',     att:15, yds:172, avg:'11.5', lg:41, td:3 },
             { num:'12', player:'Jamiere Killingsworth',  att:17, yds:91,  avg:'5.4',  lg:25, td:1 },
             { num:'11', player:'Jacob Wilson',           att:9,  yds:78,  avg:'8.7',  lg:32, td:0 },
-            { num:'22', player:'Aden Harrison',          att:1,  yds:16,  avg:'16.0', lg:16, td:0 },
             { num:'20', player:'Kingston Marshall',      att:6,  yds:46,  avg:'7.7',  lg:24, td:0 },
             { num:'4',  player:'Collins Brown',          att:3,  yds:33,  avg:'11.0', lg:30, td:1 },
+            { num:'22', player:'Aden Harrison',          att:1,  yds:16,  avg:'16.0', lg:16, td:0 },
           ],
           totals: { att:51, yds:436, avg:'8.5', lg:41, td:5 },
         },
@@ -5286,8 +5190,8 @@ const BOX_SCORES = {
           cols: [['num','#'],['player','Player'],['no','No'],['fc','FC'],['yds','Yds'],['avg','Avg'],['lg','LG'],['td','TD']],
           rows: [
             { num:'2',  player:'Jamearion Williams', no:3, fc:0, yds:36, avg:'12.0', lg:20, td:0 },
-            { num:'',   player:'Unassigned',          no:1, fc:0, yds:0,  avg:'0.0',  lg:0,  td:0 },
             { num:'10', player:'Dee Brown',           no:1, fc:0, yds:7,  avg:'7.0',  lg:7,  td:0 },
+            { num:'',   player:'Unassigned',          no:1, fc:0, yds:0,  avg:'0.0',  lg:0,  td:0 },
           ],
           totals: { no:5, fc:0, yds:43, avg:'8.6', lg:20, td:0 },
         },
@@ -5309,9 +5213,9 @@ const BOX_SCORES = {
             { num:'23', player:'Tristan Daniels',  att:15, yds:56, avg:'3.7',  lg:18, td:1 },
             { num:'4',  player:'Avery Coyle',      att:9,  yds:48, avg:'5.3',  lg:26, td:0 },
             { num:'2',  player:'Darryl Hill',      att:2,  yds:22, avg:'11.0', lg:17, td:0 },
-            { num:'',   player:'Unassigned',       att:1,  yds:-7, avg:'-7.0', lg:0,  td:0 },
-            { num:'12', player:'Ceddion Springs',  att:1,  yds:-6, avg:'-6.0', lg:0,  td:0 },
             { num:'0',  player:'Jaylen Bledsoe',   att:2,  yds:-4, avg:'-2.0', lg:0,  td:0 },
+            { num:'12', player:'Ceddion Springs',  att:1,  yds:-6, avg:'-6.0', lg:0,  td:0 },
+            { num:'',   player:'Unassigned',       att:1,  yds:-7, avg:'-7.0', lg:0,  td:0 },
           ],
           totals: { att:30, yds:109, avg:'3.6', lg:26, td:1 },
         },
@@ -5323,9 +5227,9 @@ const BOX_SCORES = {
         receiving: {
           cols: [['num','#'],['player','Player'],['rec','Rec'],['tar','Tar'],['yds','Yds'],['avg','Avg'],['lg','LG'],['td','TD']],
           rows: [
-            { num:'23', player:'Tristan Daniels', rec:4, tar:4, yds:53, avg:'13.3', lg:31, td:2 },
-            { num:'2',  player:'Darryl Hill',     rec:4, tar:6, yds:56, avg:'14.0', lg:25, td:0 },
             { num:'12', player:'Ceddion Springs', rec:3, tar:4, yds:72, avg:'24.0', lg:33, td:1 },
+            { num:'2',  player:'Darryl Hill',     rec:4, tar:6, yds:56, avg:'14.0', lg:25, td:0 },
+            { num:'23', player:'Tristan Daniels', rec:4, tar:4, yds:53, avg:'13.3', lg:31, td:2 },
             { num:'3',  player:'Mekhi Linton',    rec:2, tar:7, yds:35, avg:'17.5', lg:24, td:1 },
             { num:'17', player:'Chris Rushton',   rec:0, tar:1, yds:0,  avg:'0.0',  lg:0,  td:0 },
           ],
@@ -5350,9 +5254,9 @@ const BOX_SCORES = {
           cols: [['num','#'],['player','Player'],['no','No'],['fc','FC'],['yds','Yds'],['avg','Avg'],['lg','LG'],['td','TD']],
           rows: [
             { num:'8',  player:'King Mathis',        no:2, fc:0, yds:27, avg:'13.5', lg:18, td:0 },
+            { num:'44', player:'Jeremiah Freeman',   no:2, fc:0, yds:21, avg:'10.5', lg:15, td:0 },
             { num:'3',  player:'Mekhi Linton',       no:1, fc:0, yds:0,  avg:'0.0',  lg:0,  td:0 },
             { num:'28', player:'Player28',           no:1, fc:0, yds:0,  avg:'0.0',  lg:0,  td:0 },
-            { num:'44', player:'Jeremiah Freeman',   no:2, fc:0, yds:21, avg:'10.5', lg:15, td:0 },
           ],
           totals: { no:6, fc:0, yds:48, avg:'8.0', lg:18, td:0 },
         },
@@ -5368,6 +5272,246 @@ const BOX_SCORES = {
             { num:'14', player:'Jakaile Stevens', ua:0, as:0, tot:0, sk:'0/0', tl:0, int:0, f:1, fr:0, td:0 },
           ],
           totals: { ua:0, as:0, tot:0, sk:'0/0', tl:0, int:0, f:2, fr:0, td:0 },
+        },
+      },
+    },
+  },
+
+  // Greenwood 33, Riverside 7 (Week 1, Aug 21 2026) — from the team's own cumulative stat
+  // sheet. Only a final cumulative team-stat comparison and Greenwood's own individual
+  // rushing/passing/receiving lines were provided — no quarter-by-quarter score, no
+  // scoring-play log, and no Riverside individual stats, so those sections are simply
+  // omitted below rather than invented.
+  'gw-riverside-2026-wk1': {
+    awayTeam: 'Riverside', homeTeam: 'Greenwood',
+    dateLabel: 'Aug 21, 2026', weekLabel: 'Week 1',
+    awayFinal: 7, homeFinal: 33,
+    teamStats: [
+      { label: 'Time of Possession', away: '25:31', home: '22:29' },
+      { label: 'Total Plays', away: '59', home: '51' },
+      { label: 'Total Yards', away: '300', home: '441' },
+      { label: 'Average Gain', away: '5.1', home: '8.6' },
+      { label: 'Total Pass Plays', away: '37', home: '8' },
+      { label: 'Passing Yards', away: '221', home: '62' },
+      { label: 'Ave. Yards Per Pass', away: '6.0', home: '7.8' },
+      { label: 'Total Rushing Plays', away: '22', home: '43' },
+      { label: 'Rushing Yards', away: '79', home: '379' },
+      { label: 'Ave. Yards Per Rush', away: '3.6', home: '8.8' },
+      { label: 'Total First Downs', away: '13', home: '19' },
+      { label: 'Touchdowns Scored', away: '1', home: '5' },
+      { label: "PAT's Attempted", away: '1', home: '4' },
+      { label: "PAT's Made", away: '1', home: '3' },
+      { label: '2-Point Conversion Attempts', away: '0', home: '1' },
+      { label: '2-Point Conversion Made', away: '0', home: '0' },
+      { label: 'Total Turnovers', away: '2', home: '1' },
+      { label: 'Fumbles', away: '1', home: '1' },
+      { label: 'Interceptions', away: '1', home: '0' },
+      { label: 'Number of Punts', away: '4', home: '1' },
+      { label: 'Average Punt', away: '34.8', home: '44.0' },
+      { label: 'Number of Penalties', away: '11', home: '11' },
+      { label: 'Penalty Yards', away: '115', home: '120' },
+      { label: 'Field Goals Attempted', away: '0', home: '0' },
+      { label: 'Field Goals Made', away: '0', home: '0' },
+    ],
+    stats: {
+      'Greenwood': {
+        rushing: {
+          cols: [['num','#'],['player','Player'],['att','Att'],['yds','Yds'],['td','TD'],['avg','Avg']],
+          rows: [
+            { num:'21', player:'Cassidy Lee',       att:7,  yds:166, td:2, avg:'23.7' },
+            { num:'0',  player:'Tay Hamilton',      att:24, yds:158, td:2, avg:'6.6' },
+            { num:'12', player:"Ry'Keem Robinson",  att:1,  yds:17,  td:0, avg:'17.0' },
+            { num:'15', player:'Zatavion White',    att:2,  yds:15,  td:0, avg:'7.5' },
+            { num:'10', player:'Quay Justensen',    att:4,  yds:10,  td:0, avg:'2.5' },
+            { num:'4',  player:'Major Rappley',     att:1,  yds:9,   td:0, avg:'9.0' },
+            { num:'11', player:'Mitchell Miller',   att:2,  yds:-7,  td:0, avg:'-3.5' },
+          ],
+          // Team total from the cumulative stat sheet (43 att / 379 yds) — runs a bit ahead
+          // of the individual rows above because the sheet's player list continues past what
+          // was visible in the provided screenshot.
+          totals: { att:43, yds:379, td:4, avg:'8.8' },
+        },
+        passing: {
+          cols: [['num','#'],['player','Player'],['comp','Comp'],['att','Att'],['yds','Yds'],['td','TD'],['int','INT'],['pct','Comp%']],
+          rows: [
+            { num:'10', player:'Quay Justensen', comp:3, att:7, yds:46, td:1, int:0, pct:'42.9%' },
+            { num:'15', player:'Zatavion White',  comp:1, att:1, yds:16, td:0, int:0, pct:'100.0%' },
+          ],
+          totals: { comp:4, att:8, yds:62, td:1, int:0, pct:'50.0%' },
+        },
+        receiving: {
+          cols: [['num','#'],['player','Player'],['rec','Rec'],['yds','Yds'],['td','TD'],['avg','Avg']],
+          rows: [
+            { num:'12', player:"Ry'Keem Robinson", rec:4, yds:62, td:1, avg:'15.5' },
+          ],
+          totals: { rec:4, yds:62, td:1, avg:'15.5' },
+        },
+      },
+    },
+  },
+
+  // Mid-Carolina 49, Ninety Six 21 (Week 1, Aug 19 2026) — full official box score
+  // (forwarded stat sheet). Scoring log cross-checked play-by-play against the running
+  // score columns and every quarter subtotal in the sheet; all match exactly.
+  'ns-midcarolina-2026-wk1': {
+    awayTeam: 'Ninety Six', homeTeam: 'Mid-Carolina',
+    dateLabel: 'Aug 19, 2026', weekLabel: 'Week 1',
+    quarterLabels: ['1', '2', '3', '4'],
+    awayByQtr: [0, 7, 7, 7], homeByQtr: [14, 7, 21, 7],
+    awayFinal: 21, homeFinal: 49,
+    teamStats: [
+      { label: 'First Downs', away: '21', home: '15' },
+      { label: 'Rushing (Att-Yds)', away: '39-122', home: '27-162' },
+      { label: 'Passing Yards', away: '229', home: '137' },
+      { label: 'Comp-Att', away: '23-33', home: '8-12' },
+      { label: 'TD-INT', away: '2-2', home: '2-0' },
+      { label: 'Fumbles-Lost', away: '3-2', home: '3-3' },
+      { label: 'Penalties-Yards', away: '9-59', home: '6-54' },
+      { label: '3rd Down Conv', away: '8-16', home: '6-9' },
+      { label: '4th Down Conv', away: '1-3', home: '0-1' },
+      { label: 'Field Goals', away: '0-0', home: '0-0' },
+      { label: 'Sacks-Yards', away: '0-0', home: '0-0' },
+      { label: 'Time of Possession', away: '23:53', home: '17:26' },
+    ],
+    scoringPlays: [
+      { qtr: 1, time: '', team: 'Mid-Carolina', kind: 'TD',  desc: 'Akai Williams 30 yd rush',                              awayScore: 0,  homeScore: 6  },
+      { qtr: 1, time: '', team: 'Mid-Carolina', kind: 'PAT', desc: 'Ryker Woolstenhulme extra point',                       awayScore: 0,  homeScore: 7  },
+      { qtr: 1, time: '', team: 'Mid-Carolina', kind: 'TD',  desc: 'Ryker Woolstenhulme 17 yd rush',                        awayScore: 0,  homeScore: 13 },
+      { qtr: 1, time: '', team: 'Mid-Carolina', kind: 'PAT', desc: 'Ryker Woolstenhulme extra point',                       awayScore: 0,  homeScore: 14 },
+      { qtr: 2, time: '', team: 'Mid-Carolina', kind: 'TD',  desc: 'Gavin Mitchell 56 yd pass from Davis Ruff',             awayScore: 0,  homeScore: 20 },
+      { qtr: 2, time: '', team: 'Mid-Carolina', kind: 'PAT', desc: 'Ryker Woolstenhulme extra point',                       awayScore: 0,  homeScore: 21 },
+      { qtr: 2, time: '', team: 'Ninety Six',   kind: 'TD',  desc: 'Jacob Evans 1 yd rush',                                 awayScore: 6,  homeScore: 21 },
+      { qtr: 2, time: '', team: 'Ninety Six',   kind: 'PAT', desc: 'Kai Graham extra point',                                awayScore: 7,  homeScore: 21 },
+      { qtr: 3, time: '', team: 'Mid-Carolina', kind: 'TD',  desc: 'Kayden Trapier 16 yd pass from Davis Ruff',             awayScore: 7,  homeScore: 27 },
+      { qtr: 3, time: '', team: 'Mid-Carolina', kind: 'PAT', desc: 'Ryker Woolstenhulme extra point',                       awayScore: 7,  homeScore: 28 },
+      { qtr: 3, time: '', team: 'Ninety Six',   kind: 'TD',  desc: 'Camrhyn Mathis 6 yd pass from Jacob Evans',             awayScore: 13, homeScore: 28 },
+      { qtr: 3, time: '', team: 'Ninety Six',   kind: 'PAT', desc: 'Kai Graham extra point',                                awayScore: 14, homeScore: 28 },
+      { qtr: 3, time: '', team: 'Mid-Carolina', kind: 'TD',  desc: 'Ryker Woolstenhulme 100 yd kickoff return',             awayScore: 14, homeScore: 34 },
+      { qtr: 3, time: '', team: 'Mid-Carolina', kind: '2-PT Conv', desc: '3 yd pass from Davis Ruff',                       awayScore: 14, homeScore: 36 },
+      { qtr: 3, time: '', team: 'Mid-Carolina', kind: 'TD',  desc: 'Akai Williams 2 yd rush',                               awayScore: 14, homeScore: 42 },
+      { qtr: 4, time: '', team: 'Ninety Six',   kind: 'TD',  desc: 'Parker Sutley 9 yd pass from Jacob Evans',              awayScore: 20, homeScore: 42 },
+      { qtr: 4, time: '', team: 'Ninety Six',   kind: 'PAT', desc: 'Extra point',                                           awayScore: 21, homeScore: 42 },
+      { qtr: 4, time: '', team: 'Mid-Carolina', kind: 'TD',  desc: 'Davis Ruff 2 yd rush',                                  awayScore: 21, homeScore: 48 },
+      { qtr: 4, time: '', team: 'Mid-Carolina', kind: 'PAT', desc: 'Ryker Woolstenhulme extra point',                       awayScore: 21, homeScore: 49 },
+    ],
+    stats: {
+      'Ninety Six': {
+        rushing: {
+          cols: [['num','#'],['player','Player'],['att','Att'],['yds','Yds'],['td','TD'],['fum','Fum']],
+          rows: [
+            { num:'50', player:'Will Allen',       att:8, yds:44, td:0, fum:0 },
+            { num:'8',  player:'Jacob Evans',       att:7, yds:21, td:1, fum:1 },
+            { num:'35', player:'Joshua Thompson',   att:7, yds:19, td:0, fum:0 },
+            { num:'11', player:'Parker Sutley',     att:7, yds:18, td:0, fum:0 },
+            { num:'14', player:'Madden Davis',      att:2, yds:7,  td:0, fum:1 },
+            { num:'9',  player:'Kee Brunson',       att:2, yds:4,  td:0, fum:0 },
+            { num:'20', player:'Noah McDonald',     att:2, yds:4,  td:0, fum:0 },
+            { num:'24', player:'Camrhyn Mathis',    att:1, yds:0,  td:0, fum:1 },
+            { num:'13', player:'KD Henry',          att:1, yds:0,  td:0, fum:0 },
+          ],
+          totals: { att:39, yds:122, td:1, fum:4 },
+        },
+        passing: {
+          cols: [['num','#'],['player','Player'],['comp','Comp'],['att','Att'],['yds','Yds'],['td','TD'],['int','INT']],
+          rows: [
+            { num:'8',  player:'Jacob Evans',   comp:23, att:31, yds:229, td:2, int:2 },
+            { num:'11', player:'Parker Sutley', comp:0,  att:2,  yds:0,   td:0, int:0 },
+          ],
+          totals: { comp:23, att:33, yds:229, td:2, int:2 },
+        },
+        receiving: {
+          cols: [['num','#'],['player','Player'],['rec','Rec'],['yds','Yds'],['td','TD']],
+          rows: [
+            { num:'6',  player:'Eli Schoofield',  rec:3, yds:90, td:0 },
+            { num:'11', player:'Parker Sutley',   rec:5, yds:44, td:1 },
+            { num:'14', player:'Madden Davis',    rec:3, yds:28, td:0 },
+            { num:'24', player:'Camrhyn Mathis',  rec:3, yds:26, td:1 },
+            { num:'20', player:'Noah McDonald',   rec:3, yds:18, td:0 },
+            { num:'16', player:'Kobi Quarles',    rec:2, yds:16, td:0 },
+            { num:'84', player:'Jacob Swink',     rec:1, yds:7,  td:0 },
+            { num:'4',  player:'Dalton Williams', rec:2, yds:0,  td:0 },
+            { num:'23', player:'Blaine Dodson',   rec:1, yds:0,  td:0 },
+          ],
+          totals: { rec:23, yds:229, td:2 },
+        },
+        punting: {
+          cols: [['num','#'],['player','Player'],['no','No'],['yds','Yds'],['avg','Avg'],['lg','LG']],
+          rows: [ { num:'8', player:'Jacob Evans', no:3, yds:109, avg:'36.3', lg:40 } ],
+          totals: { no:3, yds:109, avg:'36.3', lg:40 },
+        },
+        kickoffs: {
+          cols: [['num','#'],['player','Player'],['ret','Ret'],['yds','Yds'],['td','TD']],
+          rows: [
+            { num:'24', player:'Camrhyn Mathis',  ret:4, yds:72, td:0 },
+            { num:'4',  player:'Dalton Williams', ret:2, yds:29, td:0 },
+          ],
+          totals: { ret:6, yds:101, td:0 },
+        },
+        defensive: {
+          cols: [['num','#'],['player','Player'],['tkl','Tkl'],['sk','Sk'],['int','Int']],
+          rows: [ { num:'15', player:'Landen Louden', tkl:'1.0', sk:'0.0', int:0 } ],
+        },
+        kicking: {
+          cols: [['num','#'],['player','Player'],['fg','FG'],['fgAtt','FG Att'],['pat','PAT'],['patAtt','PAT Att']],
+          rows: [ { num:'53', player:'Kai Graham', fg:0, fgAtt:0, pat:2, patAtt:2 } ],
+        },
+      },
+      'Mid-Carolina': {
+        rushing: {
+          cols: [['num','#'],['player','Player'],['att','Att'],['yds','Yds'],['td','TD'],['fum','Fum']],
+          rows: [
+            { num:'6',  player:'Akai Williams',       att:13, yds:110, td:2, fum:0 },
+            { num:'10', player:'Ryker Woolstenhulme', att:12, yds:50,  td:1, fum:1 },
+            { num:'16', player:'Davis Ruff',           att:2,  yds:2,   td:1, fum:0 },
+          ],
+          totals: { att:27, yds:162, td:4, fum:1 },
+        },
+        passing: {
+          cols: [['num','#'],['player','Player'],['comp','Comp'],['att','Att'],['yds','Yds'],['td','TD'],['int','INT']],
+          rows: [ { num:'16', player:'Davis Ruff', comp:8, att:12, yds:137, td:2, int:0 } ],
+          totals: { comp:8, att:12, yds:137, td:2, int:0 },
+        },
+        receiving: {
+          cols: [['num','#'],['player','Player'],['rec','Rec'],['yds','Yds'],['td','TD']],
+          rows: [
+            { num:'9',  player:'Gavin Mitchell',       rec:2, yds:65, td:1 },
+            { num:'3',  player:'Kayden Trapier',       rec:4, yds:61, td:1 },
+            { num:'30', player:'Creighton Jenkins',    rec:1, yds:6,  td:0 },
+            { num:'10', player:'Ryker Woolstenhulme',  rec:1, yds:5,  td:0 },
+          ],
+          totals: { rec:8, yds:137, td:2 },
+        },
+        punting: {
+          cols: [['num','#'],['player','Player'],['no','No'],['yds','Yds'],['avg','Avg'],['lg','LG']],
+          rows: [ { num:'10', player:'Ryker Woolstenhulme', no:1, yds:23, avg:'23.0', lg:23 } ],
+          totals: { no:1, yds:23, avg:'23.0', lg:23 },
+        },
+        kickoffs: {
+          cols: [['num','#'],['player','Player'],['ret','Ret'],['yds','Yds'],['td','TD']],
+          rows: [
+            { num:'10', player:'Ryker Woolstenhulme', ret:1, yds:100, td:1 },
+            { num:'12', player:'Cash Knight',          ret:2, yds:11,  td:0 },
+          ],
+          totals: { ret:3, yds:111, td:1 },
+        },
+        puntReturns: {
+          cols: [['num','#'],['player','Player'],['ret','Ret'],['yds','Yds'],['td','TD']],
+          rows: [ { num:'12', player:'Cash Knight', ret:3, yds:25, td:0 } ],
+          totals: { ret:3, yds:25, td:0 },
+        },
+        defensive: {
+          cols: [['num','#'],['player','Player'],['tkl','Tkl'],['sk','Sk'],['int','Int']],
+          rows: [
+            { num:'14', player:'Mason Davenport',   tkl:'0.0', sk:'0.0', int:1 },
+            { num:'30', player:'Creighton Jenkins', tkl:'0.0', sk:'0.0', int:1 },
+          ],
+        },
+        kicking: {
+          cols: [['num','#'],['player','Player'],['fg','FG'],['fgAtt','FG Att'],['pat','PAT'],['patAtt','PAT Att']],
+          rows: [
+            { num:'10', player:'Ryker Woolstenhulme', fg:0, fgAtt:0, pat:5, patAtt:5 },
+            { num:'12', player:'Cash Knight',          fg:0, fgAtt:0, pat:0, patAtt:1 },
+          ],
         },
       },
     },
@@ -5400,6 +5544,7 @@ function buildWeeklyMatchups(sheetData2026) {
           botScore: isAway ? gwG.oppScore : gwG.gwScore,
           result: gwG.result, date: gwG.date + ' · ' + gwG.time,
           teamIds: ['greenwood'], lsn: true,
+          boxScoreKey: gwG.boxScoreKey,
         });
       }
     }
@@ -5474,7 +5619,8 @@ function buildWeeklyMatchups(sheetData2026) {
           const nsAway = nsG.ha === 'Away';
           matchups.push({ top: nsAway?'Ninety Six':nsG.opp, bot: nsAway?nsG.opp:'Ninety Six',
             topScore: nsAway?nsG.nsScore:nsG.oppScore, botScore: nsAway?nsG.oppScore:nsG.nsScore,
-            result: nsG.result, date: nsG.date+' · '+nsG.time, teamIds:['ninetysix'], lsn:false });
+            result: nsG.result, date: nsG.date+' · '+nsG.time, teamIds:['ninetysix'], lsn:false,
+            boxScoreKey: nsG.boxScoreKey });
         }
       }
     } else if (wk >= 1) {
@@ -5745,7 +5891,11 @@ async function loadAllData() {
       const gwClass = played ? (res==='W'?'win':'lose') : 'upcoming';
       const oppClass = played ? (res==='W'?'lose':'win') : 'upcoming';
       const gameLabel = gameTypeLabel('Greenwood', opp, false);
-      return '<div class="score-card lsn-game">' +
+      const hasBox = !!g.boxScoreKey;
+      const cardAttrs = hasBox
+        ? ' class="score-card lsn-game has-boxscore" onclick="openBoxScore(\''+g.boxScoreKey+'\')"'
+        : ' class="score-card lsn-game"';
+      return '<div' + cardAttrs + '>' +
         '<div class="sc-top"><span class="sc-label">Football · ' + gameLabel + '</span>' +
         (played ? '<span class="sc-final">Final</span>' : '<span class="sc-upcoming-tag">'+dt+'</span>') +
         '</div><div class="sc-teams">' +
@@ -5754,7 +5904,7 @@ async function loadAllData() {
         '<div class="sc-team"><div><span class="sc-name">' + (ha==='Away'?'Greenwood':opp) + '</span></div>' +
         '<span class="sc-pts '+( ha==='Away'?(played?(parseInt(gws)>parseInt(ops)?'win':'lose'):'upcoming'):(played?(parseInt(ops)>parseInt(gws)?'win':'lose'):'upcoming') )+'">' + (played?(ha==='Away'?gws:ops):'–') + '</span></div>' +
         '</div><div class="sc-foot"><span>' + dt + ' · 7:30 PM</span>' +
-        '<span class="sc-broadcast">📻 LSN Radio</span></div></div>';
+        '<span class="sc-broadcast">📻 LSN Radio</span></div>' + (hasBox ? '<div class="boxscore-tag">📋 Full Box Score — LSN+</div>' : '') + '</div>';
     }).join('');
     document.getElementById('teamSchedule2026').innerHTML = '<div class="scores-full" style="padding:20px 0 48px">' + fallbackCards + '</div>';
   }
@@ -5790,6 +5940,16 @@ window.addEventListener('DOMContentLoaded', () => {
   setupStatsPage();
   refreshAuthState();
   if (sbClient) sbClient.auth.onAuthStateChange(() => refreshAuthState());
+
+  // Coming back from a completed Stripe Buy Button checkout — refresh membership status
+  // and land on the Sign Up page's "Welcome to LSN+!" screen. Set this exact URL
+  // (https://yoursite.com/?lsnplus=success) as the Buy Button's "After payment" redirect
+  // in the Stripe Dashboard for this to fire.
+  if (new URLSearchParams(location.search).get('lsnplus') === 'success') {
+    history.replaceState(null, '', location.pathname);
+    refreshAuthState().then(() => goPage('signup'));
+  }
+
   initScoresPage(null);
   // Render stats + 2025 results immediately from hardcoded data
   document.getElementById('pane-stats-combined').innerHTML = renderCombinedStats();
@@ -5821,7 +5981,11 @@ window.addEventListener('DOMContentLoaded', () => {
     const gameLabel = gameTypeLabel('Greenwood', g.opp, false);
     const resultText = played ? ((isWin?'W':'L') + ' ' + g.gwScore + '–' + g.oppScore) : '📻 LSN Radio';
     const resultColor = played ? (isWin?'color:var(--live);font-weight:700':'color:var(--red);font-weight:700') : '';
-    return '<div class="score-card lsn-game">' +
+    const hasBox = !!g.boxScoreKey;
+    const cardAttrs = hasBox
+      ? ' class="score-card lsn-game has-boxscore" onclick="openBoxScore(\''+g.boxScoreKey+'\')"'
+      : ' class="score-card lsn-game"';
+    return '<div' + cardAttrs + '>' +
       '<div class="sc-top"><span class="sc-label">Football · ' + gameLabel + '</span>' +
       (played ? '<span class="sc-final">Final</span>' : '<span class="sc-upcoming-tag">' + g.date + ' · ' + g.time + '</span>') +
       '</div><div class="sc-teams">' +
@@ -5832,7 +5996,7 @@ window.addEventListener('DOMContentLoaded', () => {
       '</div><div class="sc-foot">' +
       '<span style="color:var(--gray2)">' + g.date + ' · ' + (gwIsAway?'Away':'Home') + '</span>' +
       '<span style="' + resultColor + '">' + resultText + '</span>' +
-      '</div></div>';
+      '</div>' + (hasBox ? '<div class="boxscore-tag">📋 Full Box Score — LSN+</div>' : '') + '</div>';
   }).join('');
   document.getElementById('teamSchedule2026').innerHTML =
     '<div class="scores-full" style="padding:20px 0 48px">' + sched2026cards + '</div>';
