@@ -6243,9 +6243,9 @@ function renderWeekScores(week) {
 function initScoresPage(sheetData2026) {
   weeklyData = buildWeeklyMatchups(sheetData2026);
 
-  // The Scores tab always opens on the most recently completed week — Week 2 is now
-  // that week (Week 0 was just the single GCS season opener).
-  currentWeek = 2;
+  // The Scores tab always opens on the most recently completed week — Week 3 is now
+  // that week.
+  currentWeek = 3;
 
   const weekSelector = document.getElementById('weekSelector');
   const byeWeeks = new Set(GW_SCHEDULE_2026.filter(g => g.opp === 'BYE').map(g => g.wk));
