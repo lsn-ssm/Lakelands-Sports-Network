@@ -766,7 +766,7 @@ textarea.form-input { resize:vertical; min-height:80px; font-family:var(--B); }
       </div>
     </div>
     <div class="team-stats-bar" style="border-color:rgba(200,151,31,0.3);background:#120820;">
-      <div class="tsb-item"><div class="tsb-val" style="color:#C8971F;">1</div><div class="tsb-label">2026 W</div></div>
+      <div class="tsb-item"><div class="tsb-val" style="color:#C8971F;">3</div><div class="tsb-label">2026 W</div></div>
       <div class="tsb-item"><div class="tsb-val" style="color:#C8971F;">0</div><div class="tsb-label">2026 L</div></div>
       <div class="tsb-item"><div class="tsb-val" style="color:#C8971F;">—</div><div class="tsb-label">Region</div></div>
       <div class="tsb-item"><div class="tsb-val" style="color:#C8971F;">AAA</div><div class="tsb-label">Class</div></div>
@@ -806,7 +806,7 @@ textarea.form-input { resize:vertical; min-height:80px; font-family:var(--B); }
       </div>
     </div>
     <div class="team-stats-bar" style="border-color:rgba(160,168,176,0.3);background:#0d1520;">
-      <div class="tsb-item"><div class="tsb-val" style="color:#A0A8B0;">1</div><div class="tsb-label">2026 W</div></div>
+      <div class="tsb-item"><div class="tsb-val" style="color:#A0A8B0;">3</div><div class="tsb-label">2026 W</div></div>
       <div class="tsb-item"><div class="tsb-val" style="color:#A0A8B0;">1</div><div class="tsb-label">2026 L</div></div>
       <div class="tsb-item"><div class="tsb-val" style="color:#A0A8B0;">—</div><div class="tsb-label">Region</div></div>
       <div class="tsb-item"><div class="tsb-val" style="color:#A0A8B0;">SCISA</div><div class="tsb-label">Class</div></div>
@@ -846,7 +846,7 @@ textarea.form-input { resize:vertical; min-height:80px; font-family:var(--B); }
       </div>
     </div>
     <div class="team-stats-bar" style="border-color:rgba(201,168,76,0.3);background:#130920;">
-      <div class="tsb-item"><div class="tsb-val" style="color:#C9A84C;">0</div><div class="tsb-label">2026 W</div></div>
+      <div class="tsb-item"><div class="tsb-val" style="color:#C9A84C;">1</div><div class="tsb-label">2026 W</div></div>
       <div class="tsb-item"><div class="tsb-val" style="color:#C9A84C;">2</div><div class="tsb-label">2026 L</div></div>
       <div class="tsb-item"><div class="tsb-val" style="color:#C9A84C;">—</div><div class="tsb-label">Region</div></div>
       <div class="tsb-item"><div class="tsb-val" style="color:#C9A84C;">Class A</div><div class="tsb-label">Class</div></div>
@@ -883,7 +883,7 @@ textarea.form-input { resize:vertical; min-height:80px; font-family:var(--B); }
     </div>
     <div class="team-stats-bar" style="border-color:rgba(116,24,25,0.3);background:#0d0304;">
       <div class="tsb-item"><div class="tsb-val" style="color:#C7AC59;">1</div><div class="tsb-label">2026 W</div></div>
-      <div class="tsb-item"><div class="tsb-val" style="color:#C7AC59;">1</div><div class="tsb-label">2026 L</div></div>
+      <div class="tsb-item"><div class="tsb-val" style="color:#C7AC59;">2</div><div class="tsb-label">2026 L</div></div>
       <div class="tsb-item"><div class="tsb-val" style="color:#C7AC59;">—</div><div class="tsb-label">Region</div></div>
       <div class="tsb-item"><div class="tsb-val" style="color:#C7AC59;">A</div><div class="tsb-label">Class</div></div>
     </div>
@@ -891,6 +891,7 @@ textarea.form-input { resize:vertical; min-height:80px; font-family:var(--B); }
   <div class="team-tab-bar" style="background:#120404;border-bottom-color:rgba(116,24,25,0.25);">
     <button class="team-tab active" style="color:#C7AC59;border-bottom-color:#C7AC59;" onclick="switchTeamTab(this,'ns-tp-2026')">2026 Schedule</button>
     <button class="team-tab" onclick="switchTeamTab(this,'ns-tp-results')">2025 Results</button>
+    <button class="team-tab" onclick="switchTeamTab(this,'ns-tp-stats')">Stats</button>
     <button class="team-tab" onclick="switchTeamTab(this,'ns-tp-history')">History</button>
   </div>
   <div class="team-pane active" id="ns-tp-2026">
@@ -898,6 +899,9 @@ textarea.form-input { resize:vertical; min-height:80px; font-family:var(--B); }
   </div>
   <div class="team-pane" id="ns-tp-results">
     <div id="ns-results-2025"><div class="loading">Loading</div></div>
+  </div>
+  <div class="team-pane" id="ns-tp-stats">
+    <div id="ns-stats-2025"><div class="loading">Loading stats</div></div>
   </div>
   <div class="team-pane" id="ns-tp-history">
     <p style="color:var(--gray);font-size:13px;padding:24px 0;">History coming soon.</p>
@@ -918,7 +922,7 @@ textarea.form-input { resize:vertical; min-height:80px; font-family:var(--B); }
       </div>
     </div>
     <div class="team-stats-bar" style="border-color:rgba(107,20,20,0.3);background:#120404;">
-      <div class="tsb-item"><div class="tsb-val" style="color:#C9A84C;">1</div><div class="tsb-label">2026 W</div></div>
+      <div class="tsb-item"><div class="tsb-val" style="color:#C9A84C;">2</div><div class="tsb-label">2026 W</div></div>
       <div class="tsb-item"><div class="tsb-val" style="color:#C9A84C;">1</div><div class="tsb-label">2026 L</div></div>
       <div class="tsb-item"><div class="tsb-val" style="color:#C9A84C;">—</div><div class="tsb-label">Region</div></div>
       <div class="tsb-item"><div class="tsb-val" style="color:#C9A84C;">A</div><div class="tsb-label">Class</div></div>
@@ -959,7 +963,7 @@ textarea.form-input { resize:vertical; min-height:80px; font-family:var(--B); }
     </div>
     <div class="team-stats-bar" style="border-color:rgba(255,209,0,0.3);background:#001000;">
       <div class="tsb-item"><div class="tsb-val" style="color:#FFD100;">0</div><div class="tsb-label">2026 W</div></div>
-      <div class="tsb-item"><div class="tsb-val" style="color:#FFD100;">2</div><div class="tsb-label">2026 L</div></div>
+      <div class="tsb-item"><div class="tsb-val" style="color:#FFD100;">3</div><div class="tsb-label">2026 L</div></div>
       <div class="tsb-item"><div class="tsb-val" style="color:#FFD100;">—</div><div class="tsb-label">Region</div></div>
       <div class="tsb-item"><div class="tsb-val" style="color:#FFD100;">A</div><div class="tsb-label">Class</div></div>
     </div>
@@ -1000,7 +1004,7 @@ textarea.form-input { resize:vertical; min-height:80px; font-family:var(--B); }
     </div>
     <div class="team-stats-bar" style="border-color:rgba(255,209,0,0.3);background:#000820;">
       <div class="tsb-item"><div class="tsb-val" style="color:#FFD100;">0</div><div class="tsb-label">2026 W</div></div>
-      <div class="tsb-item"><div class="tsb-val" style="color:#FFD100;">1</div><div class="tsb-label">2026 L</div></div>
+      <div class="tsb-item"><div class="tsb-val" style="color:#FFD100;">2</div><div class="tsb-label">2026 L</div></div>
       <div class="tsb-item"><div class="tsb-val" style="color:#FFD100;">—</div><div class="tsb-label">Region</div></div>
       <div class="tsb-item"><div class="tsb-val" style="color:#FFD100;">A</div><div class="tsb-label">Class</div></div>
     </div>
@@ -1072,7 +1076,7 @@ textarea.form-input { resize:vertical; min-height:80px; font-family:var(--B); }
       </div>
     </div>
     <div class="team-stats-bar" style="border-color:rgba(86,43,135,0.4);background:#0d0618;">
-      <div class="tsb-item"><div class="tsb-val" style="color:#C9A8E8;">0</div><div class="tsb-label">2026 W</div></div>
+      <div class="tsb-item"><div class="tsb-val" style="color:#C9A8E8;">1</div><div class="tsb-label">2026 W</div></div>
       <div class="tsb-item"><div class="tsb-val" style="color:#C9A8E8;">1</div><div class="tsb-label">2026 L</div></div>
       <div class="tsb-item"><div class="tsb-val" style="color:#C9A8E8;">—</div><div class="tsb-label">Region</div></div>
       <div class="tsb-item"><div class="tsb-val" style="color:#C9A8E8;">AA</div><div class="tsb-label">Class</div></div>
@@ -1183,10 +1187,10 @@ textarea.form-input { resize:vertical; min-height:80px; font-family:var(--B); }
     </div>
     <div class="team-stats-bar">
       <div class="tsb-item"><div class="tsb-val" id="td-w">1</div><div class="tsb-label">2026 W</div></div>
-      <div class="tsb-item"><div class="tsb-val" id="td-l">1</div><div class="tsb-label">2026 L</div></div>
-      <div class="tsb-item"><div class="tsb-val" id="td-streak">L1</div><div class="tsb-label">Streak</div></div>
-      <div class="tsb-item"><div class="tsb-val" id="td-pf">47</div><div class="tsb-label">Pts For</div></div>
-      <div class="tsb-item"><div class="tsb-val" id="td-pa">28</div><div class="tsb-label">Pts Agst</div></div>
+      <div class="tsb-item"><div class="tsb-val" id="td-l">2</div><div class="tsb-label">2026 L</div></div>
+      <div class="tsb-item"><div class="tsb-val" id="td-streak">L2</div><div class="tsb-label">Streak</div></div>
+      <div class="tsb-item"><div class="tsb-val" id="td-pf">60</div><div class="tsb-label">Pts For</div></div>
+      <div class="tsb-item"><div class="tsb-val" id="td-pa">73</div><div class="tsb-label">Pts Agst</div></div>
     </div>
   </div>
   <div class="team-tab-bar">
@@ -1293,13 +1297,13 @@ textarea.form-input { resize:vertical; min-height:80px; font-family:var(--B); }
           <div class="st-rec">Overall</div>
           <div class="st-rec">Region</div>
         </div>
-        <div class="st-row lsn-bold" onclick="openTeam('abbeville')" style="cursor:pointer"><div class="st-team">Abbeville</div><div class="st-rec">1-1</div><div class="st-rec">0-0</div></div>
-        <div class="st-row lsn-bold" onclick="openTeam('calhounfalls')" style="cursor:pointer"><div class="st-team">Calhoun Falls</div><div class="st-rec">0-1</div><div class="st-rec">0-0</div></div>
-        <div class="st-row lsn-bold" onclick="openTeam('dixie')" style="cursor:pointer"><div class="st-team">Dixie</div><div class="st-rec">0-2</div><div class="st-rec">0-0</div></div>
+        <div class="st-row lsn-bold" onclick="openTeam('abbeville')" style="cursor:pointer"><div class="st-team">Abbeville</div><div class="st-rec">2-1</div><div class="st-rec">0-0</div></div>
+        <div class="st-row lsn-bold" onclick="openTeam('calhounfalls')" style="cursor:pointer"><div class="st-team">Calhoun Falls</div><div class="st-rec">0-2</div><div class="st-rec">0-0</div></div>
+        <div class="st-row lsn-bold" onclick="openTeam('dixie')" style="cursor:pointer"><div class="st-team">Dixie</div><div class="st-rec">0-3</div><div class="st-rec">0-0</div></div>
         <div class="st-row lsn-bold" onclick="openTeam('mccormick')" style="cursor:pointer"><div class="st-team">McCormick</div><div class="st-rec">0-2</div><div class="st-rec">0-0</div></div>
-        <div class="st-row lsn-bold" onclick="openTeam('ninetysix')" style="cursor:pointer"><div class="st-team">Ninety Six</div><div class="st-rec">1-1</div><div class="st-rec">0-0</div></div>
-        <div class="st-row"><div class="st-team">Thornwell</div><div class="st-rec">0-2</div><div class="st-rec">0-0</div></div>
-        <div class="st-row lsn-bold" onclick="openTeam('wareshoals')" style="cursor:pointer"><div class="st-team">Ware Shoals</div><div class="st-rec">0-2</div><div class="st-rec">0-0</div></div>
+        <div class="st-row lsn-bold" onclick="openTeam('ninetysix')" style="cursor:pointer"><div class="st-team">Ninety Six</div><div class="st-rec">1-2</div><div class="st-rec">0-0</div></div>
+        <div class="st-row"><div class="st-team">Thornwell</div><div class="st-rec">0-3</div><div class="st-rec">0-0</div></div>
+        <div class="st-row lsn-bold" onclick="openTeam('wareshoals')" style="cursor:pointer"><div class="st-team">Ware Shoals</div><div class="st-rec">1-2</div><div class="st-rec">0-0</div></div>
       </div>
     </div>
 
@@ -1314,9 +1318,9 @@ textarea.form-input { resize:vertical; min-height:80px; font-family:var(--B); }
         </div>
         <div class="st-row"><div class="st-team">American Leadership Academy</div><div class="st-rec">1-1</div><div class="st-rec">0-0</div></div>
         <div class="st-row"><div class="st-team">Orangeburg-Wilkinson</div><div class="st-rec">2-0</div><div class="st-rec">0-0</div></div>
-        <div class="st-row"><div class="st-team">Pelion</div><div class="st-rec">1-1</div><div class="st-rec">0-0</div></div>
-        <div class="st-row lsn-bold" onclick="openTeam('saluda')" style="cursor:pointer"><div class="st-team">Saluda</div><div class="st-rec">0-1</div><div class="st-rec">0-0</div></div>
-        <div class="st-row"><div class="st-team">Silver Bluff</div><div class="st-rec">1-1</div><div class="st-rec">0-0</div></div>
+        <div class="st-row"><div class="st-team">Pelion</div><div class="st-rec">2-1</div><div class="st-rec">0-0</div></div>
+        <div class="st-row lsn-bold" onclick="openTeam('saluda')" style="cursor:pointer"><div class="st-team">Saluda</div><div class="st-rec">1-1</div><div class="st-rec">0-0</div></div>
+        <div class="st-row"><div class="st-team">Silver Bluff</div><div class="st-rec">1-2</div><div class="st-rec">0-0</div></div>
         <div class="st-row"><div class="st-team">Strom Thurmond</div><div class="st-rec">2-0</div><div class="st-rec">0-0</div></div>
       </div>
     </div>
@@ -1330,11 +1334,11 @@ textarea.form-input { resize:vertical; min-height:80px; font-family:var(--B); }
           <div class="st-rec">Overall</div>
           <div class="st-rec">Region</div>
         </div>
-        <div class="st-row"><div class="st-team">Belton-Honea Path</div><div class="st-rec">0-2</div><div class="st-rec">0-0</div></div>
-        <div class="st-row lsn-bold" onclick="openTeam('emerald')" style="cursor:pointer"><div class="st-team">Emerald</div><div class="st-rec">2-0</div><div class="st-rec">0-0</div></div>
-        <div class="st-row"><div class="st-team">Palmetto</div><div class="st-rec">0-2</div><div class="st-rec">0-0</div></div>
-        <div class="st-row"><div class="st-team">Powdersville</div><div class="st-rec">1-1</div><div class="st-rec">0-0</div></div>
-        <div class="st-row"><div class="st-team">Wren</div><div class="st-rec">1-1</div><div class="st-rec">0-0</div></div>
+        <div class="st-row"><div class="st-team">Belton-Honea Path</div><div class="st-rec">1-2</div><div class="st-rec">0-0</div></div>
+        <div class="st-row lsn-bold" onclick="openTeam('emerald')" style="cursor:pointer"><div class="st-team">Emerald</div><div class="st-rec">3-0</div><div class="st-rec">0-0</div></div>
+        <div class="st-row"><div class="st-team">Palmetto</div><div class="st-rec">1-2</div><div class="st-rec">0-0</div></div>
+        <div class="st-row"><div class="st-team">Powdersville</div><div class="st-rec">1-2</div><div class="st-rec">0-0</div></div>
+        <div class="st-row"><div class="st-team">Wren</div><div class="st-rec">2-1</div><div class="st-rec">0-0</div></div>
       </div>
     </div>
 
@@ -1347,12 +1351,12 @@ textarea.form-input { resize:vertical; min-height:80px; font-family:var(--B); }
           <div class="st-rec">Overall</div>
           <div class="st-rec">Region</div>
         </div>
-        <div class="st-row"><div class="st-team">Easley</div><div class="st-rec">0-2</div><div class="st-rec">0-0</div></div>
-        <div class="st-row"><div class="st-team">Fountain Inn</div><div class="st-rec">1-1</div><div class="st-rec">0-0</div></div>
-        <div class="st-row lsn-bold" onclick="openTeam('greenwood')" style="cursor:pointer"><div class="st-team">Greenwood</div><div class="st-rec">1-1</div><div class="st-rec">0-0</div></div>
-        <div class="st-row"><div class="st-team">Laurens</div><div class="st-rec">1-1</div><div class="st-rec">0-0</div></div>
-        <div class="st-row"><div class="st-team">T.L. Hanna</div><div class="st-rec">2-0</div><div class="st-rec">0-0</div></div>
-        <div class="st-row"><div class="st-team">Westside</div><div class="st-rec">1-1</div><div class="st-rec">0-0</div></div>
+        <div class="st-row"><div class="st-team">Easley</div><div class="st-rec">1-2</div><div class="st-rec">0-0</div></div>
+        <div class="st-row"><div class="st-team">Fountain Inn</div><div class="st-rec">1-2</div><div class="st-rec">0-0</div></div>
+        <div class="st-row lsn-bold" onclick="openTeam('greenwood')" style="cursor:pointer"><div class="st-team">Greenwood</div><div class="st-rec">1-2</div><div class="st-rec">0-0</div></div>
+        <div class="st-row"><div class="st-team">Laurens</div><div class="st-rec">1-2</div><div class="st-rec">0-0</div></div>
+        <div class="st-row"><div class="st-team">T.L. Hanna</div><div class="st-rec">3-0</div><div class="st-rec">0-0</div></div>
+        <div class="st-row"><div class="st-team">Westside</div><div class="st-rec">2-1</div><div class="st-rec">0-0</div></div>
       </div>
     </div>
 
@@ -1365,11 +1369,11 @@ textarea.form-input { resize:vertical; min-height:80px; font-family:var(--B); }
           <div class="st-rec">Overall</div>
           <div class="st-rec">Region</div>
         </div>
-        <div class="st-row lsn-bold" onclick="openTeam('gwchristian')" style="cursor:pointer"><div class="st-team">Greenwood Christian</div><div class="st-rec">2-1</div><div class="st-rec">0-0</div></div>
-        <div class="st-row"><div class="st-team">Orangeburg Prep</div><div class="st-rec">0-2</div><div class="st-rec">0-0</div></div>
-        <div class="st-row"><div class="st-team">Pee Dee Academy</div><div class="st-rec">0-1</div><div class="st-rec">0-0</div></div>
-        <div class="st-row"><div class="st-team">Spartanburg Day</div><div class="st-rec">1-1</div><div class="st-rec">0-0</div></div>
-        <div class="st-row"><div class="st-team">Williamsburg Academy</div><div class="st-rec">1-0</div><div class="st-rec">0-0</div></div>
+        <div class="st-row lsn-bold" onclick="openTeam('gwchristian')" style="cursor:pointer"><div class="st-team">Greenwood Christian</div><div class="st-rec">3-1</div><div class="st-rec">0-0</div></div>
+        <div class="st-row"><div class="st-team">Orangeburg Prep</div><div class="st-rec">1-2</div><div class="st-rec">0-0</div></div>
+        <div class="st-row"><div class="st-team">Pee Dee Academy</div><div class="st-rec">1-1</div><div class="st-rec">0-0</div></div>
+        <div class="st-row"><div class="st-team">Spartanburg Day</div><div class="st-rec">1-2</div><div class="st-rec">0-0</div></div>
+        <div class="st-row"><div class="st-team">Williamsburg Academy</div><div class="st-rec">1-1</div><div class="st-rec">0-0</div></div>
       </div>
     </div>
 
@@ -1546,15 +1550,15 @@ const SHEETS = {
 // STATIC TEAM DATA (other Lakelands teams)
 // ══════════════════════════════════════════
 const OTHER_TEAMS = [
-  { id:'emerald',     badge:'EM', abbr:'EHS', name:'Emerald',      mascot:'Vikings',        cls:'AAA · Region 2',  w:2, l:0, lsn:true,  primary:'#5B2D8E', secondary:'#C8971F', textColor:'#fff' },
-  { id:'gwchristian', badge:'GCS',abbr:'GCS', name:'Greenwood Christian', mascot:'Hawks',   cls:'SCISA 2A',        w:2, l:1, lsn:false, primary:'#1B2A4A', secondary:'#A0A8B0', textColor:'#fff' },
-  { id:'wareshoals',  badge:'WS', abbr:'WS',  name:'Ware Shoals',  mascot:'Hornets',        cls:'A · Region 1',    w:0, l:2, lsn:false, primary:'#6B2D8B', secondary:'#FFD100', textColor:'#fff' },
-  { id:'ninetysix',   badge:'96', abbr:'96',  name:'Ninety Six',   mascot:'Wildcats',       cls:'A · Region 1',    w:1, l:1, lsn:false, primary:'#741819', secondary:'#C7AC59', textColor:'#fff' },
-  { id:'abbeville',   badge:'AB', abbr:'AHS', name:'Abbeville',    mascot:'Panthers',       cls:'A · Region 1',    w:1, l:1, lsn:false, primary:'#1a2e44', secondary:'#c8a84b', textColor:'#fff' },
-  { id:'dixie',       badge:'DX', abbr:'DHS', name:'Dixie',        mascot:'Hornets',        cls:'A · Region 1',    w:0, l:2, lsn:false, primary:'#006400', secondary:'#FFD100', textColor:'#fff' },
-  { id:'calhounfalls',badge:'CF', abbr:'CF',  name:'Calhoun Falls',mascot:'Blue Flashes',   cls:'A · Region 1',    w:0, l:1, lsn:false, primary:'#003087', secondary:'#FFD100', textColor:'#fff' },
+  { id:'emerald',     badge:'EM', abbr:'EHS', name:'Emerald',      mascot:'Vikings',        cls:'AAA · Region 2',  w:3, l:0, lsn:true,  primary:'#5B2D8E', secondary:'#C8971F', textColor:'#fff' },
+  { id:'gwchristian', badge:'GCS',abbr:'GCS', name:'Greenwood Christian', mascot:'Hawks',   cls:'SCISA 2A',        w:3, l:1, lsn:false, primary:'#1B2A4A', secondary:'#A0A8B0', textColor:'#fff' },
+  { id:'wareshoals',  badge:'WS', abbr:'WS',  name:'Ware Shoals',  mascot:'Hornets',        cls:'A · Region 1',    w:1, l:2, lsn:false, primary:'#6B2D8B', secondary:'#FFD100', textColor:'#fff' },
+  { id:'ninetysix',   badge:'96', abbr:'96',  name:'Ninety Six',   mascot:'Wildcats',       cls:'A · Region 1',    w:1, l:2, lsn:false, primary:'#741819', secondary:'#C7AC59', textColor:'#fff' },
+  { id:'abbeville',   badge:'AB', abbr:'AHS', name:'Abbeville',    mascot:'Panthers',       cls:'A · Region 1',    w:2, l:1, lsn:false, primary:'#1a2e44', secondary:'#c8a84b', textColor:'#fff' },
+  { id:'dixie',       badge:'DX', abbr:'DHS', name:'Dixie',        mascot:'Hornets',        cls:'A · Region 1',    w:0, l:3, lsn:false, primary:'#006400', secondary:'#FFD100', textColor:'#fff' },
+  { id:'calhounfalls',badge:'CF', abbr:'CF',  name:'Calhoun Falls',mascot:'Blue Flashes',   cls:'A · Region 1',    w:0, l:2, lsn:false, primary:'#003087', secondary:'#FFD100', textColor:'#fff' },
   { id:'mccormick',   badge:'MC', abbr:'MC',  name:'McCormick',    mascot:'Chiefs',         cls:'A · Region 1',    w:0, l:2, lsn:false, primary:'#8B0000', secondary:'#ffffff', textColor:'#fff' },
-  { id:'saluda',      badge:'SA', abbr:'SAL', name:'Saluda',       mascot:'Tigers',         cls:'AA · Region 4',   w:0, l:1, lsn:false, primary:'#562B87', secondary:'#ffffff', textColor:'#fff' }
+  { id:'saluda',      badge:'SA', abbr:'SAL', name:'Saluda',       mascot:'Tigers',         cls:'AA · Region 4',   w:1, l:1, lsn:false, primary:'#562B87', secondary:'#ffffff', textColor:'#fff' }
 ];
 
 // ══════════════════════════════════════════
@@ -2016,23 +2020,26 @@ const STATS_2025 = {
 // scores, so that column is left blank.
 const STATS_2026 = {
   passing: [
-    { '#':'10', 'Player':'Quay Justensen', 'Year':'', 'Comp':'7', 'Att':'19', 'Yards':'57', 'TD':'1', 'INT':'0', 'Comp%':'36.8%' },
-    { '#':'15', 'Player':'Zatavion White', 'Year':'', 'Comp':'5', 'Att':'6',  'Yards':'38', 'TD':'1', 'INT':'0', 'Comp%':'83.3%' },
+    { '#':'10', 'Player':'Quay Justensen', 'Year':'', 'Comp':'19', 'Att':'42', 'Yards':'194', 'TD':'1', 'INT':'1', 'Comp%':'45.2%' },
+    { '#':'15', 'Player':'Zatavion White', 'Year':'', 'Comp':'6',  'Att':'11', 'Yards':'44',  'TD':'1', 'INT':'0', 'Comp%':'54.5%' },
   ],
   rushing: [
-    { '#':'0',  'Player':'Tay Hamilton',      'Year':'', 'Carries':'44', 'Yards':'245', 'TD':'3', 'Avg':'5.6',  'Fumbles':'0' },
-    { '#':'21', 'Player':'Cassidy Lee',       'Year':'', 'Carries':'15', 'Yards':'188', 'TD':'2', 'Avg':'12.5', 'Fumbles':'0' },
-    { '#':'15', 'Player':'Zatavion White',    'Year':'', 'Carries':'7',  'Yards':'41',  'TD':'0', 'Avg':'5.9',  'Fumbles':'0' },
-    { '#':'10', 'Player':'Quay Justensen',    'Year':'', 'Carries':'7',  'Yards':'24',  'TD':'0', 'Avg':'3.4',  'Fumbles':'0' },
-    { '#':'12', 'Player':"Ry'Keem Robinson",  'Year':'', 'Carries':'1',  'Yards':'17',  'TD':'0', 'Avg':'17.0', 'Fumbles':'0' },
+    { '#':'0',  'Player':'Tay Hamilton',      'Year':'', 'Carries':'55', 'Yards':'274', 'TD':'3', 'Avg':'5.0',  'Fumbles':'0' },
+    { '#':'21', 'Player':'Cassidy Lee',       'Year':'', 'Carries':'28', 'Yards':'253', 'TD':'2', 'Avg':'9.0',  'Fumbles':'0' },
+    { '#':'15', 'Player':'Zatavion White',    'Year':'', 'Carries':'14', 'Yards':'74',  'TD':'1', 'Avg':'5.3',  'Fumbles':'0' },
+    { '#':'12', 'Player':"Ry'Keem Robinson",  'Year':'', 'Carries':'2',  'Yards':'32',  'TD':'0', 'Avg':'16.0', 'Fumbles':'0' },
+    { '#':'10', 'Player':'Quay Justensen',    'Year':'', 'Carries':'13', 'Yards':'11',  'TD':'1', 'Avg':'0.8',  'Fumbles':'0' },
     { '#':'4',  'Player':'Major Rappley',     'Year':'', 'Carries':'1',  'Yards':'9',   'TD':'0', 'Avg':'9.0',  'Fumbles':'0' },
     { '#':'11', 'Player':'Mitchell Miller',   'Year':'', 'Carries':'2',  'Yards':'-7',  'TD':'0', 'Avg':'-3.5', 'Fumbles':'0' },
   ],
   receiving: [
-    { '#':'12', 'Player':"Ry'Keem Robinson", 'Year':'', 'Rec':'8', 'Yards':'86', 'TD':'2', 'Avg':'10.8', 'Fumbles':'0' },
-    { '#':'2',  'Player':'Karson Coleman',   'Year':'', 'Rec':'2', 'Yards':'5',  'TD':'0', 'Avg':'2.5',  'Fumbles':'0' },
-    { '#':'5',  'Player':'Bryson Coats',     'Year':'', 'Rec':'1', 'Yards':'3',  'TD':'0', 'Avg':'3.0',  'Fumbles':'0' },
-    { '#':'15', 'Player':'Zatavion White',   'Year':'', 'Rec':'1', 'Yards':'1',  'TD':'0', 'Avg':'1.0',  'Fumbles':'0' },
+    { '#':'12', 'Player':"Ry'Keem Robinson", 'Year':'', 'Rec':'14', 'Yards':'150', 'TD':'2', 'Avg':'10.7', 'Fumbles':'0' },
+    { '#':'38', 'Player':'Trey Price',       'Year':'', 'Rec':'4',  'Yards':'66',  'TD':'0', 'Avg':'16.5', 'Fumbles':'0' },
+    { '#':'3',  'Player':'Malik Stevens',    'Year':'', 'Rec':'1',  'Yards':'9',   'TD':'0', 'Avg':'9.0',  'Fumbles':'0' },
+    { '#':'16', 'Player':'Isaiah Corbett',   'Year':'', 'Rec':'1',  'Yards':'6',   'TD':'0', 'Avg':'6.0',  'Fumbles':'0' },
+    { '#':'2',  'Player':'Karson Coleman',   'Year':'', 'Rec':'2',  'Yards':'5',   'TD':'0', 'Avg':'2.5',  'Fumbles':'0' },
+    { '#':'5',  'Player':'Bryson Coats',     'Year':'', 'Rec':'1',  'Yards':'3',   'TD':'0', 'Avg':'3.0',  'Fumbles':'0' },
+    { '#':'15', 'Player':'Zatavion White',   'Year':'', 'Rec':'2',  'Yards':'-1',  'TD':'0', 'Avg':'-0.5', 'Fumbles':'0' },
   ],
 };
 
@@ -2083,29 +2090,31 @@ const EMERALD_STATS_2025 = {
 // ── EMERALD 2026 STATS (Source: MaxPreps, through Week 2) ──
 const EMERALD_STATS_2026 = {
   passing: [
-    { '#':'4',  'Player':'B. Hite',      'Year':'Jr.', 'Comp':'36', 'Att':'64', 'Yards':'607', 'TD':'6', 'INT':'2', 'Comp%':'56.2%' },
+    { '#':'4',  'Player':'B. Hite',      'Year':'Jr.', 'Comp':'44', 'Att':'67', 'Yards':'771', 'TD':'8', 'INT':'2', 'Comp%':'65.7%' },
+    { '#':'12', 'Player':'J. Moore',     'Year':'Jr.', 'Comp':'1',  'Att':'1',  'Yards':'44',  'TD':'1', 'INT':'0', 'Comp%':'100.0%' },
     { '#':'15', 'Player':'D. Anderson',  'Year':'So.', 'Comp':'5',  'Att':'6',  'Yards':'67',  'TD':'1', 'INT':'0', 'Comp%':'83.3%' },
   ],
   rushing: [
-    { '#':'0',  'Player':'C. Dean',      'Year':'Sr.', 'Carries':'25', 'Yards':'202', 'TD':'2', 'Avg':'8.1', 'Fumbles':'0' },
-    { '#':'12', 'Player':'J. Moore',     'Year':'Jr.', 'Carries':'21', 'Yards':'164', 'TD':'4', 'Avg':'7.8', 'Fumbles':'0' },
-    { '#':'4',  'Player':'B. Hite',      'Year':'Jr.', 'Carries':'10', 'Yards':'64',  'TD':'0', 'Avg':'6.4', 'Fumbles':'0' },
-    { '#':'9',  'Player':'C. Partlow',   'Year':'Sr.', 'Carries':'4',  'Yards':'1',   'TD':'0', 'Avg':'0.3', 'Fumbles':'0' },
+    { '#':'12', 'Player':'J. Moore',     'Year':'Jr.', 'Carries':'41', 'Yards':'324', 'TD':'6', 'Avg':'7.9',  'Fumbles':'0' },
+    { '#':'0',  'Player':'C. Dean',      'Year':'Sr.', 'Carries':'25', 'Yards':'202', 'TD':'2', 'Avg':'8.1',  'Fumbles':'0' },
+    { '#':'4',  'Player':'B. Hite',      'Year':'Jr.', 'Carries':'17', 'Yards':'174', 'TD':'1', 'Avg':'10.2', 'Fumbles':'0' },
+    { '#':'9',  'Player':'C. Partlow',   'Year':'Sr.', 'Carries':'15', 'Yards':'55',  'TD':'1', 'Avg':'3.7',  'Fumbles':'0' },
   ],
   receiving: [
-    { '#':'7',  'Player':'D. Christian Jr', 'Year':'Jr.', 'Rec':'12', 'Yards':'201', 'TD':'1', 'Avg':'16.8', 'Fumbles':'0' },
-    { '#':'6',  'Player':'K. Brown',        'Year':'Jr.', 'Rec':'8',  'Yards':'164', 'TD':'1', 'Avg':'20.5', 'Fumbles':'0' },
-    { '#':'84', 'Player':'C. Marino',       'Year':'Jr.', 'Rec':'9',  'Yards':'119', 'TD':'3', 'Avg':'13.2', 'Fumbles':'0' },
-    { '#':'2',  'Player':'C. Hill',         'Year':'Sr.', 'Rec':'5',  'Yards':'67',  'TD':'0', 'Avg':'13.4', 'Fumbles':'0' },
+    { '#':'7',  'Player':'D. Christian Jr', 'Year':'Jr.', 'Rec':'14', 'Yards':'249', 'TD':'2', 'Avg':'17.8', 'Fumbles':'0' },
+    { '#':'6',  'Player':'K. Brown',        'Year':'Jr.', 'Rec':'11', 'Yards':'215', 'TD':'2', 'Avg':'19.5', 'Fumbles':'0' },
+    { '#':'84', 'Player':'C. Marino',       'Year':'Jr.', 'Rec':'11', 'Yards':'183', 'TD':'3', 'Avg':'16.6', 'Fumbles':'0' },
+    { '#':'2',  'Player':'C. Hill',         'Year':'Sr.', 'Rec':'6',  'Yards':'111', 'TD':'1', 'Avg':'18.5', 'Fumbles':'0' },
     { '#':'10', 'Player':'G. Quarles',      'Year':'Jr.', 'Rec':'4',  'Yards':'60',  'TD':'1', 'Avg':'15.0', 'Fumbles':'0' },
     { '#':'0',  'Player':'C. Dean',         'Year':'Sr.', 'Rec':'3',  'Yards':'56',  'TD':'1', 'Avg':'18.7', 'Fumbles':'0' },
     { '#':'18', 'Player':'J. Crossland',    'Year':'Jr.', 'Rec':'1',  'Yards':'7',   'TD':'0', 'Avg':'7.0',  'Fumbles':'0' },
+    { '#':'12', 'Player':'J. Moore',        'Year':'Jr.', 'Rec':'1',  'Yards':'1',   'TD':'0', 'Avg':'1.0',  'Fumbles':'0' },
   ],
 };
 
 // Per-team-page selected stat season — every team page defaults to 2026, the
 // current season, and remembers the visitor's choice while they're on the page.
-let teamStatsYearState = { greenwood:'2026', emerald:'2026', gwchristian:'2026', dixie:'2026', abbeville:'2026' };
+let teamStatsYearState = { greenwood:'2026', emerald:'2026', gwchristian:'2026', dixie:'2026', abbeville:'2026', ninetysix:'2026' };
 
 // Dropdown markup shared by every team page's Stats sub-tab. `onchange` calls
 // switchTeamStatsYear(), which updates state and re-renders just that pane.
@@ -2127,6 +2136,7 @@ const TEAM_STATS_RENDERERS = {
   gwchristian: { render: () => renderGCSCombinedStats(),      elId: 'gcs-stats-2025' },
   dixie:       { render: () => renderDHSCombinedStats(),      elId: 'dx-stats-2025' },
   abbeville:   { render: () => renderAHSCombinedStats(),      elId: 'ab-stats-2025' },
+  ninetysix:   { render: () => renderNSCombinedStats(),       elId: 'ns-stats-2025' },
 };
 
 function switchTeamStatsYear(teamKey, year) {
@@ -2167,6 +2177,22 @@ function renderAHSCombinedStats() {
     ['#','Player','Year','Carries','Yards','TD','Avg','Fumbles'], '#C9A84C');
   out += renderStatTable('Receiving', data.receiving,
     ['#','Player','Year','Rec','Yards','TD','Avg','Fumbles'], '#C9A84C');
+  return out;
+}
+
+function renderNSCombinedStats() {
+  const year = teamStatsYearState.ninetysix || '2026';
+  let out = '<h3 style="font-family:var(--D);font-weight:800;font-size:20px;margin-bottom:20px;color:var(--white);">' + year + ' Player Stats — Ninety Six Wildcats</h3>';
+  out += statsYearDropdownHTML('ninetysix', year);
+  if (!isPlusMember()) { return out + statsPaywallHTML(); }
+  const data = year === '2026' ? NS_STATS_2026 : NS_STATS_2025;
+  if (!data) { return out + '<p style="color:var(--gray);padding:24px 0;">No stats recorded yet for the ' + year + ' season.</p>'; }
+  out += renderStatTable('Passing',   data.passing,
+    ['#','Player','Year','Comp','Att','Yards','TD','INT','Comp%'], '#C7AC59');
+  out += renderStatTable('Rushing',   data.rushing,
+    ['#','Player','Year','Carries','Yards','TD','Avg','Fumbles'], '#C7AC59');
+  out += renderStatTable('Receiving', data.receiving,
+    ['#','Player','Year','Rec','Yards','TD','Avg','Fumbles'], '#C7AC59');
   return out;
 }
 
@@ -2410,6 +2436,7 @@ function openNinetySixPage() {
     nsBadgeHero.innerHTML = '<div class="badge-logo-wrap"><img src="'+nsLogoData.src+'" alt="NS" style="width:100%;height:100%;object-fit:contain;display:block;"></div>';
   }
   initGenericTeamPage('ns','Ninety Six','NS Score','nsScore','#741819',NS_2025,NS_2026);
+  document.getElementById('ns-stats-2025').innerHTML = renderNSCombinedStats();
 }
 
 function openAbbevillePage() {
@@ -2780,6 +2807,11 @@ function refreshGatedStatsIfVisible() {
   if (currentPage === 'team-emerald') {
     const el = document.getElementById('em-stats-2025');
     if (el) el.innerHTML = renderEmeraldCombinedStats();
+    return;
+  }
+  if (currentPage === 'team-ninetysix') {
+    const el = document.getElementById('ns-stats-2025');
+    if (el) el.innerHTML = renderNSCombinedStats();
     return;
   }
 }
@@ -4488,7 +4520,7 @@ function renderTeams() {
         <div class="tc-lsn">📻 LSN</div>
       </div>
       <div class="tc-footer">
-        <span class="tc-record">2026: 1–1</span>
+        <span class="tc-record">2026: 1–2</span>
       </div>
     </div>`; }
 
@@ -4684,6 +4716,7 @@ function getTeamStats(teamId) {
   if (teamId === 'gwchristian') return GCS_STATS_2026 || GCS_STATS_2025;
   if (teamId === 'dixie')       return DIXIE_STATS_2026 || DIXIE_STATS_2025;
   if (teamId === 'abbeville')   return AHS_STATS_2026 || AHS_STATS_2025;
+  if (teamId === 'ninetysix')   return NS_STATS_2026 || NS_STATS_2025;
   return null;
 }
 
@@ -4741,6 +4774,7 @@ function renderOverallSidebarLeaders() {
     { teamId:'gwchristian', stats: GCS_STATS_2026 },
     { teamId:'dixie',       stats: DIXIE_STATS_2026 },
     { teamId:'abbeville',   stats: AHS_STATS_2026 },
+    { teamId:'ninetysix',   stats: NS_STATS_2026 },
   ];
 
   function teamAbbr(teamId) {
@@ -4839,7 +4873,7 @@ function renderSidebarFav() {
 const GW_SCHEDULE_2026 = [
   { wk:1,  date:'Fri Aug 21', opp:'Riverside',      ha:'Home', time:'7:30 PM', result:'W', gwScore:'33', oppScore:'7', boxScoreKey:'gw-riverside-2026-wk1' },
   { wk:2,  date:'Fri Aug 28', opp:'Spartanburg',    ha:'Home', time:'7:30 PM', result:'L', gwScore:'14', oppScore:'21', boxScoreKey:'greenwood-spartanburg-2026-wk2' },
-  { wk:3,  date:'Fri Sep 4',  opp:'North Augusta',  ha:'Away', time:'7:30 PM', result:'', gwScore:'', oppScore:'' },
+  { wk:3,  date:'Fri Sep 4',  opp:'North Augusta',  ha:'Away', time:'7:30 PM', result:'L', gwScore:'13', oppScore:'45', boxScoreKey:'gw-northaugusta-2026-wk3' },
   { wk:4,  date:'Fri Sep 11', opp:'BYE',            ha:'',     time:'',        result:'', gwScore:'', oppScore:'' },
   { wk:5,  date:'Fri Sep 18', opp:'Midland Valley', ha:'Home', time:'7:30 PM', result:'', gwScore:'', oppScore:'' },
   { wk:6,  date:'Fri Sep 25', opp:'Belton-Honea Path', ha:'Away', time:'7:30 PM', result:'', gwScore:'', oppScore:'' },
@@ -4883,7 +4917,7 @@ const EMERALD_2025 = [
 const EMERALD_2026 = [
   { wk:1,  date:'Fri Aug 21', opp:'Crescent',         ha:'Away', time:'7:30 PM', result:'W', eScore:'21', oppScore:'6', boxScoreKey:'emerald-crescent-2026-wk1' },
   { wk:2,  date:'Fri Aug 28', opp:'Newberry',         ha:'Home', time:'7:30 PM', result:'W', eScore:'70', oppScore:'34', boxScoreKey:'emerald-newberry-2026-wk2' },
-  { wk:3,  date:'Fri Sep 4',  opp:'Woodruff',         ha:'Away', time:'7:30 PM', result:'', eScore:'', oppScore:'' },
+  { wk:3,  date:'Fri Sep 4',  opp:'Woodruff',         ha:'Away', time:'7:30 PM', result:'W', eScore:'52', oppScore:'31' },
   { wk:4,  date:'Fri Sep 11', opp:'Broome',           ha:'Home', time:'7:30 PM', result:'', eScore:'', oppScore:'' },
   { wk:5,  date:'Fri Sep 18', opp:'Lexington',        ha:'Away', time:'7:30 PM', result:'', eScore:'', oppScore:'' },
   { wk:6,  date:'Fri Sep 25', opp:'Saluda',           ha:'Home', time:'7:30 PM', result:'', eScore:'', oppScore:'' },
@@ -4917,7 +4951,7 @@ const GCS_2026 = [
   { wk:0,   date:'Fri Aug 14', opp:'Northside Christian', ha:'Away', time:'7:30 PM', result:'L', gScore:'20', oppScore:'21' },
   { wk:1,   date:'Fri Aug 21', opp:'McCormick',           ha:'Home', time:'7:30 PM', result:'W', gScore:'28', oppScore:'0' },
   { wk:2,   date:'Fri Aug 28', opp:'Dixie',               ha:'Away', time:'7:30 PM', result:'W', gScore:'24', oppScore:'21' },
-  { wk:3,   date:'Fri Sep 4',  opp:'Calhoun Falls',       ha:'Home', time:'7:30 PM', result:'', gScore:'', oppScore:'' },
+  { wk:3,   date:'Fri Sep 4',  opp:'Dixie',       ha:'Away', time:'7:30 PM', result:'W', gScore:'40', oppScore:'20' },
   { wk:4,   date:'Fri Sep 11', opp:'Williamsburg',        ha:'Home', time:'7:30 PM', result:'', gScore:'', oppScore:'' },
   { wk:5,   date:'Fri Sep 18', opp:'Orangeburg Prep',     ha:'Away', time:'7:30 PM', result:'', gScore:'', oppScore:'' },
   { wk:6,   date:'Fri Sep 25', opp:'BYE',                 ha:'',     time:'',        result:'', gScore:'', oppScore:'' },
@@ -4947,7 +4981,7 @@ const WS_2025 = [
 // ── WARE SHOALS 2026 SCHEDULE (Source: MaxPreps) ──
 const WS_2026 = [
   { wk:2,  date:'Fri Aug 28', opp:'Carolina Academy', ha:'Home', time:'7:30 PM', result:'L', wsScore:'0', oppScore:'24' },
-  { wk:3,  date:'Fri Sep 4',  opp:'Thornwell',         ha:'Home', time:'7:30 PM', result:'', wsScore:'', oppScore:'' },
+  { wk:3,  date:'Fri Sep 4',  opp:'Batesburg-Leesville', ha:'Away', time:'7:30 PM', result:'W', wsScore:'35', oppScore:'28' },
   { wk:4,  date:'Fri Sep 11', opp:'Whitmire',          ha:'Away', time:'7:30 PM', result:'', wsScore:'', oppScore:'' },
   { wk:5,  date:'Fri Sep 18', opp:'Landrum',           ha:'Away', time:'7:30 PM', result:'', wsScore:'', oppScore:'' },
   { wk:6,  date:'Fri Sep 25', opp:'BYE',               ha:'',     time:'',        result:'', wsScore:'', oppScore:'' },
@@ -4975,7 +5009,7 @@ const NS_2025 = [
 const NS_2026 = [
   { wk:1,  date:'Fri Aug 21', opp:'Mid-Carolina',  ha:'Away', time:'7:30 PM', result:'L', nsScore:'21', oppScore:'49', boxScoreKey:'ns-midcarolina-2026-wk1' },
   { wk:2,  date:'Fri Aug 28', opp:'Landrum',        ha:'Home', time:'7:30 PM', result:'W', nsScore:'28', oppScore:'26' },
-  { wk:3,  date:'Fri Sep 4',  opp:'Wagener-Salley', ha:'Home', time:'7:30 PM', result:'', nsScore:'', oppScore:'' },
+  { wk:3,  date:'Fri Sep 4',  opp:'Wagener-Salley', ha:'Home', time:'7:30 PM', result:'L', nsScore:'8', oppScore:'42', boxScoreKey:'ns-wagenersalley-2026-wk3' },
   { wk:4,  date:'Fri Sep 11', opp:'Saluda',         ha:'Home', time:'7:30 PM', result:'', nsScore:'', oppScore:'' },
   { wk:5,  date:'Fri Sep 18', opp:'Calhoun Falls',  ha:'Home', time:'7:30 PM', result:'', nsScore:'', oppScore:'' },
   { wk:6,  date:'Fri Sep 25', opp:'McCormick',      ha:'Away', time:'7:30 PM', result:'', nsScore:'', oppScore:'' },
@@ -4985,6 +5019,33 @@ const NS_2026 = [
   { wk:10, date:'Fri Oct 23', opp:'BYE',            ha:'',     time:'',        result:'', nsScore:'', oppScore:'' },
   { wk:11, date:'Fri Oct 30', opp:'Abbeville',      ha:'Home', time:'7:30 PM', result:'', nsScore:'', oppScore:'' },
 ];
+
+// No 2025 stats on file for Ninety Six yet — kept null so the year dropdown can
+// fall back to a "no stats recorded" message instead of throwing.
+const NS_STATS_2025 = null;
+
+// ── NINETY SIX 2026 STATS (built from box score vs Wagener-Salley, Wk3) ──
+const NS_STATS_2026 = {
+  passing: [
+    { '#':'8',  'Player':'Jacob Evans',   'Year':'', 'Comp':'10', 'Att':'13', 'Yards':'108', 'TD':'0', 'INT':'0', 'Comp%':'76.9%' },
+    { '#':'11', 'Player':'Parker Sutley', 'Year':'', 'Comp':'0',  'Att':'2',  'Yards':'0',   'TD':'0', 'INT':'0', 'Comp%':'0.0%' },
+  ],
+  rushing: [
+    { '#':'9',  'Player':'Kee Brunson',     'Year':'', 'Carries':'12', 'Yards':'38',  'TD':'0', 'Avg':'3.2',  'Fumbles':'1' },
+    { '#':'11', 'Player':'Parker Sutley',   'Year':'', 'Carries':'4',  'Yards':'24',  'TD':'0', 'Avg':'6.0',  'Fumbles':'0' },
+    { '#':'35', 'Player':'Joshua Thompson', 'Year':'', 'Carries':'7',  'Yards':'19',  'TD':'0', 'Avg':'2.7',  'Fumbles':'1' },
+    { '#':'40', 'Player':'Samuel Parsons',  'Year':'', 'Carries':'5',  'Yards':'11',  'TD':'1', 'Avg':'2.2',  'Fumbles':'0' },
+    { '#':'20', 'Player':'Noah McDonald',   'Year':'', 'Carries':'1',  'Yards':'0',   'TD':'0', 'Avg':'0.0',  'Fumbles':'0' },
+    { '#':'10', 'Player':'Dylan Gonce',     'Year':'', 'Carries':'2',  'Yards':'-1',  'TD':'0', 'Avg':'-0.5', 'Fumbles':'0' },
+    { '#':'8',  'Player':'Jacob Evans',     'Year':'', 'Carries':'5',  'Yards':'-24', 'TD':'0', 'Avg':'-4.8', 'Fumbles':'1' },
+  ],
+  receiving: [
+    { '#':'24', 'Player':'Camrhyn Mathis', 'Year':'', 'Rec':'5', 'Yards':'51', 'TD':'0', 'Avg':'10.2', 'Fumbles':'0' },
+    { '#':'16', 'Player':'Kobi Quarles',   'Year':'', 'Rec':'3', 'Yards':'49', 'TD':'0', 'Avg':'16.3', 'Fumbles':'0' },
+    { '#':'6',  'Player':'Eli Schoofield', 'Year':'', 'Rec':'1', 'Yards':'8',  'TD':'0', 'Avg':'8.0',  'Fumbles':'0' },
+    { '#':'11', 'Player':'Parker Sutley',  'Year':'', 'Rec':'1', 'Yards':'0',  'TD':'0', 'Avg':'0.0',  'Fumbles':'0' },
+  ],
+};
 
 // ── ABBEVILLE ──
 const AHS_2025 = [
@@ -5005,7 +5066,7 @@ const AHS_2026 = [
   { wk:'pre', date:'Fri Aug 14', opp:'Lincoln County',  ha:'Away', time:'7:30 PM', result:'', ahsScore:'', oppScore:'' },
   { wk:1,     date:'Fri Aug 21', opp:'Saluda',           ha:'Away', time:'7:30 PM', result:'W', ahsScore:'35', oppScore:'33', boxScoreKey:'ahs-saluda-2026-wk1' },
   { wk:2,     date:'Fri Aug 28', opp:'Strom Thurmond',   ha:'Home', time:'7:30 PM', result:'L', ahsScore:'0', oppScore:'33', boxScoreKey:'ahs-stromthurmond-2026-wk2' },
-  { wk:3,     date:'Fri Sep 4',  opp:'Crescent',         ha:'Away', time:'7:30 PM', result:'', ahsScore:'', oppScore:'' },
+  { wk:3,     date:'Fri Sep 4',  opp:'Crescent',         ha:'Away', time:'7:30 PM', result:'W', ahsScore:'33', oppScore:'6', boxScoreKey:'ahs-crescent-2026-wk3' },
   { wk:4,     date:'Fri Sep 11', opp:'BHP',              ha:'Home', time:'7:30 PM', result:'', ahsScore:'', oppScore:'' },
   { wk:5,     date:'Fri Sep 18', opp:'BYE',              ha:'',     time:'',        result:'', ahsScore:'', oppScore:'' },
   { wk:6,     date:'Fri Sep 25', opp:'Calhoun Falls',    ha:'Home', time:'7:30 PM', result:'', ahsScore:'', oppScore:'' },
@@ -5053,24 +5114,26 @@ const AHS_STATS_2025 = {
 // from box scores, so that column is left blank.
 const AHS_STATS_2026 = {
   passing: [
-    { '#':'11', 'Player':'Jacob Wilson', 'Year':'', 'Comp':'5', 'Att':'18', 'Yards':'56', 'TD':'0', 'INT':'4', 'Comp%':'27.8%' },
+    { '#':'11', 'Player':'Jacob Wilson', 'Year':'', 'Comp':'11', 'Att':'24', 'Yards':'116', 'TD':'2', 'INT':'4', 'Comp%':'45.8%' },
   ],
   rushing: [
-    { '#':'2',  'Player':'Jamearion Williams',    'Year':'', 'Carries':'23', 'Yards':'232', 'TD':'3', 'Avg':'10.1', 'Fumbles':'0' },
-    { '#':'12', 'Player':'Jamiere Killingsworth', 'Year':'', 'Carries':'29', 'Yards':'159', 'TD':'1', 'Avg':'5.5',  'Fumbles':'0' },
-    { '#':'11', 'Player':'Jacob Wilson',          'Year':'', 'Carries':'18', 'Yards':'87',  'TD':'0', 'Avg':'4.8',  'Fumbles':'0' },
-    { '#':'4',  'Player':'Collins Brown',         'Year':'', 'Carries':'7',  'Yards':'55',  'TD':'1', 'Avg':'7.9',  'Fumbles':'0' },
-    { '#':'20', 'Player':'Kingston Marshall',     'Year':'', 'Carries':'9',  'Yards':'41',  'TD':'0', 'Avg':'4.6',  'Fumbles':'0' },
-    { '#':'22', 'Player':'Aden Harrison',         'Year':'', 'Carries':'5',  'Yards':'38',  'TD':'0', 'Avg':'7.6',  'Fumbles':'0' },
+    { '#':'2',  'Player':'Jamearion Williams',    'Year':'', 'Carries':'32', 'Yards':'350', 'TD':'4', 'Avg':'10.9', 'Fumbles':'0' },
+    { '#':'12', 'Player':'Jamiere Killingsworth', 'Year':'', 'Carries':'46', 'Yards':'305', 'TD':'1', 'Avg':'6.6',  'Fumbles':'0' },
+    { '#':'11', 'Player':'Jacob Wilson',          'Year':'', 'Carries':'27', 'Yards':'130', 'TD':'1', 'Avg':'4.8',  'Fumbles':'0' },
+    { '#':'20', 'Player':'Kingston Marshall',     'Year':'', 'Carries':'13', 'Yards':'112', 'TD':'1', 'Avg':'8.6',  'Fumbles':'0' },
+    { '#':'4',  'Player':'Collins Brown',         'Year':'', 'Carries':'8',  'Yards':'62',  'TD':'1', 'Avg':'7.8',  'Fumbles':'0' },
+    { '#':'22', 'Player':'Aden Harrison',         'Year':'', 'Carries':'8',  'Yards':'38',  'TD':'0', 'Avg':'4.8',  'Fumbles':'0' },
     { '#':'6',  'Player':'Corde Hadden',          'Year':'', 'Carries':'1',  'Yards':'3',   'TD':'0', 'Avg':'3.0',  'Fumbles':'0' },
     { '#':'',   'Player':'Unassigned',            'Year':'', 'Carries':'2',  'Yards':'0',   'TD':'0', 'Avg':'0.0',  'Fumbles':'0' },
   ],
   receiving: [
-    { '#':'2',  'Player':'Jamearion Williams', 'Year':'', 'Rec':'1', 'Yards':'34', 'TD':'0', 'Avg':'34.0', 'Fumbles':'0' },
-    { '#':'10', 'Player':'Dee Brown',          'Year':'', 'Rec':'2', 'Yards':'13', 'TD':'0', 'Avg':'6.5',  'Fumbles':'0' },
-    { '#':'20', 'Player':'Kingston Marshall',  'Year':'', 'Rec':'2', 'Yards':'9',  'TD':'0', 'Avg':'4.5',  'Fumbles':'0' },
-    { '#':'22', 'Player':'Aden Harrison',      'Year':'', 'Rec':'0', 'Yards':'0',  'TD':'0', 'Avg':'0.0',  'Fumbles':'0' },
-    { '#':'5',  'Player':'Cory Calhoun',       'Year':'', 'Rec':'0', 'Yards':'0',  'TD':'0', 'Avg':'0.0',  'Fumbles':'0' },
+    { '#':'2',  'Player':'Jamearion Williams',    'Year':'', 'Rec':'3', 'Yards':'68', 'TD':'1', 'Avg':'22.7', 'Fumbles':'0' },
+    { '#':'10', 'Player':'Dee Brown',             'Year':'', 'Rec':'4', 'Yards':'43', 'TD':'1', 'Avg':'10.8', 'Fumbles':'0' },
+    { '#':'20', 'Player':'Kingston Marshall',     'Year':'', 'Rec':'2', 'Yards':'9',  'TD':'0', 'Avg':'4.5',  'Fumbles':'0' },
+    { '#':'12', 'Player':'Jamiere Killingsworth', 'Year':'', 'Rec':'1', 'Yards':'2',  'TD':'0', 'Avg':'2.0',  'Fumbles':'0' },
+    { '#':'11', 'Player':'Jacob Wilson',          'Year':'', 'Rec':'1', 'Yards':'-6', 'TD':'0', 'Avg':'-6.0', 'Fumbles':'0' },
+    { '#':'22', 'Player':'Aden Harrison',         'Year':'', 'Rec':'0', 'Yards':'0',  'TD':'0', 'Avg':'0.0',  'Fumbles':'0' },
+    { '#':'5',  'Player':'Cory Calhoun',          'Year':'', 'Rec':'0', 'Yards':'0',  'TD':'0', 'Avg':'0.0',  'Fumbles':'0' },
   ],
 };
 
@@ -5201,7 +5264,7 @@ const DHS_2025 = [
 // ── DIXIE 2026 SCHEDULE (Source: MaxPreps) ──
 const DHS_2026 = [
   { wk:2,  date:'Fri Aug 28', opp:'Greenwood Christian', ha:'Home', time:'7:30 PM', result:'L', dhsScore:'21', oppScore:'24' },
-  { wk:3,  date:'Fri Sep 4',  opp:'Fox Creek',            ha:'Home', time:'7:30 PM', result:'', dhsScore:'', oppScore:'' },
+  { wk:3,  date:'Fri Sep 4',  opp:'Greenwood Christian',  ha:'Home', time:'7:30 PM', result:'L', dhsScore:'20', oppScore:'40' },
   { wk:4,  date:'Fri Sep 11', opp:'Ridge Spring-Monetta', ha:'Away', time:'7:30 PM', result:'', dhsScore:'', oppScore:'' },
   { wk:5,  date:'Fri Sep 18', opp:'McCormick',            ha:'Home', time:'7:30 PM', result:'', dhsScore:'', oppScore:'' },
   { wk:6,  date:'Fri Sep 25', opp:'Thornwell',            ha:'Away', time:'7:30 PM', result:'', dhsScore:'', oppScore:'' },
@@ -5228,8 +5291,7 @@ const CF_2025 = [
 ];
 // ── CALHOUN FALLS 2026 SCHEDULE (Source: MaxPreps) ──
 const CF_2026 = [
-  // wk:3 confirmed from GCS schedule (GCS Home vs Calhoun Falls)
-  { wk:3, date:'Fri Sep 4',  opp:'Greenwood Christian',   ha:'Away', time:'7:30 PM', result:'', cfScore:'', oppScore:'' },
+  { wk:3, date:'Fri Sep 4',  opp:'Fox Creek',   ha:'Away', time:'7:30 PM', result:'L', cfScore:'28', oppScore:'49' },
   { wk:4,  date:'Fri Sep 11', opp:'Greenville Hurricanes', ha:'Home', time:'7:30 PM', result:'', cfScore:'', oppScore:'' },
   // wk:5 confirmed from Ninety Six schedule (NS Home vs Calhoun Falls)
   { wk:5, date:'Fri Sep 18', opp:'Ninety Six',            ha:'Away', time:'7:30 PM', result:'', cfScore:'', oppScore:'' },
@@ -5287,7 +5349,7 @@ const SALUDA_2025 = [
 // ── SALUDA 2026 SCHEDULE (Source: MaxPreps) ──
 const SALUDA_2026 = [
   { wk:1,  date:'Fri Aug 21', opp:'Abbeville',              ha:'Home', time:'7:30 PM', result:'L', saScore:'33', oppScore:'35', boxScoreKey:'ahs-saluda-2026-wk1' },
-  { wk:3,  date:'Fri Sep 4',  opp:'Batesburg-Leesville',    ha:'Away', time:'7:30 PM', result:'', saScore:'', oppScore:'' },
+  { wk:3,  date:'Fri Sep 4',  opp:'Thornwell',    ha:'Home', time:'7:30 PM', result:'W', saScore:'48', oppScore:'12' },
   { wk:4,  date:'Fri Sep 11', opp:'Ninety Six',             ha:'Away', time:'7:30 PM', result:'', saScore:'', oppScore:'' },
   { wk:5,  date:'Fri Sep 18', opp:'Chester',                ha:'Home', time:'7:30 PM', result:'', saScore:'', oppScore:'' },
   { wk:6,  date:'Fri Sep 25', opp:'Emerald',                ha:'Away', time:'7:30 PM', result:'', saScore:'', oppScore:'' },
@@ -5930,6 +5992,169 @@ const BOX_SCORES = {
             { num:'5',  player:'Cory Calhoun',       tar:1, rec:0, yds:0,  avg:'0.0', lg:0, td:0 },
           ],
           totals: { tar:7, rec:4, yds:22, avg:'5.5', lg:7, td:0 },
+        },
+      },
+    },
+  },
+  'ahs-crescent-2026-wk3': {
+    awayTeam: 'Abbeville', homeTeam: 'Crescent',
+    dateLabel: 'Sep 4, 2026', weekLabel: 'Week 3',
+    quarterLabels: ['1st','2nd','3rd','4th'],
+    awayByQtr: [6,6,20,7], homeByQtr: [0,0,0,8],
+    awayFinal: 33, homeFinal: 6,
+    teamStats: [
+      { label: 'Rushing (Att-Yds)', away: '43-385', home: '—' },
+      { label: 'Passing (Att-Yds)', away: '6-60', home: '—' },
+      { label: 'Receiving (Tar-Rec-Yds)', away: '6-6-60', home: '—' },
+    ],
+    stats: {
+      Abbeville: {
+        rushing: {
+          cols: [['num','#'],['player','Player'],['att','Att'],['yds','Yds'],['avg','Avg'],['lg','LG'],['td','TD']],
+          rows: [
+            { num:'12', player:'Jamiere Killingsworth', att:17, yds:146, avg:'8.6',  lg:47, td:0 },
+            { num:'2',  player:'Jamearion Williams',     att:9,  yds:118, avg:'13.1', lg:69, td:1 },
+            { num:'20', player:'Kingston Marshall',      att:4,  yds:71,  avg:'17.8', lg:62, td:1 },
+            { num:'11', player:'Jacob Wilson',           att:9,  yds:43,  avg:'4.8',  lg:29, td:1 },
+            { num:'4',  player:'Collins Brown',          att:1,  yds:7,   avg:'7.0',  lg:7,  td:0 },
+            { num:'22', player:'Aden Harrison',          att:3,  yds:0,   avg:'.0',   lg:3,  td:0 },
+          ],
+          totals: { att:43, yds:385, avg:'9.0', lg:69, td:3 },
+        },
+        passing: {
+          cols: [['num','#'],['player','Player'],['att','Att'],['cmp','Cmp'],['yds','Yds'],['sac','Sac'],['lg','LG'],['td','TD'],['int','Int'],['rtg','Rtg']],
+          rows: [
+            { num:'11', player:'Jacob Wilson', att:6, cmp:6, yds:60, sac:1, lg:32, td:2, int:0, rtg:'147.9' },
+          ],
+          totals: { att:6, cmp:6, yds:60, sac:1, lg:32, td:2, int:0, rtg:'147.9' },
+        },
+        receiving: {
+          cols: [['num','#'],['player','Player'],['tar','Tar'],['rec','Rec'],['yds','Yds'],['avg','Avg'],['lg','LG'],['td','TD']],
+          rows: [
+            { num:'2',  player:'Jamearion Williams',     tar:2, rec:2, yds:34, avg:'17.0', lg:22, td:1 },
+            { num:'10', player:'Dee Brown',              tar:2, rec:2, yds:30, avg:'15.0', lg:32, td:1 },
+            { num:'12', player:'Jamiere Killingsworth',  tar:1, rec:1, yds:2,  avg:'2.0',  lg:2,  td:0 },
+            { num:'11', player:'Jacob Wilson',           tar:1, rec:1, yds:-6, avg:'-6.0', lg:0,  td:0 },
+          ],
+          totals: { tar:6, rec:6, yds:60, avg:'10.0', lg:32, td:2 },
+        },
+      },
+    },
+  },
+  'ns-wagenersalley-2026-wk3': {
+    awayTeam: 'Wagener-Salley', homeTeam: 'Ninety Six',
+    dateLabel: 'Sep 4, 2026', weekLabel: 'Week 3',
+    awayFinal: 42, homeFinal: 8,
+    teamStats: [
+      { label: 'First Downs', away: '13', home: '12' },
+      { label: 'Rushing (Att-Yds)', away: '26-170', home: '36-67' },
+      { label: 'Passing (Att-Yds)', away: '18-160', home: '15-108' },
+      { label: 'Receiving (Rec-Yds)', away: '13-160', home: '10-108' },
+      { label: 'TD-INT', away: '4-0', home: '0-0' },
+      { label: 'Fumbles-Lost', away: '2-2', home: '3-3' },
+      { label: 'Penalties-Yards', away: '22-125', home: '9-80' },
+      { label: '3rd Down Conv', away: '2-10', home: '2-14' },
+      { label: '4th Down Conv', away: '0-5', home: '2-5' },
+      { label: 'Time of Possession', away: '45:12', home: '50:50' },
+    ],
+    stats: {
+      'Ninety Six': {
+        rushing: {
+          cols: [['num','#'],['player','Player'],['att','Att'],['yds','Yds'],['td','TD'],['fum','Fum']],
+          rows: [
+            { num:'9',  player:'Kee Brunson',     att:12, yds:38, td:0, fum:1 },
+            { num:'11', player:'Parker Sutley',   att:4,  yds:24, td:0, fum:0 },
+            { num:'35', player:'Joshua Thompson', att:7,  yds:19, td:0, fum:1 },
+            { num:'40', player:'Samuel Parsons',  att:5,  yds:11, td:1, fum:0 },
+            { num:'20', player:'Noah McDonald',   att:1,  yds:0,  td:0, fum:0 },
+            { num:'10', player:'Dylan Gonce',     att:2,  yds:-1, td:0, fum:0 },
+            { num:'8',  player:'Jacob Evans',     att:5,  yds:-24,td:0, fum:1 },
+          ],
+          totals: { att:36, yds:67, td:1, fum:3 },
+        },
+        passing: {
+          cols: [['num','#'],['player','Player'],['comp','Comp'],['att','Att'],['yds','Yds'],['td','TD'],['int','INT']],
+          rows: [
+            { num:'8',  player:'Jacob Evans',   comp:10, att:13, yds:108, td:0, int:0 },
+            { num:'11', player:'Parker Sutley', comp:0,  att:2,  yds:0,   td:0, int:0 },
+          ],
+          totals: { comp:10, att:15, yds:108, td:0, int:0 },
+        },
+        receiving: {
+          cols: [['num','#'],['player','Player'],['rec','Rec'],['yds','Yds'],['td','TD']],
+          rows: [
+            { num:'24', player:'Camrhyn Mathis',  rec:5, yds:51, td:0 },
+            { num:'16', player:'Kobi Quarles',    rec:3, yds:49, td:0 },
+            { num:'6',  player:'Eli Schoofield',  rec:1, yds:8,  td:0 },
+            { num:'11', player:'Parker Sutley',   rec:1, yds:0,  td:0 },
+          ],
+          totals: { rec:10, yds:108, td:0 },
+        },
+      },
+    },
+  },
+  'gw-northaugusta-2026-wk3': {
+    awayTeam: 'Greenwood', homeTeam: 'North Augusta',
+    dateLabel: 'Sep 4, 2026', weekLabel: 'Week 3',
+    awayFinal: 13, homeFinal: 45,
+    teamStats: [
+      { label: 'Time of Possession', away: '27:01', home: '21:00' },
+      { label: 'Total Plays', away: '67', home: '49' },
+      { label: 'Total Yards', away: '272', home: '258' },
+      { label: 'Average Gain', away: '4.1', home: '5.3' },
+      { label: 'Total Pass Plays', away: '29', home: '19' },
+      { label: 'Passing Yards', away: '143', home: '169' },
+      { label: 'Avg Yards Per Pass', away: '4.9', home: '8.9' },
+      { label: 'Total Rushing Plays', away: '38', home: '30' },
+      { label: 'Rushing Yards', away: '129', home: '89' },
+      { label: 'Avg Yards Per Rush', away: '3.4', home: '3.0' },
+      { label: 'Total First Downs', away: '18', home: '18' },
+      { label: 'Touchdowns Scored', away: '2', home: '6' },
+      { label: "PAT's Attempted", away: '2', home: '6' },
+      { label: "PAT's Made", away: '1', home: '6' },
+      { label: '2-Point Conversion Attempt', away: '0', home: '0' },
+      { label: '2-Point Conversion Made', away: '0', home: '0' },
+      { label: 'Total Turnovers', away: '5', home: '2' },
+      { label: 'Fumbles', away: '4', home: '2' },
+      { label: 'Interceptions', away: '1', home: '0' },
+      { label: 'Number of Punts', away: '5', home: '4' },
+      { label: 'Average Punt', away: '35.6', home: '45.3' },
+      { label: 'Number of Penalties', away: '8', home: '7' },
+      { label: 'Penalty Yards', away: '50', home: '50' },
+      { label: 'Field Goals Attempted', away: '0', home: '1' },
+      { label: 'Field Goals Made', away: '0', home: '1' },
+    ],
+    stats: {
+      Greenwood: {
+        rushing: {
+          cols: [['num','#'],['player','Player'],['no','No'],['yds','Yds'],['td','TD'],['avg','Ave']],
+          rows: [
+            { num:'21', player:'Cassidy Lee',      no:13, yds:65,  td:0, avg:'5.0' },
+            { num:'15', player:'Zatavion White',   no:7,  yds:33,  td:1, avg:'4.7' },
+            { num:'0',  player:'Tay Hamilton',     no:11, yds:29,  td:0, avg:'2.6' },
+            { num:'12', player:"Ry'Keem Robinson", no:1,  yds:15,  td:0, avg:'15.0' },
+            { num:'10', player:'Quay Justensen',   no:6,  yds:-13, td:1, avg:'-2.2' },
+          ],
+          totals: { no:38, yds:129, td:2, avg:'3.4' },
+        },
+        passing: {
+          cols: [['num','#'],['player','Player'],['comp','Comp'],['att','Att'],['yds','Yds'],['td','TD'],['int','INT'],['pct','Comp%']],
+          rows: [
+            { num:'10', player:'Quay Justensen', comp:12, att:23, yds:137, td:0, int:1, pct:'52.2%' },
+            { num:'15', player:'Zatavion White',  comp:1,  att:5,  yds:6,   td:0, int:0, pct:'20.0%' },
+          ],
+          totals: { comp:13, att:28, yds:143, td:0, int:1, pct:'46.4%' },
+        },
+        receiving: {
+          cols: [['num','#'],['player','Player'],['no','No'],['yds','Yds'],['td','TD'],['avg','Ave']],
+          rows: [
+            { num:'38', player:'Trey Price',        no:4, yds:66, td:0, avg:'16.5' },
+            { num:'12', player:"Ry'Keem Robinson", no:6, yds:64, td:0, avg:'10.7' },
+            { num:'3',  player:'Malik Stevens',     no:1, yds:9,  td:0, avg:'9.0' },
+            { num:'16', player:'Isaiah Corbett',    no:1, yds:6,  td:0, avg:'6.0' },
+            { num:'15', player:'Zatavion White',    no:1, yds:-2, td:0, avg:'-2.0' },
+          ],
+          totals: { no:13, yds:143, td:0, avg:'11.0' },
         },
       },
     },
